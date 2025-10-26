@@ -19,11 +19,11 @@ body {
   margin-bottom: 80px; /* adds space below */
 }
 
-/* --- COLLECTION ROW --- */
-.collections-row {
-  display: flex;
+/* --- COLLECTION GRID--- */
+.collections-grid {
+  display: grid;
   justify-content: center;   /* centers all tabs horizontally */
-  align-items: center;       /* centers vertically if row has height */
+  align-items:center;       /* centers vertically if row has height */
   gap: 15px;                 /* space between tabs */
   margin-top: 40px;          /* spacing above the row */
 }
