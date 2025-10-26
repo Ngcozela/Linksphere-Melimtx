@@ -95,10 +95,10 @@ body {
 
 .page-title {
   color: #fff;              /* white title */
-  font-size: 3rem;          /* large, readable text */
-  font-weight: 700;         /* bold */
-  margin: 0;
-  text-transform: uppercase;/* optional style */
-  letter-spacing: 2px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* helps it pop over dark bg */
+  font-size: 2rem;
+  color: #222;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+ text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* helps it pop over dark bg */
 }
