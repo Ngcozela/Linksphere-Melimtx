@@ -31,10 +31,10 @@ body {
 .collection-tab {
   background-color: #e06d00; /* Darker orange */
   color: white;
-  border-radius: 10px;
-  padding: 10px 10px;
+  border-radius: 5px;
+  padding: 5px 5px;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-family: Arial;
   font-style:bold;
   cursor: pointer;
