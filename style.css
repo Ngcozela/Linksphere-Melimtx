@@ -25,15 +25,17 @@ body {
   display: flex;
   gap: 10px;
   justify-items: center;
+  
 }
 
 .collection-tab {
-  background-color: #ff7a00; /* Darker orange */
+  background-color: #e06d00; /* Darker orange */
   color: white;
   border-radius: 10px;
-  padding: 8px 14px;
+  padding: 10px 10px;
   text-align: center;
   font-size: 1.1rem;
+  font-family: Impact;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -45,6 +47,7 @@ body {
 .collection-tab:hover {
   background-color: #e06d00;
   transform: translateY(-5px);
+  font-style: italic;
 }
 
 /* Hover Image */
