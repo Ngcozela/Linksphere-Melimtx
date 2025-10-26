@@ -13,13 +13,18 @@ body {
   padding: 20px;
 }
 
+.collections-section {
+  position: relative;
+  margin-top: 120px; /* pushes section down */
+  margin-bottom: 80px; /* adds space below */
+}
 
 
 /* Collections Grid */
 .collection-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  gap: 10px;
   justify-items: center;
 }
 
