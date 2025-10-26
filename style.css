@@ -89,21 +89,21 @@ body {
   font-size: 1.2rem;
   color: #555;
 }
-/* --- PAGE TITLE SECTION --- */
+/* --- PAGE HEADER (centers title at top) --- */
 .page-header {
-  position: relative;       /* ensure it’s in normal layout flow */
+  position: relative;     /* keeps it in normal flow */
   width: 100%;
-  text-align: center;       /* center horizontally */
-  margin-top: 60px;         /* space from the top of the page */
-  z-index: 10;              /* keeps it above background images */
+  text-align: center;     /* centers text horizontally */
+  margin-top: 40px;       /* distance from top of page */
+  z-index: 10;            /* ensures it appears above background */
 }
 
+/* --- PAGE TITLE (Melimtx) --- */
 .page-title {
-  color: #fff;              /* white title */
-  font-size: 2rem;
-  color: #222;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 500;
- text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* helps it pop over dark bg */
+  color: #fff;            /* white text */
+  font-size: 3rem;        /* large and readable */
+  font-weight: 700;       /* bold */
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* makes it pop over dark bg */
 }
+
