@@ -34,9 +34,10 @@ body {
   border-radius: 7px;
   padding: 8px 20px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 0.7rem;
   font-family: Arial;
   font-weight:700;
+  justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
