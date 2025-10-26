@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Before Viewing</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Poppins", Arial, sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h2 {
+      color: #ff7a00;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    p {
+      color: #ddd;
+      max-width: 700px;
+      margin: 0 auto 25px;
+      font-size: 1.1rem;
+    }
+
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .option-btn {
+      background: #ff7a00;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .option-btn:hover {
+      background: #e06d00;
+      transform: scale(1.05);
+    }
+
+    .video-container {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .timer {
+      margin-top: 10px;
+      color: #ffb347;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* Continue button */
+    #continue-btn {
+      display: none;
+      margin-top: 40px;
+      background: #00c853;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    #continue-btn:hover {
+      background: #009624;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h2>Choose Before Continuing</h2>
+  <p>You can visit one of the three sites below or watch a short 30-second video before continuing to the collection.</p>
+
+  <div class="options">
+    <a href="https://example1.com" target="_blank" class="option-btn site-link">Visit Site 1</a>
+    <a href="https://example2.com" target="_blank" class="option-btn site-link">Visit Site 2</a>
+    <a href="https://example3.com" target="_blank" class="option-btn site-link">Visit Site 3</a>
+    <button id="watchVideoBtn" class="option-btn">Watch 30s Video</button>
+  </div>
+
+  <div class="video-container" id="videoContainer">
+    <video id="sampleVideo" width="480" controls>
+      <source src="sample.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="timer" id="timer">Time remaining: 30s</div>
+  </div>
+
+  <!-- 👇 This is the button that appears after the 30s or site visit -->
+  <a href="https://mega.nz/folder/yfZ2AaoQ#zTF7PfZWA76b4xEXkzsOFw" target="_blank" id="continue-btn">Continue to Collection</a>
+
+  <script>
+    const watchBtn = document.getElementById('watchVideoBtn');
+    const videoContainer = document.getElementById('videoContainer');
+    const video = document.getElementById('sampleVideo');
+    const timerDisplay = document.getElementById('timer');
+    const continueBtn = document.getElementById('continue-btn');
+    const siteLinks = document.querySelectorAll('.site-link');
+
+    let countdown = 30;
+    let timer;
+
+    // If user clicks any site, show Continue immediately
+    siteLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        setTimeout(() => {
+          continueBtn.style.display = 'inline-block';
+        }, 500);
+      });
+    });
+
+    // When user clicks "Watch Video"
+    watchBtn.addEventListener('click', () => {
+      watchBtn.disabled = true;
+      watchBtn.textContent = "Playing...";
+      videoContainer.style.display = "block";
+      video.play();
+      startTimer();
+    });
+
+    function startTimer() {
+      timer = setInterval(() => {
+        countdown--;
+        timerDisplay.textContent = `Time remaining: ${countdown}s`;
+        if (countdown <= 0) {
+          clearInterval(timer);
+          timerDisplay.textContent = "You may now continue!";
+          continueBtn.style.display = 'inline-block';
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
