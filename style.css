@@ -29,12 +29,12 @@ body {
 }
 
 .collection-tab {
-  background-color: #6e665f; /* Darker orange */
+  background-color: #f8eee6; /* Darker orange */
   color: rgb(255, 255, 255);
   border-radius: 7px;
-  padding: 20px 10px;
+  padding: 20px 105px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-family: Arial;
   font-weight:700;
   justify-content: center;
