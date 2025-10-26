@@ -7,20 +7,13 @@
 
 body {
   font-family: "Poppins", Arial, sans-serif;
-  background-color: #fffaf5;
+  background-color: #000000;
   color: #333;
   line-height: 1.6;
   padding: 20px;
 }
 
-/* Section Titles */
-.section-title {
-  font-size: 2rem;
-  color: #222;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 500;
-}
+
 
 /* Collections Grid */
 .collection-grid {
