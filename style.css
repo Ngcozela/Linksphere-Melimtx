@@ -45,7 +45,10 @@ body {
   position: relative;
   width: 70%;
   max-width: 120px;
-  overflow: hidden;
+  white-space: nowrap;     /* keeps the text on one line */
+overflow: hidden;        /* hides any text that overflows the box */
+text-overflow: ellipsis; /* adds "..." if text is too long */
+
 }
 
 .collection-tab:hover {
