@@ -29,12 +29,12 @@ body {
 }
 
 .collection-tab {
-  background-color: #8d847c83; /* Darker orange */
+  background-color: #8d847cb4; /* Darker orange */
   color: rgb(255, 255, 255);
   border-radius: 7px;
   padding: 0.5px 80px;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.7rem;
   font-family: Arial;
   font-weight:700;
   justify-content: center;
@@ -47,7 +47,7 @@ body {
 }
 
 .collection-tab:hover {
-  background-color: #e06d00;
+  background-color: #ce6808;
   transform: translateY(-5px);
   font-style: italic;
 }
