@@ -34,7 +34,8 @@ body {
   border-radius: 7px;
   padding: 0.5px 80px;
   text-align: center;
-  font-size: 0.7rem;
+  display:flex;
+  font-size:1rem;
   font-family: Arial;
   font-weight:700;
   justify-content: center;
