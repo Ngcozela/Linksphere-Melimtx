@@ -159,4 +159,57 @@ text-overflow: ellipsis; /* adds "..." if text is too long */
   background: #ffa94d;
   transform: scale(1.05);
 }
+/* CONTAINER FOR EACH TAB + PREVIEW */
+.collection-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TAB ITSELF */
+.collection-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d3d3d3;
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  height: 40px;
+  text-decoration: none;
+}
+
+/* PREVIEW IMAGE (HIDDEN BY DEFAULT) */
+.collection-preview {
+  display: none;
+  position: absolute;
+  top: 110%; /* position below the tab */
+  width: 180px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 10;
+}
+
+/* WHEN HOVERING OVER THE TAB, SHOW THE PREVIEW */
+.collection-item:hover .collection-preview {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* OPTIONAL: TAB HOVER STYLING */
+.collection-tab:hover {
+  background: #ff7a00;
+  color: #fff;
+  transform: scale(1.05);
+}
 
