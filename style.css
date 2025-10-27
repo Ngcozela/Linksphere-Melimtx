@@ -31,7 +31,24 @@ body {
   scroll-behavior: smooth;      /* smooth sliding effect */
 }
 
-/* Hide the ugly scrollbar (optional, for a cleaner look) */
+/* --- COLLECTIONS ROW (HORIZONTAL SCROLL) --- */
+.collections-row {
+  display: flex;
+  flex-wrap: nowrap;           /* prevents wrapping to new lines */
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;            /* enables horizontal scroll */
+  overflow-y: hidden;          /* hides vertical scrollbar */
+  white-space: nowrap;         /* prevents text wrapping */
+  scroll-behavior: smooth;     /* smooth sliding scroll */
+  gap: 15px;                   /* space between items */
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 2px solid #333;  /* optional visual boundary */
+}
+
+/* --- SCROLLBAR STYLE (for Chrome/Edge) --- */
 .collections-row::-webkit-scrollbar {
   height: 8px;
 }
@@ -44,6 +61,15 @@ body {
 .collections-row::-webkit-scrollbar-track {
   background: #222;             /* dark background for scrollbar track */
 }
+
+/* --- INDIVIDUAL COLLECTION ITEM --- */
+.collection-item {
+  flex: 0 0 auto;              /* keeps each item from shrinking */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 
 .collection-tab {
@@ -211,43 +237,5 @@ text-overflow: ellipsis; /* adds "..." if text is too long */
   background: #ff7a00;
   color: #fff;
   transform: scale(1.05);
-}
-/* --- COLLECTIONS ROW (HORIZONTAL SCROLL) --- */
-.collections-row {
-  display: flex;
-  flex-wrap: nowrap;           /* prevents wrapping to new lines */
-  justify-content: flex-start;
-  align-items: flex-start;
-  overflow-x: auto;            /* enables horizontal scroll */
-  overflow-y: hidden;          /* hides vertical scrollbar */
-  white-space: nowrap;         /* prevents text wrapping */
-  scroll-behavior: smooth;     /* smooth sliding scroll */
-  gap: 15px;                   /* space between items */
-  padding: 15px;
-  width: 100%;
-  box-sizing: border-box;
-  border-top: 2px solid #333;  /* optional visual boundary */
-}
-
-/* --- SCROLLBAR STYLE (for Chrome/Edge) --- */
-.collections-row::-webkit-scrollbar {
-  height: 8px;
-}
-
-.collections-row::-webkit-scrollbar-thumb {
-  background: #ff7a00;          /* orange scroll thumb */
-  border-radius: 4px;
-}
-
-.collections-row::-webkit-scrollbar-track {
-  background: #222;             /* dark background for scrollbar track */
-}
-
-/* --- INDIVIDUAL COLLECTION ITEM --- */
-.collection-item {
-  flex: 0 0 auto;              /* keeps each item from shrinking */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
