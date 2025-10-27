@@ -25,8 +25,26 @@ body {
   display: flex;
   gap: 10px;
   justify-items: center;
-  
+  overflow-x: auto;             /* enable horizontal scrolling */
+  white-space: nowrap;          /* keep all tabs in a single line */
+  padding: 15px 10px;           /* inner spacing for aesthetics */
+  scroll-behavior: smooth;      /* smooth sliding effect */
 }
+
+/* Hide the ugly scrollbar (optional, for a cleaner look) */
+.collections-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.collections-row::-webkit-scrollbar-thumb {
+  background: #ff7a00;          /* orange scroll thumb */
+  border-radius: 4px;
+}
+
+.collections-row::-webkit-scrollbar-track {
+  background: #222;             /* dark background for scrollbar track */
+}
+
 
 .collection-tab {
   background-color: #8d847cb4; /* Darker orange */
@@ -52,10 +70,14 @@ text-overflow: ellipsis; /* adds "..." if text is too long */
 }
 
 .collection-tab:hover {
-  background-color: #ce6808;
-  transform: translateY(-5px);
-  font-style: italic;
+  background-color: #ff7a00;
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 122, 0, 0.5);
+  border: 1px solid transparent;
+  border-image: linear-gradient(45deg, #ff7a00, #ffb347);
+  border-image-slice: 1;
 }
+
 
 /* Hover Image */
 .collection-tab .hover-img {
@@ -114,5 +136,27 @@ text-overflow: ellipsis; /* adds "..." if text is too long */
   font-weight: 700;       /* bold */
   margin-top: 20px;
   text-shadow: 0 2px 10px rgb(0, 0, 0); /* makes it pop over dark bg */
+}
+.collection-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* allows buttons to move to new line on small screens */
+}
+
+.continue-btn {
+  background: #ff7a00;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.continue-btn:hover {
+  background: #ffa94d;
+  transform: scale(1.05);
 }
 
