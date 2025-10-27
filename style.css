@@ -32,10 +32,10 @@ body {
   background-color: #8d847cb4; /* Darker orange */
   color: rgb(255, 255, 255);
   border-radius: 7px;
-  padding: 0.5px 80px;
+  padding: 0.5px 90px;
   text-align: center;
   display:flex;
-  font-size:0.8rem;
+  font-size:1rem;
   font-family: Arial;
   font-weight:700;
   justify-content: center;
