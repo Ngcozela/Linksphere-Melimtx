@@ -35,10 +35,11 @@ body {
   padding: 0.5px 80px;
   text-align: center;
   display:flex;
-  font-size:0.9rem;
+  font-size:0.8rem;
   font-family: Arial;
   font-weight:700;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
