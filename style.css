@@ -46,7 +46,7 @@ body {
 
 .collections-section {
   position: relative;
-  margin-top: 120px; /* pushes section down */
+  margin-top: 250px; /* pushes section down */
   margin-bottom: 80px; /* adds space below */
 }
 
@@ -54,13 +54,13 @@ body {
 .collection-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 5px;
+  gap: 0.5px;
   justify-items: center;
 }
 
 .collection-tab {
-  background-color: #ff7a00; /* Darker orange */
-  color: white;
+  background-color: #31302e; /* Darker Grey*/
+  color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 20px;
   text-align: center;
