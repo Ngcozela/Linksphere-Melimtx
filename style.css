@@ -44,18 +44,14 @@ body {
 }
 
 
-.collections-section {
-  position: relative;
-  margin-top: 250px; /* pushes section down */
-  margin-bottom: 80px; /* adds space below */
-}
 
-/* Collections Grid */
-.collection-grid {
-  display: grid;
+
+/* Collections Row */
+.collections-row {
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.5px;
-  justify-items: center;
+  gap: 10px; /* this is the space between tabs */
+  justify-content: center;
 }
 
 .collection-tab {
@@ -65,6 +61,7 @@ body {
   padding: 20px;
   text-align: center;
   font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -168,4 +165,9 @@ body {
   display: block;
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+.collections-section {
+  position: relative;
+  margin-top: 250px; /* pushes section down */
+  margin-bottom: 80px; /* adds space below */
 }
