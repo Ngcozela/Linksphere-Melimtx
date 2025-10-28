@@ -7,7 +7,7 @@
 
 body {
   font-family: "Poppins", Arial, sans-serif;
-  background-color: #fffaf5;
+  background-color: #000000;
   color: #333;
   line-height: 1.6;
   padding: 20px;
@@ -25,7 +25,7 @@ body {
 /* --- PAGE TITLE (Melimtx) --- */
 .page-title {
   color: #fff;            /* white text */
-  font-size: 3rem;        /* large and readable */
+  font-size: 5rem;        /* large and readable */
   font-weight: 700;       /* bold */
   margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* makes it pop over dark bg */
