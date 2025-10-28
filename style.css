@@ -31,12 +31,17 @@ body {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* makes it pop over dark bg */
 }
 
+.collections-section {
+  position: relative;
+  margin-top: 120px; /* pushes section down */
+  margin-bottom: 80px; /* adds space below */
+}
 
 /* Collections Grid */
 .collection-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  gap: 5px;
   justify-items: center;
 }
 
