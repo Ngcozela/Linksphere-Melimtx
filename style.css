@@ -21,15 +21,6 @@ body {
   margin-top: 20px;       /* distance from top of page */
   z-index: 10;            /* ensures it appears above background */
 }
-.page-header::after {
-  content: "";
-  display: block;
-  width: 60%;
-  height: 2px;
-  margin: 30px auto 0;
-  background: linear-gradient(to right, #ff7a00, #ffb347);
-  border-radius: 2px;
-}
 
 /* --- PAGE TITLE (Melimtx) --- */
 .page-title {
