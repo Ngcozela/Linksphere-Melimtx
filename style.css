@@ -37,7 +37,7 @@ body {
   width: 60%;
   height: 2px;
   margin: 30px auto 0;
-  margin-top: 5px;   /* move divider further down from title */
+  margin-top: 40px;   /* move divider further down from title */
   margin-bottom: 10px; /* add or remove space before next section */
   background: linear-gradient(to right, #ffffff, #ffffff);
   border-radius: 2px;
