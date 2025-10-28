@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Poppins", Arial, sans-serif;
+  font-family: Arial;
   background-color: #000000;
   color: #333;
   line-height: 1.6;
@@ -18,7 +18,7 @@ body {
   position: relative;     /* keeps it in normal flow */
   width: 100%;
   text-align: center;     /* centers text horizontally */
-  margin-top: 40px;       /* distance from top of page */
+  margin-top: 20px;       /* distance from top of page */
   z-index: 10;            /* ensures it appears above background */
 }
 
