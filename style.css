@@ -67,7 +67,6 @@ body {
   position: relative;
   width: 100%;
   max-width: 220px;
-  overflow: hidden;
 }
 
 .collection-tab:hover {
@@ -173,40 +172,39 @@ body {
   overflow: hidden; /* hides any vertical scrollbars */
 }
 
-/* --- COLLECTION ROW (HORIZONTAL SLIDER) --- */
+/* --- COLLECTIONS ROW --- */
 .collections-row {
   display: flex;
-  flex-wrap: nowrap;        /* keeps all items in one row */
-  gap: 20px;                /* space between tabs */
-  overflow-x: auto;         /* enables horizontal scroll */
+  flex-wrap: nowrap;       /* keep all in one row */
+  gap: 20px;
+  overflow-x: auto;        /* horizontal scroll ON */
   overflow-y: hidden;
-  scroll-behavior: smooth;  /* smooth scroll motion */
+  scroll-behavior: smooth;
   padding: 20px;
-  scrollbar-width: thin;    /* for Firefox */
-  scrollbar-color: #ff7a00 #111; /* orange thumb, dark track */
+  box-sizing: border-box;
+  width: 100%;             /* ensures container fits full width */
+  max-width: 100vw;        /* prevents overflow hidden */
+  white-space: nowrap;
 }
 
-/* --- SCROLLBAR STYLE (Chrome, Edge, Safari) --- */
+/* Each collection tab container */
+.collection-item {
+  flex: 0 0 auto;          /* prevents shrinking */
+   min-width: 160px;
+}
+
+/* Scrollbar customization */
 .collections-row::-webkit-scrollbar {
-  height: 8px; /* horizontal scrollbar thickness */
+  height: 8px;
 }
 
 .collections-row::-webkit-scrollbar-thumb {
-  background: #ff7a00;  /* orange scroll bar */
-  border-radius: 10px;
+  background: #ff7a00;
+  border-radius: 8px;
 }
 
 .collections-row::-webkit-scrollbar-track {
-  background: #222;     /* dark scrollbar track */
-}
-
-/* --- EACH COLLECTION ITEM --- */
-.collection-item {
-  flex: 0 0 auto;             /* prevents shrinking */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 140px;           /* ensures items are wide enough to scroll */
+  background: #222;
 }
 
 /* --- COLLECTION TAB BUTTON --- */
