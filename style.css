@@ -131,7 +131,7 @@ body {
 
 /* --- PAGE TITLE TEXT --- */
 .page-title {
-  color: #fff;
+  color: #ffffff00;
   font-size: 3rem;
   font-weight: 800;
   font-family: Arial, sans-serif;
@@ -211,7 +211,7 @@ body {
 
 /* --- COLLECTION TAB BUTTON --- */
 .collection-tab {
-  background: #d3d3d321;
+  background: #d3d3d35b;
   color: #000;
   font-family: Arial;
   font-weight: 700;
