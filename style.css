@@ -200,7 +200,7 @@ body {
 /* Each collection tab container */
 .collection-item {
   flex: 0 0 auto;          /* prevents shrinking */
-   min-width: 20px
+   min-width: 20%
 }
 
 /* Scrollbar customization */
