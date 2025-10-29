@@ -52,7 +52,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px; /* this is the space between tabs */
   justify-content: center;
-  overflow:auto
+  overflow:scroll
 }
 
 .collection-tab {
