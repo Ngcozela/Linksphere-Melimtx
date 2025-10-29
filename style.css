@@ -59,7 +59,7 @@ body {
 
 .collection-tab {
   background-color: #94928e; /* Darker grey */
-  color: rgba(255, 255, 255, 0.85);
+  color: rgb(148, 8, 8);
   border-radius: 10px;
   padding:70px 40px;        /* ⬆️ Increases top & bottom padding for more height */
   font-size:.1rem;
