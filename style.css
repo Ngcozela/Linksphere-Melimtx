@@ -67,12 +67,14 @@ body {
   white-space: nowrap;       /* ✅ keeps text on a single line */
   text-align: center;        /* centers text horizontally */
   align-items: center;       /* centers text vertically */
+  justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   display: flex;             /* enables perfect centering */
   width: auto;                /* ✅ allows flexible width instead of fixed 100px */
   min-width: 100px;           /* optional: prevent tab from getting too small */
+  overflow: hidden;
 }
 
 
