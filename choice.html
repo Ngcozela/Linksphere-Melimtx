@@ -18,7 +18,7 @@
       margin: 0 auto;
     }
     button {
-      background: orange;
+      background: rgb(78, 76, 71);
       border: none;
       color: #fff;
       padding: 12px 25px;
@@ -29,7 +29,7 @@
       transition: 0.3s;
     }
     button:hover {
-      background: #ffae42;
+      background: #be7008;
     }
     iframe {
       display: none;
@@ -50,12 +50,12 @@
   </div>
 
   <script>
-    // Get which collection user clicked
-    const urlParams = new URLSearchParams(window.location.search);
-    const collectionId = urlParams.get('collection');
+    // --- GET COLLECTION ID ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const collectionId = urlParams.get('collection');
 
-    // Map your collection IDs to actual URLs
-    const collectionLinks = {
+  // --- MAP COLLECTION LINKS ---
+  const collectionLinks = {
     1: "https://mega.nz/folder/yfZ2AaoQ#zTF7PfZWA76b4xEXkzsOFw",
     2: "https://mega.nz/folder/TfB1yJoK#Syn3y_p-VGQ43D99TPiJ1g",
     3: "https://mega.nz/folder/CWgAmSpS#Tw4s30Hg6Yiw_BrmSj9zJA",
@@ -66,38 +66,61 @@
     8: "https://mega.nz/folder/LbowTBTY#IiMDk54kU6ezraACqWS4NQ",
     9: "https://mega.nz/folder/iKoXASwR#oN92zfZK7I1ZespC3Hj0Sg",
     10: "https://mega.nz/folder/rP5kADLJ#0JaCHCcUR7R6TH72EVKB_Q",
-  
-    };
+  };
 
-    function viewSites() {
-      // Open 3 sites in new tabs
-      window.open("https://site1.com", "_blank");
-      window.open("https://site2.com", "_blank");
-      window.open("https://site3.com", "_blank");
+  let visitedSites = 0;      // Track how many sites user has viewed
+  let viewingComplete = false; // Prevent multiple redirects
 
-      alert("After viewing all 3 sites, click OK to continue.");
-      redirectToCollection();
-    }
+  // --- FUNCTION: Visit 3 sites ---
+  function viewSites() {
+    document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+    alert("You’ll need to visit 3 sites. Each will open in a new tab.");
 
-    function watchVideo() {
-      const video = document.getElementById("video");
-      video.src = "sample.mp4"; // Replace with your video file
-      video.style.display = "block";
-      video.play();
-
+    // Open 3 tabs
+    const sites = ["https://site1.com", "https://site2.com", "https://site3.com"];
+    sites.forEach((site, index) => {
       setTimeout(() => {
-        redirectToCollection();
-      }, 30000); // 30 seconds
-    }
+        window.open(site, "_blank");
+        visitedSites++;
+        if (visitedSites === sites.length) {
+          // Wait for user to confirm when done
+          setTimeout(() => {
+            const proceed = confirm("Have you viewed all 3 sites?");
+            if (proceed) redirectToCollection();
+          }, 1000);
+        }
+      }, index * 800);
+    });
+  }
 
-    function redirectToCollection() {
-      const target = collectionLinks[collectionId];
-      if (target) {
-        window.location.href = target;
-      } else {
-        alert("Invalid collection link.");
-      }
+  // --- FUNCTION: Watch 30-second video ---
+  function watchVideo() {
+    document.querySelectorAll("button").forEach(btn => btn.disabled = true);
+    const video = document.getElementById("video");
+    video.src = "sample.mp4"; // your video file
+    video.style.display = "block";
+    video.play();
+
+    alert("Watch the video for 30 seconds to continue.");
+
+    setTimeout(() => {
+      const proceed = confirm("Video complete. Continue to collection?");
+      if (proceed) redirectToCollection();
+    }, 30000); // 30 seconds wait
+  }
+
+  // --- FUNCTION: Redirect safely ---
+  function redirectToCollection() {
+    if (viewingComplete) return; // prevent multiple redirects
+    viewingComplete = true;
+
+    const target = collectionLinks[collectionId];
+    if (target) {
+      window.location.href = target;
+    } else {
+      alert("Invalid collection link.");
     }
+  }
   </script>
 
 </body>

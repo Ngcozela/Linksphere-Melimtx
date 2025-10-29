@@ -60,7 +60,7 @@ body {
   display: flex;             /* enables perfect centering */
   width: auto;               /* flexible tab width */
   min-width: 100px;          /* prevents small tabs */
-  overflow: hidden;
+  
 }
 
 
@@ -172,7 +172,7 @@ body {
 
 .collections-section {
   position: relative;
-  overflow: hidden;
+  
 }
 
 .collections-section::before,
