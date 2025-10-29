@@ -38,7 +38,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px; /* this is the space between tabs */
   justify-content: center;
-  overflow: auto;
+  
 }
 
 
@@ -168,6 +168,33 @@ body {
   opacity: 0.8;                      /* slight transparency */
    margin-top: 40px;   /* move divider further down from title */
   margin-bottom: 40px; /* add or remove space before next section */
+}
+
+.collections-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.collections-section::before,
+.collections-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.collections-section::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.collections-section::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
 }
 
 

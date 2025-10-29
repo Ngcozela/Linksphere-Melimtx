@@ -26,3 +26,51 @@ function openCollection(id) {
   // Redirects to checkpoint, telling it which collection was clicked
   window.location.href = `choice.html?collection=${id}`;
 }
+
+// --- SMART EDGE SCROLL (only active when hovering over collections) ---
+const row = document.getElementById("collectionsRow");
+let scrollSpeed = 0;
+let scrolling = false;
+let isHovering = false;
+
+// Detect when mouse enters or leaves the collections section
+row.addEventListener("mouseenter", () => (isHovering = true));
+row.addEventListener("mouseleave", () => {
+  isHovering = false;
+  scrolling = false;
+});
+
+// Listen for mouse movement ONLY while hovering over the section
+document.addEventListener("mousemove", (e) => {
+  if (!isHovering) return; // ignore movements outside the section
+
+  const edgeZone = 100; // px from edges that trigger scroll
+  const sectionBounds = row.getBoundingClientRect();
+  const mouseX = e.clientX;
+
+  // Determine if cursor is near the section edges
+  if (mouseX < sectionBounds.left + edgeZone && mouseX > sectionBounds.left) {
+    // Left edge → scroll left
+    scrollSpeed = -10 * (1 - (mouseX - sectionBounds.left) / edgeZone);
+    scrolling = true;
+  } else if (
+    mouseX > sectionBounds.right - edgeZone &&
+    mouseX < sectionBounds.right
+  ) {
+    // Right edge → scroll right
+    scrollSpeed = 10 * ((mouseX - (sectionBounds.right - edgeZone)) / edgeZone);
+    scrolling = true;
+  } else {
+    scrollSpeed = 0;
+    scrolling = false;
+  }
+});
+
+// Smooth scroll loop
+function autoScroll() {
+  if (scrolling && row) {
+    row.scrollLeft += scrollSpeed;
+  }
+  requestAnimationFrame(autoScroll);
+}
+autoScroll();
