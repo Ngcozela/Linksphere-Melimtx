@@ -55,24 +55,14 @@ body {
   overflow: auto;
 }
 
-.collections-row::after{
-  content: "";
-  display: block;
-  width: 60%;
-  height: 2px;
-  margin: 30px auto 0;
-  margin-top: 40px;   /* move divider further down from section */
-  margin-bottom: 40px; /* add or remove space before next section */
-  background: linear-gradient(to right, #ffffff, #ffffff);
-  border-radius: 2px;
-}
+
 
 .collection-tab {
   background-color: #94928e; /* Darker grey */
   color: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
   padding:70px 40px;        /* ⬆️ Increases top & bottom padding for more height */
-  font-size:1rem;
+  font-size:.1rem;
   font-weight: bold;
   white-space: nowrap;       /* ✅ keeps text on a single line */
   align-items: center;       /* centers text vertically */
