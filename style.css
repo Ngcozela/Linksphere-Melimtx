@@ -58,24 +58,25 @@ body {
 
 
 .collection-tab {
-  background-color: #94928e; /* Darker grey */
-  color: rgb(148, 8, 8);
+  background-color: #94928e; /* grey tab */
+  color: #fff;               /* white title text */
   border-radius: 10px;
-  padding:70px 40px;        /* ⬆️ Increases top & bottom padding for more height */
-  font-size:.10rem;
+  padding: 70px 40px;        /* tab height & width */
+  font-size: 1rem;           /* ✅ readable font size */
   font-weight: bold;
-  white-space: nowrap;       /* ✅ keeps text on a single line */
+  white-space: nowrap;       /* keeps title in one line */
   text-align: center;        /* centers text horizontally */
-  align-items: center;       /* centers text vertically */
+  align-items: center;       /* centers vertically (with flex) */
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   display: flex;             /* enables perfect centering */
-  width: auto;                /* ✅ allows flexible width instead of fixed 100px */
-  min-width: 100px;           /* optional: prevent tab from getting too small */
+  width: auto;               /* flexible tab width */
+  min-width: 100px;          /* prevents small tabs */
   overflow: hidden;
 }
+
 
 
 /* Hover Image */
@@ -170,6 +171,16 @@ body {
   
 }
 
+/* --- SECTION DIVIDER --- */
+.section-divider {
+  width: 80%;                        /* divider length */
+  height: 2px;                       /* thickness */
+  margin: 60px auto;                 /* space above & below */
+  background: linear-gradient(to right, #ffffff, #ff7a00, #ffffff);
+  border: none;                      /* remove default browser border */
+  border-radius: 2px;
+  opacity: 0.8;                      /* slight transparency */
+}
 
 
 
