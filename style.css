@@ -57,18 +57,23 @@ body {
 
 .collection-tab {
   background-color: #31302e; /* Darker grey */
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
-  padding:70px 40px;        /* ⬆️ Increases top & bottom padding for more height */
-  text-align: left;
-  font-size: 1rem;
+  padding: 70px 40px;      /* equal space on all sides */
+  text-align: center;        /* centers text horizontally */
+  font-size: 0.85rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  display: inline-block;      /* ✅ makes tab size depend on content + padding */
-  width: auto;                /* ✅ allows flexible width instead of fixed 100px */
-  min-width: 100px;           /* optional: prevent tab from getting too small */
+  display: flex;             /* enables perfect centering */
+  justify-content: center;   /* centers text horizontally */
+  align-items: center;       /* centers text vertically */
+  width: 120px;              /* fixed width for consistent sizing */
+  height: 70px;              /* taller tabs */
+  white-space: nowrap;       /* ✅ keeps text on a single line */
+  overflow: hidden;          /* hides overflow if text is too long */
+  text-overflow: ellipsis;   /* adds “…” if text is too long */
 }
 
 
