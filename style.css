@@ -65,6 +65,7 @@ body {
   font-size:.1rem;
   font-weight: bold;
   white-space: nowrap;       /* ✅ keeps text on a single line */
+  text-align: center;        /* centers text horizontally */
   align-items: center;       /* centers text vertically */
   cursor: pointer;
   transition: all 0.3s ease;
