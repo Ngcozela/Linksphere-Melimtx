@@ -37,7 +37,7 @@ body {
   width: 60%;
   height: 2px;
   margin: 30px auto 0;
-  margin-top: 40px;   /* move divider further down from title */
+  margin-top: 70px;   /* move divider further down from title */
   margin-bottom: 10px; /* add or remove space before next section */
   background: linear-gradient(to right, #ffffff, #ffffff);
   border-radius: 2px;
@@ -56,31 +56,21 @@ body {
 }
 
 .collection-tab {
-  background-color: #31302e; /* Darker grey */
-  color: rgba(255, 255, 255, 0.9);
+  background-color: #94928e; /* Darker grey */
+  color: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
-  padding: 70px 40px;      /* equal space on all sides */
-  text-align: center;        /* centers text horizontally */
-  font-size: 0.85rem;
+  padding:70px 40px;        /* ⬆️ Increases top & bottom padding for more height */
+  text-align: center;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  display: flex;             /* enables perfect centering */
-  justify-content: center;   /* centers text horizontally */
-  align-items: center;       /* centers text vertically */
-  width: 120px;              /* fixed width for consistent sizing */
-  height: 70px;              /* taller tabs */
-  white-space: nowrap;       /* ✅ keeps text on a single line */
-  overflow: hidden;          /* hides overflow if text is too long */
-  text-overflow: ellipsis;   /* adds “…” if text is too long */
+  display: inline-block;      /* ✅ makes tab size depend on content + padding */
+  width: auto;                /* ✅ allows flexible width instead of fixed 100px */
+  min-width: 100px;           /* optional: prevent tab from getting too small */
 }
 
-
-.collection-tab:hover {
-  background-color: #e06d00;
-  transform: translateY(-5px);
-}
 
 /* Hover Image */
 .collection-tab .hover-img {
