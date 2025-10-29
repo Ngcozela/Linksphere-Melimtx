@@ -22,3 +22,7 @@ function openCollection(id) {
     window.open(links[id], "_blank");
   }
 }
+function openCollection(id) {
+  // Redirects to checkpoint, telling it which collection was clicked
+  window.location.href = `choice.html?collection=${id}`;
+}
