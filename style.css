@@ -186,53 +186,48 @@ body {
   max-width: 100vw;        /* prevents overflow hidden */
   white-space: nowrap;
 
- /* keeps the scroll smart and small */
-  scrollbar-width: thin;
-  scrollbar-color: #ff7a00 transparent;
- 
-  /* Hide scrollbar background until hover */
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  transition: scrollbar-color 0.3s ease;
+
+/* Hide scrollbar background until hover */
+  scrollbar-width:thin;
+  scrollbar-color:transparent transparent;
+  transition:scrollbar-color 0.3s ease
 }
 
-/* --- SMART SCROLLBAR DESIGN --- */
-.collections-row::-webkit-scrollbar {
-  height: 5px;
-}
-.collections-row::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #ff7a00, #ffb347);
-  border-radius: 50px;
-}
-.collections-row::-webkit-scrollbar-track {
-  background: transparent;
+.collections-row:hover {
+  scrollbar-color: #ff7a00 transparent; /* show thumb on hover */
 }
 
-/* --- COLLECTION ITEM --- */
+/* Each collection tab container */
 .collection-item {
-  flex: 0 0 auto;              /* prevent tabs from resizing */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 140px;            /* ensures consistent width */
+  flex: 0 0 auto;          /* prevents shrinking */
+   min-width: 160px;
+}
+
+/* Scrollbar customization */
+.collections-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.collections-row::-webkit-scrollbar-thumb {
+  background: #ff7a00;
+  border-radius: 8px;
+}
+
+.collections-row::-webkit-scrollbar-track {
+  background: #222;
 }
 
 /* --- COLLECTION TAB BUTTON --- */
 .collection-tab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #d3d3d3;
+  background: #d3d3d35b;
   color: #000;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   font-weight: 700;
-  padding: 20px       /* consistent height & width */
+  padding: 20px;
   border-radius: 10px;
   white-space: nowrap;
   text-decoration: none;
   transition: all 0.3s ease;
-  cursor: pointer;
-  height: 45px;                /* fixes height even with scrollbar */
 }
 
 .collection-tab:hover {
