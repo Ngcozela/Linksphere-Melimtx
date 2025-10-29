@@ -52,23 +52,25 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px; /* this is the space between tabs */
   justify-content: center;
-  
+  overflow: auto;
 }
 
 .collection-tab {
-  background-color: #31302e; /* Darker Grey*/
-  color: rgba(255, 255, 255, 0.411);
+  background-color: #31302e; /* Darker grey */
+  color: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px;              /* ✅ 20px space on all sides inside the tab */
   text-align: center;
   font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  width: 100%;
-  max-width: 100px;
+  display: inline-block;      /* ✅ makes tab size depend on content + padding */
+  width: auto;                /* ✅ allows flexible width instead of fixed 100px */
+  min-width: 100px;           /* optional: prevent tab from getting too small */
 }
+
 
 .collection-tab:hover {
   background-color: #e06d00;
