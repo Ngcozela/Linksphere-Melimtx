@@ -62,7 +62,7 @@ body {
   color: rgb(148, 8, 8);
   border-radius: 10px;
   padding:70px 40px;        /* ⬆️ Increases top & bottom padding for more height */
-  font-size:.1rem;
+  font-size:.10rem;
   font-weight: bold;
   white-space: nowrap;       /* ✅ keeps text on a single line */
   text-align: center;        /* centers text horizontally */
