@@ -59,7 +59,7 @@ body {
   background-color: #31302e; /* Darker grey */
   color: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
- padding: 20px;              /* ✅ 20px space on all sides inside the tab */
+  padding: 25px 20px;        /* ⬆️ Increases top & bottom padding for more height */
   text-align: center;
   font-size: 0.8rem;
   font-weight: bold;
