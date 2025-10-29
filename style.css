@@ -61,7 +61,7 @@ body {
   border-radius: 10px;
   padding:70px 40px;        /* ⬆️ Increases top & bottom padding for more height */
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -94,8 +94,6 @@ body {
 .collection-tab:hover .hover-img {
   opacity: 1;
 }
-
-
 
 
 /* Ad Banner */
