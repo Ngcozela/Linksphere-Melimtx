@@ -200,17 +200,17 @@ body {
 /* Each collection tab container */
 .collection-item {
   flex: 0 0 auto;          /* prevents shrinking */
-   min-width: 160px;
+   min-width: 20px
 }
 
 /* Scrollbar customization */
 .collections-row::-webkit-scrollbar {
-  height: 8px;
+  height: 4px
 }
 
 .collections-row::-webkit-scrollbar-thumb {
   background: #ff7a00;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .collections-row::-webkit-scrollbar-track {
