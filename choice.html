@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Checkpoint</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .choice-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    button {
+      background: orange;
+      border: none;
+      color: #fff;
+      padding: 12px 25px;
+      margin: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ffae42;
+    }
+    iframe {
+      display: none;
+      width: 560px;
+      height: 315px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Before continuing, please complete one of the following:</h1>
+  <div class="choice-container">
+    <button onclick="viewSites()">Visit 3 Sites</button>
+    <button onclick="watchVideo()">Watch 30-Second Video</button>
+    <iframe id="video" src="" allow="autoplay"></iframe>
+  </div>
+
+  <script>
+    // Get which collection user clicked
+    const urlParams = new URLSearchParams(window.location.search);
+    const collectionId = urlParams.get('collection');
+
+    // Map your collection IDs to actual URLs
+    const collectionLinks = {
+      1: "https://mega.nz/folder/yfZ2AaoQ#zTF7PfZWA76b4xEXkzsOFw",
+      2: "https://example.com/collection2",
+      3: "https://example.com/collection3",
+      // add up to 10 here
+    };
+
+    function viewSites() {
+      // Open 3 sites in new tabs
+      window.open("https://site1.com", "_blank");
+      window.open("https://site2.com", "_blank");
+      window.open("https://site3.com", "_blank");
+
+      alert("After viewing all 3 sites, click OK to continue.");
+      redirectToCollection();
+    }
+
+    function watchVideo() {
+      const video = document.getElementById("video");
+      video.src = "sample.mp4"; // Replace with your video file
+      video.style.display = "block";
+      video.play();
+
+      setTimeout(() => {
+        redirectToCollection();
+      }, 30000); // 30 seconds
+    }
+
+    function redirectToCollection() {
+      const target = collectionLinks[collectionId];
+      if (target) {
+        window.location.href = target;
+      } else {
+        alert("Invalid collection link.");
+      }
+    }
+  </script>
+
+</body>
+</html>
