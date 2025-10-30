@@ -78,8 +78,6 @@ body {
   background-color: #94928e; /* grey tab */
   color: #fff;               /* white title text */
   border-radius: 10px;
-  border-color:#ffffff ;
-  border: linear-gradient(to right left, #ffffff, #94928e, #ffffff);
   padding: 70px 40px;        /* tab height & width */
   font-size: 1rem;           /* ✅ readable font size */
   font-weight: bold;
