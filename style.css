@@ -40,7 +40,7 @@ body {
   gap: 10px;                    /* space between tabs */
   white-space: nowrap;          /* keep all tabs in a single line */
   padding: 15px 10px;           /* inner spacing for aesthetics */
-  max-width: fit-content;
+  
 
 }
 
