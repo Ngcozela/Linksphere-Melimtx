@@ -40,26 +40,31 @@ body {
   gap: 10px;                    /* space between tabs */
   white-space: nowrap;          /* keep all tabs in a single line */
   padding: 15px 10px;           /* inner spacing for aesthetics */
- 
+  max-width: fit-content;
+
 }
 
-/* --- COLLECTION TAB STYLING --- */
 .collection-tab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #d3d3d3;
-  color: #000;
-  font-family: Arial, sans-serif;
-  font-weight: 700;
-  padding: 8px 20px;
+  background-color: #ffffff; /* Darker grey */
+  color: rgb(0, 0, 0);
   border-radius: 10px;
+  padding: 70px 20px;            
+  text-align: center;        /* centers text horizontally */
+  font-size: 0.85rem;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-width: 120px;
-  height: 40px;
-  text-align: center;
+  position: relative;
+  display: flex;             /* enables perfect centering */
+  justify-content: center;   /* centers text horizontally */
+  align-items: center;       /* centers text vertically */
+  width: 120px;              /* fixed width for consistent sizing */
+  height: 70px;              /* taller tabs */
+  white-space: nowrap;       /* ✅ keeps text on a single line */
+  overflow: hidden;          /* hides overflow if text is too long */
+  text-overflow: ellipsis;   /* adds “…” if text is too long */
 }
+
 
 /* --- HOVER EFFECT --- */
 .collection-tab:hover {
