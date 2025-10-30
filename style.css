@@ -34,9 +34,9 @@ body {
 
  /* --- COLLECTIONS ROW (SINGLE LINE WITH SMOOTH SCROLLBAR) --- */
 .collections-row {
-  display:inline-flex;
+  display:flex;
   flex-wrap: nowrap;           /* ✅ keeps all tabs on a single line */
-  justify-content: left; /* align tabs left to allow scrolling */
+  justify-content: center; /* align tabs left to allow scrolling */
   gap: 5px;                   /* space between tabs */
   overflow-x: auto;            /* ✅ enables horizontal scroll */
   overflow-y: hidden;          /* hides vertical overflow */
@@ -88,7 +88,7 @@ body {
   position: relative;
   display: flex;             /* enables perfect centering */
   min-width: 100px;          /* prevents small tabs */
-  
+  max-width: 100%;
 }
 
 
