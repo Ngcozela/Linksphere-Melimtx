@@ -34,10 +34,10 @@ body {
 
  /* --- COLLECTIONS ROW (SINGLE LINE WITH SMOOTH SCROLLBAR) --- */
 .collections-row {
-  display: flex;
+  display:grid;
   flex-wrap: nowrap;           /* ✅ keeps all tabs on a single line */
   justify-content: left; /* align tabs left to allow scrolling */
-  gap: 40px;                   /* space between tabs */
+  gap: 5px;                   /* space between tabs */
   overflow-x: auto;            /* ✅ enables horizontal scroll */
   overflow-y: hidden;          /* hides vertical overflow */
   scroll-behavior: smooth;     /* smooth scrolling */
