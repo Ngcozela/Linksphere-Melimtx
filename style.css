@@ -34,7 +34,7 @@ body {
 
  /* --- COLLECTIONS ROW (SINGLE LINE WITH SMOOTH SCROLLBAR) --- */
 .collections-row {
-  display:grid;
+  display:inline-flex;
   flex-wrap: nowrap;           /* ✅ keeps all tabs on a single line */
   justify-content: left; /* align tabs left to allow scrolling */
   gap: 5px;                   /* space between tabs */
