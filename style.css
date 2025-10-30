@@ -38,7 +38,7 @@ body {
   flex-wrap: nowrap;           /* ✅ keeps all tabs on a single line */
   justify-content: center; /* align tabs left to allow scrolling */
   gap: 5px;                   /* space between tabs */
-  overflow-x: auto;            /* ✅ enables horizontal scroll */
+  overflow-x:scroll;            /* ✅ enables horizontal scroll */
   overflow-y: hidden;          /* hides vertical overflow */
   scroll-behavior: smooth;     /* smooth scrolling */
   padding: 20px 10px;          /* spacing around section */
