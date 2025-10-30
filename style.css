@@ -29,22 +29,12 @@ body {
   font-weight: 700;       /* bold */
   margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* makes it pop over dark bg */
-}
-
-/* --- PAGE TITLE WITH LOWER GRADIENT --- */
-.page-title {
-  position: relative;
-  display: inline-block;
-  font-size: 7rem;
-  font-weight: 700;
-  margin: 0;
-  text-align: center;
   background: linear-gradient(to bottom, #ffffff62 75%, #a5560c 100%);
   background-clip: text;           /* ✅ Standard property */
   -webkit-background-clip: text;   /* ✅ For WebKit browsers */
   color: transparent;              /* makes gradient visible */
   -webkit-text-fill-color: transparent; /* Safari/Chrome text transparency */
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  
 }
 
  /* --- COLLECTIONS ROW (NO SCROLL) --- */
