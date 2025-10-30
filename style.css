@@ -31,26 +31,29 @@ body {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* makes it pop over dark bg */
 }
 
-/* --- GRADIENT OVERLAY ON LOWER QUARTER OF TITLE --- */
+/* --- PAGE TITLE WITH LOWER GRADIENT --- */
 .page-title {
   position: relative;
   display: inline-block;
-  color: #ffffff;
   font-size: 7rem;
   font-weight: 700;
   margin: 0;
+  text-align: center;
+  background: linear-gradient(to bottom, #ffffff 75%, #a5560c 100%);
+  background-clip: text;           /* ✅ Standard property */
+  -webkit-background-clip: text;   /* ✅ For WebKit browsers */
+  color: transparent;              /* makes gradient visible */
+  -webkit-text-fill-color: transparent; /* Safari/Chrome text transparency */
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  background: linear-gradient(to bottom, #ffffff 75%, #ac5403 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
+
 
 
 .collections-row {
   display: flex;
   flex-wrap: nowrap;           /* keep all tabs in a single row */
   gap: 10px;                   /* space between tabs */
-  justify-content: center
+  justify-content: center;
   padding: 10px;
  
   
