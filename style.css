@@ -29,7 +29,7 @@ body {
   font-weight: 700;       /* bold */
   margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* makes it pop over dark bg */
-  background: linear-gradient(to bottom, #ffffff62, #a5560c);
+  background: linear-gradient(to bottom, #f5f5f5, #a5560c);
   background-clip: text;           /* ✅ Standard property */
   -webkit-background-clip: text;   /* ✅ For WebKit browsers */
   color: transparent;              /* makes gradient visible */
@@ -43,7 +43,7 @@ body {
   flex-wrap: nowrap;             /* ✅ allows tabs to wrap to next line */
   justify-content: center;     /* centers tabs horizontally */
   gap: 10px;                   /* space between tabs */
-  padding: 20px;               /* space around the section */
+  
 }
 
 
