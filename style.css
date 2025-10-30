@@ -40,9 +40,9 @@ body {
  /* --- COLLECTIONS ROW (NO SCROLL) --- */
 .collections-row {
   display: flex;
-  flex-wrap: wrap;             /* ✅ allows tabs to wrap to next line */
+  flex-wrap: nowrap;             /* ✅ allows tabs to wrap to next line */
   justify-content: center;     /* centers tabs horizontally */
-  gap: 20px;                   /* space between tabs */
+  gap: 10px;                   /* space between tabs */
   padding: 20px;               /* space around the section */
 }
 
