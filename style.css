@@ -24,7 +24,7 @@ body {
 
 /* --- PAGE TITLE (Melimtx) --- */
 .page-title {
-  color: #fff;            /* white text */
+  color: #ffffff;            /* white text */
   font-size: 7rem;        /* large and readable */
   font-weight: 700;       /* bold */
   margin: 0;
@@ -39,7 +39,7 @@ body {
   font-weight: 700;
   margin: 0;
   text-align: center;
-  background: linear-gradient(to bottom, #ffffff 75%, #a5560c 100%);
+  background: linear-gradient(to bottom, #ffffff62 75%, #a5560c 100%);
   background-clip: text;           /* ✅ Standard property */
   -webkit-background-clip: text;   /* ✅ For WebKit browsers */
   color: transparent;              /* makes gradient visible */
