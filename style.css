@@ -76,7 +76,7 @@ body {
   background-color: #94928e; /* grey tab */
   color: #fff;               /* white title text */
   border-radius: 10px;
-  padding: 70px 30px;        /* tab height & width */
+  padding: 80px 20px;        /* tab height & width */
   font-size: 1rem;           /* ✅ readable font size */
   font-weight: bold;
   white-space: nowrap;       /* keeps title in one line */
