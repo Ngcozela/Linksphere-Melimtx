@@ -32,14 +32,44 @@ body {
   
 }
 
- /* --- COLLECTIONS ROW (NO SCROLL) --- */
+ /* --- COLLECTIONS ROW (SINGLE LINE WITH SMOOTH SCROLLBAR) --- */
 .collections-row {
-  display:flex;
-  flex-wrap: nowrap;             /* ✅ allows tabs to wrap to next line */
-  justify-content: center;     /* centers tabs horizontally */
-  gap: 10px;                   /* space between tabs */
-  
+  display: flex;
+  flex-wrap: nowrap;           /* ✅ keeps all tabs on a single line */
+  justify-content: flex-start; /* align tabs left to allow scrolling */
+  gap: 20px;                   /* space between tabs */
+  overflow-x: auto;            /* ✅ enables horizontal scroll */
+  overflow-y: hidden;          /* hides vertical overflow */
+  scroll-behavior: smooth;     /* smooth scrolling */
+  padding: 20px 10px;          /* spacing around section */
+  scrollbar-width: thin;       /* Firefox - thin scrollbar */
+  scrollbar-color: #ff7a00 transparent; /* Firefox scrollbar color */
+  box-sizing: border-box;      /* keeps padding consistent */
 }
+
+/* --- CHROME / EDGE / SAFARI SCROLLBAR STYLE --- */
+.collections-row::-webkit-scrollbar {
+  height: 8px;                 /* height of scrollbar */
+}
+
+.collections-row::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ff7a00, #ffb347); /* orange gradient thumb */
+  border-radius: 4px;
+}
+
+.collections-row::-webkit-scrollbar-track {
+  background: transparent;     /* no track background */
+}
+
+/* --- KEEP FIRST AND LAST TAB FROM CLIPPING --- */
+.collection-tab:first-child {
+  margin-left: 10px;
+}
+
+.collection-tab:last-child {
+  margin-right: 10px;
+}
+
 
 
 .collection-tab {
