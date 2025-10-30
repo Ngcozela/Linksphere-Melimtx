@@ -32,63 +32,27 @@ body {
   
 }
 
- /* --- COLLECTIONS ROW (SINGLE LINE WITH SMOOTH SCROLLBAR) --- */
+ /* --- COLLECTION ROW --- */
 .collections-row {
-  display:flex;
-  flex-wrap: nowrap;           /* ✅ keeps all tabs on a single line */
-  justify-content: center; /* align tabs left to allow scrolling */
-  gap: 5px;                   /* space between tabs */
-  overflow-x:scroll;            /* ✅ enables horizontal scroll */
-  overflow-y: hidden;          /* hides vertical overflow */
-  scroll-behavior: smooth;     /* smooth scrolling */
-  padding: 20px 10px;          /* spacing around section */
-  scrollbar-width: thin;       /* Firefox - thin scrollbar */
-  scrollbar-color: #ff7a00 transparent; /* Firefox scrollbar color */
-  box-sizing: border-box;      /* keeps padding consistent */
+  display: flex;
+  justify-content: center;   /* centers all tabs horizontally */
+  align-items: center;       /* centers vertically if row has height */
+  gap: 10px;                 /* space between tabs */
+  margin-top: 40px;          /* spacing above the row */
 }
 
-/* --- CHROME / EDGE / SAFARI SCROLLBAR STYLE --- */
-.collections-row::-webkit-scrollbar {
-  height: 8px;                 /* height of scrollbar */
-}
-
-.collections-row::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #ff7a00, #ffb347); /* orange gradient thumb */
-  border-radius: 4px;
-}
-
-.collections-row::-webkit-scrollbar-track {
-  background: transparent;     /* no track background */
-}
-
-/* --- KEEP FIRST AND LAST TAB FROM CLIPPING --- */
-.collection-tab:first-child {
-  margin-left: 10px;
-}
-
-.collection-tab:last-child {
-  margin-right: 10px;
-}
-
-
-
+/* --- COLLECTION TAB STYLING --- */
 .collection-tab {
-  background-color: #94928e; /* grey tab */
-  color: #fff;               /* white title text */
+  background: #d3d3d3;       /* light grey */
+  color: #000;               /* black text */
+  padding: 70px 20px;         /* controls height and width */
   border-radius: 10px;
-  padding: 80px 20px;        /* tab height & width */
-  font-size: 1rem;           /* ✅ readable font size */
-  font-weight: bold;
-  white-space: nowrap;       /* keeps title in one line */
-  text-align: center;        /* centers text horizontally */
-  align-items: center;       /* centers vertically (with flex) */
-  justify-content: center;
+  font-family: Arial, sans-serif; /* use Arial font */
+  font-weight: 700;          /* make text bold */
+  text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
-  display: flex;             /* enables perfect centering */
-  min-width: 100px;          /* prevents small tabs */
-  max-width: 100%;
+  min-width: 120px;          /* sets consistent smaller width */
 }
 
 
@@ -200,6 +164,60 @@ body {
   margin-bottom: 40px; /* add or remove space before next section */
 }
 
+/* --- AGE VERIFICATION POPUP --- */
+.age-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.age-content {
+  background: #111;
+  padding: 30px 40px;
+  border-radius: 16px;
+  text-align: center;
+  color: #fff;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 25px rgba(255, 122, 0, 0.3);
+  animation: fadeIn 0.4s ease;
+}
+
+.age-content h2 {
+  font-size: 1.8rem;
+  color: #ff7a00;
+  margin-bottom: 15px;
+}
+
+.age-content p {
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+.age-buttons button {
+  background: #ff7a00;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.age-buttons button:hover {
+  background: #ffa94d;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
 
 
