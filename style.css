@@ -47,17 +47,15 @@ body {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-
-
+ /* --- COLLECTIONS ROW (NO SCROLL) --- */
 .collections-row {
   display: flex;
-  flex-wrap: nowrap;           /* keep all tabs in a single row */
-  gap: 10px;                   /* space between tabs */
-  justify-content: center;
-  padding: 10px;
- 
-  
+  flex-wrap: wrap;             /* ✅ allows tabs to wrap to next line */
+  justify-content: center;     /* centers tabs horizontally */
+  gap: 20px;                   /* space between tabs */
+  padding: 20px;               /* space around the section */
 }
+
 
 .collection-tab {
   background-color: #94928e; /* grey tab */
