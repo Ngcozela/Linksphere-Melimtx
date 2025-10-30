@@ -37,7 +37,7 @@ body {
   display: flex;
   flex-wrap: nowrap;           /* ✅ keeps all tabs on a single line */
   justify-content: flex-start; /* align tabs left to allow scrolling */
-  gap: 20px;                   /* space between tabs */
+  gap: 40px;                   /* space between tabs */
   overflow-x: auto;            /* ✅ enables horizontal scroll */
   overflow-y: hidden;          /* hides vertical overflow */
   scroll-behavior: smooth;     /* smooth scrolling */
