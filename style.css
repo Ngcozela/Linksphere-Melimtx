@@ -34,7 +34,7 @@ body {
 .collections-row {
   display: flex;
   flex-wrap: nowrap;           /* keep all tabs in a single row */
-  gap: 20px;                   /* space between tabs */
+  gap: 30px;                   /* space between tabs */
   justify-content: flex-start; /* align left so overflow can occur */
   overflow-x: auto;            /* ✅ enable horizontal scrolling */
   overflow-y: hidden;
