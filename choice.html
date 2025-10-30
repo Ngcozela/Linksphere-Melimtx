@@ -97,6 +97,10 @@
   function watchVideo() {
     document.querySelectorAll("button").forEach(btn => btn.disabled = true);
     const video = document.getElementById("video");
+    video.addEventListener("timeupdate", () => {
+  const progress = (video.currentTime / video.duration) * 100;
+  if (progress >= 100) redirectToCollection();   // full video watched
+});
     video.src = "sample.mp4"; // your video file
     video.style.display = "block";
     video.play();
