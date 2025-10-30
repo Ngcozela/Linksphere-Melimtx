@@ -219,6 +219,12 @@ body {
   opacity: 1;
 }
 
+.collections-section::before,
+.collections-section::after {
+  pointer-events: none;
+  height: 90%; /* don’t cover scrollbar area */
+  bottom: 10%; /* leave space for scrollbar */
+}
 
 
 
