@@ -31,44 +31,33 @@ body {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* makes it pop over dark bg */
 }
 
-/* --- COLLECTIONS ROW (HORIZONTAL SCROLL + AUTO-HIDE) --- */
 .collections-row {
   display: flex;
-  flex-wrap: nowrap;           /* Keep tabs in one horizontal line */
-  gap: 20px;                   /* Space between tabs */
-  justify-content: flex-start; /* Align tabs to left for overflow */
-  overflow-x: auto;            /* Enable horizontal scroll */
+  flex-wrap: nowrap;           /* keep all tabs in a single row */
+  gap: 20px;                   /* space between tabs */
+  justify-content: flex-start; /* align left so overflow can occur */
+  overflow-x: auto;            /* ✅ enable horizontal scrolling */
   overflow-y: hidden;
   scroll-behavior: smooth;
   padding: 20px;
-  scrollbar-width: none;       /* Hide scrollbar in Firefox */
-  transition: all 0.3s ease;
-  position: relative;
+  scrollbar-width: thin;       /* Firefox */
+  scrollbar-color: #ff7a00 transparent;
 }
 
-/* --- SHOW SCROLLBAR WHEN HOVERING --- */
-.collections-section:hover .collections-row {
-  scrollbar-width: thin;       /* Show thin scrollbar (Firefox) */
-}
-
-/* --- WEBKIT BROWSERS (Chrome, Edge, Safari) --- */
+/* --- Optional: Chrome/Safari scrollbar design --- */
 .collections-row::-webkit-scrollbar {
-  height: 6px;                 /* Small minimalist bar */
-  background: transparent;     /* Invisible by default */
-  transition: opacity 0.4s ease;
-  opacity: 0;                  /* Hidden by default */
+  height: 6px;
 }
 
-/* --- SCROLLBAR THUMB (the moving bar) --- */
 .collections-row::-webkit-scrollbar-thumb {
   background: linear-gradient(90deg, #ff7a00, #ffb347);
   border-radius: 4px;
 }
 
-/* --- FADE IN ON HOVER --- */
-.collections-section:hover .collections-row::-webkit-scrollbar {
-  opacity: 1;                  /* Show scrollbar on hover */
+.collections-row::-webkit-scrollbar-track {
+  background: transparent;
 }
+
 
 
 
