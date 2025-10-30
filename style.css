@@ -31,6 +31,21 @@ body {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* makes it pop over dark bg */
 }
 
+/* --- GRADIENT OVERLAY ON LOWER QUARTER OF TITLE --- */
+.page-title {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 7rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to bottom, #ffffff 75%, #ac5403 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 .collections-row {
   display: flex;
   flex-wrap: nowrap;           /* keep all tabs in a single row */
