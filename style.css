@@ -123,3 +123,14 @@ body {
   font-size: 1.2rem;
   color: #555;
 }
+
+.footer {
+   
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  cursor: pointer;
+}
+ 
+
+
