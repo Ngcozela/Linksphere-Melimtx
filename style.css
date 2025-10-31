@@ -21,6 +21,8 @@ body {
 .page-title {
   position:relative;
   text-align: center;
+  display:inline-block ;
+  float:none ;
   font-size: 4rem;
   color: #fff;
   margin-bottom: 10px;
