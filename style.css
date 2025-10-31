@@ -69,9 +69,9 @@ body {
 }
 
 /*Collection Section specs*/
-.collection-grid{ 
-  display: grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+.collection-row{ 
+  display:flex;
+  grid-template-rows:repeat(auto-fit,minmax(180px,1fr));
   gap:10px;
   justify-items: center;
 }
