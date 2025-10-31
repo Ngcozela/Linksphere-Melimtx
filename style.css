@@ -22,7 +22,7 @@ body {
   position:relative;
   text-align: center;
   display:block ;
-  float:inline-start;
+  float:none;
   font-size: 4rem;
   color: #fff;
   margin-bottom: 10px;
