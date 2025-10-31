@@ -69,7 +69,7 @@ body {
 }
 
 /*Collection Section specs*/
-.collection-section{
+.collection-row{ 
   display: flex;
   grid-template-rows:repeat(auto-fit,minmax(180px,1fr));
   gap:10px;
