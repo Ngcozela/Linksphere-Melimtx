@@ -19,7 +19,7 @@ body {
 
 /* Page-title specs */
 .page-title {
-  position:absolute;
+  position:relative;
   display:inline-block;
   text-align: center;
   font-size: 4rem;
