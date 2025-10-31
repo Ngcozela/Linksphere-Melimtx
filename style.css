@@ -16,42 +16,43 @@ body {
 /* Page-title specs */
 .page-title {
   font-size: 4rem;
-  color: #ffffff;
+  color: rgb(255, 255, 255);
   text-align: center;
-  margin-bottom: 20px;
-  font-weight: bold;
+  margin-bottom: 10px;
+  font-weight: 600;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 10;
 }
+
 
 /* Page title hover enabler*/
 .page-title:hover {
-  color: #ffb347;
+  color: #ffffff;
 }
 
 /* Page title hover image specs*/
 .title-image {
-  text-align: center;
+  position: absolute;
+  top: 100px; /* adjust this depending on where your title sits */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  pointer-events: none; /* allows clicks through the overlay */
   opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.5s ease;
+  transition: opacity 0.6s ease;
 }
 
 .page-title:hover + .title-image {
   opacity: 1;
-  max-height: 300px; /* adjust to your image size */
-  margin-bottom: 20px;
 }
 
 .title-image img {
   width: 60%;
-  max-width: 400px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
-  transition: transform 0.3s ease;
-}
-
-.title-image img:hover {
-  transform: scale(1.05);
+  max-width: 450px;
+  border-radius: 12px;
+  display: block;
 }
 
 /* Collections Grid */
