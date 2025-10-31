@@ -51,13 +51,24 @@ body {
 }
 
 .title-text:hover {
-  color: #ff7a00;
+  color: #ffffff;
 }
 
 /* Only show the image when hovering over the text span */
 .title-text:hover + .title-hover-img {
   opacity: 1;
 }
+
+/*Section divider specs*/
+.section-divider {
+  width: 120px;
+  height: 4px;
+  margin: 10px auto 25px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ff7a00, #ffb84d);
+}
+
+
 
 .collection-tab {
   background-color: #ff7a00; /* Darker orange */
