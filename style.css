@@ -76,13 +76,14 @@ body {
   justify-items: center;
 }
 
+/*Collection Tab specs*/
 .collection-tab {
-  background-color: #ff7a00; /* Darker orange */
-  color: white;
+  background-color: #746c66; /* Darker orange */
+  color: rgb(0, 0, 0);
   border-radius: 10px;
-  padding: 20px;
+  padding: 70px 20px;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
