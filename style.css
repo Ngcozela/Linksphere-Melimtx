@@ -30,8 +30,29 @@ body {
   z-index: 10;
 }
 
+/* Hover Image under Page Title */
+.page-title {
+  position: relative;
+  display: inline-block;
+}
 
+.title-hover-img {
+  position: absolute;
+  top: 100%; /* Places the image directly below the title */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px; /* Adjust size as needed */
+  border-radius: 10px;
+  margin-top: 10px;
+  opacity: 0;
+  pointer-events: none; /* Prevent accidental clicks */
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
 
+.page-title:hover .title-hover-img {
+  opacity: 1;
+}
 
 /* Collections Grid */
 .collection-grid {
