@@ -22,6 +22,38 @@ body {
   font-weight: bold;
 }
 
+/* Page title hover enabler*/
+.page-title:hover {
+  color: #ffb347;
+}
+
+/* Page title hover image specs*/
+.title-image {
+  text-align: center;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.page-title:hover + .title-image {
+  opacity: 1;
+  max-height: 300px; /* adjust to your image size */
+  margin-bottom: 20px;
+}
+
+.title-image img {
+  width: 60%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.title-image img:hover {
+  transform: scale(1.05);
+}
+
 /* Collections Grid */
 .collection-grid {
   display: grid;
