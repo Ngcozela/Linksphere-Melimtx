@@ -61,7 +61,7 @@ body {
 
 /*Section divider specs*/
 .section-divider {
-  width: 200px;
+  width: 600px;
   height: 4px;
   margin: 10px auto 25px;
   border-radius: 3px;
