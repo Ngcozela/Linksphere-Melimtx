@@ -61,11 +61,11 @@ body {
 
 /*Section divider specs*/
 .section-divider {
-  width: 120px;
+  width: 200px;
   height: 4px;
   margin: 10px auto 25px;
   border-radius: 3px;
-  background: linear-gradient(90deg, #ff7a00, #ffb84d);
+  background: linear-gradient(90deg, #ff7a00, rgb(0, 0, 0));
 }
 
 
