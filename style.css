@@ -19,23 +19,21 @@ body {
 
 /* Page-title specs */
 .page-title {
-  position:relative;
+  position: relative;
+  display: block; /* you can keep this now */
   text-align: center;
-  display:block ;
-  float:none;
   font-size: 4rem;
   color: #fff;
   margin-bottom: 10px;
   font-weight: 600;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  z-index: 2; /* slightly above background */
+  cursor: default;
+  z-index: 2;
 }
 
-/* Hover Image under Page Title */
+/* Trigger hover only when hovering over the text span */
 .title-hover-img {
   position: absolute;
-  top: calc(100% + 1px); /* 10px below the text */
+  top: calc(100% + 4px);
   left: 50%;
   transform: translateX(-50%);
   width: 300px;
@@ -44,19 +42,21 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
-  z-index: 1; /* make sure it's above background but below text */
+  z-index: 1;
 }
 
-.page-title:hover .title-hover-img {
-opacity: 1;
+.title-text {
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-/* Collections Grid */
-.collection-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  justify-items: center;
+.title-text:hover {
+  color: #ff7a00;
+}
+
+/* Only show the image when hovering over the text span */
+.title-text:hover + .title-hover-img {
+  opacity: 1;
 }
 
 .collection-tab {
