@@ -34,7 +34,7 @@ body {
 /* Hover Image under Page Title */
 .title-hover-img {
   position: absolute;
-  top: calc(100% + 5px); /* 10px below the text */
+  top: calc(100% + 1px); /* 10px below the text */
   left: 50%;
   transform: translateX(-50%);
   width: 300px;
