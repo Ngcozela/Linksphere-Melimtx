@@ -20,7 +20,6 @@ body {
 /* Page-title specs */
 .page-title {
   position:relative;
-  display:inline-block;
   text-align: center;
   font-size: 4rem;
   color: #fff;
