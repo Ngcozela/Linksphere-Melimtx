@@ -19,12 +19,12 @@ body {
 
 /* Page-title specs */
 .page-title {
-  position: relative;
+  position:fixed;
   display:inline-block;
   text-align: center;
   font-size: 4rem;
   color: #fff;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   font-weight: 600;
   cursor: pointer;
   transition: color 0.3s ease;
