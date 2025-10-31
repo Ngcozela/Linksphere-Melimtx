@@ -4,3 +4,4 @@ function openCollection(num) {
   // window.location.href = `collection${num}.html`;
 }
 
+console.log("Clicked collection:", num);

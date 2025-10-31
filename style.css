@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+main{max-width: 1000px; /* Centers Everything on Page for Better Visual Flow*/
+  margin: 0 auto;
+}
+
 body {
   font-family: "Poppins", Arial, sans-serif;
   background-color: #000000; /*The pages background colour*/
