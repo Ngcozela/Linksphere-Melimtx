@@ -1,0 +1,93 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #fffaf5;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2rem;
+  color: #222;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Collections Grid */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.collection-tab {
+  background-color: #ff7a00; /* Darker orange */
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  overflow: hidden;
+}
+
+.collection-tab:hover {
+  background-color: #e06d00;
+  transform: translateY(-5px);
+}
+
+/* Hover Image */
+.collection-tab .hover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+.collection-tab:hover .hover-img {
+  opacity: 1;
+}
+
+.collection-tab p {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-style: italic;
+}
+
+/* Ad Banner */
+.ad-banner {
+  text-align: center;
+  margin-top: 40px;
+  background: #f2f2f2;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.ad-box {
+  border: 2px dashed #ccc;
+  padding: 40px;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #555;
+}
