@@ -34,7 +34,7 @@ body {
 
 /* Page title hover image specs*/
 .title-image {
-  position: absolute;
+  position:relative;
   top: 100px; /* adjust this depending on where your title sits */
   left: 50%;
   transform: translateX(-50%);
@@ -52,7 +52,7 @@ body {
   width: 60%;
   max-width: 450px;
   border-radius: 12px;
-  display: block;
+  display:flex;
 }
 
 /* Collections Grid */
