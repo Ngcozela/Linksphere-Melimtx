@@ -68,7 +68,13 @@ body {
   background: linear-gradient(90deg, #ff7b00, rgb(0, 0, 0));
 }
 
-
+/*Collection Section specs*/
+.collection-section{
+  display: flex;
+  grid-template-rows:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;
+  justify-items: center;
+}
 
 .collection-tab {
   background-color: #ff7a00; /* Darker orange */
