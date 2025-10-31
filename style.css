@@ -46,8 +46,8 @@ body {
   z-index: 1; /* make sure it's above background but below text */
 }
 
-page-title:hover .title-hover-img {
-  opacity: 1;
+.page-title:hover .title-hover-img {
+opacity: 1;
 }
 
 /* Collections Grid */
