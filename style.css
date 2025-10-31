@@ -20,30 +20,30 @@ body {
 /* Page-title specs */
 .page-title {
   position: relative;
-  display: block;            /* makes the title span the full width */
-  text-align: center;        /* centers the text */
+  display: block;
+  text-align: center;
   font-size: 4rem;
-  color: rgb(255, 255, 255);
+  color: #fff;
   margin-bottom: 10px;
   font-weight: 600;
   cursor: pointer;
   transition: color 0.3s ease;
-  z-index: 10;
+  z-index: 2; /* slightly above background */
 }
 
 /* Hover Image under Page Title */
 .title-hover-img {
   position: absolute;
-  top: 100%;                 /* directly under the title */
+  top: calc(100% + 10px); /* 10px below the text */
   left: 50%;
   transform: translateX(-50%);
   width: 300px;
+  max-width: 80%;
   border-radius: 10px;
-  margin-top: 10px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
-  z-index: 0;
+  z-index: 1; /* make sure it's above background but below text */
 }
 
 page-title:hover .title-hover-img {
