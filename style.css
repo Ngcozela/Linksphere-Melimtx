@@ -13,13 +13,13 @@ body {
   padding: 20px;
 }
 
-/* Section Titles */
-.section-title {
-  font-size: 2rem;
-  color: #222;
+/* Page-title specs */
+.page-title {
+  font-size: 4rem;
+  color: #ffffff;
   text-align: center;
   margin-bottom: 20px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 /* Collections Grid */
