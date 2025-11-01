@@ -84,12 +84,12 @@ body {
   gap: 15px;
   padding: 10px 0;
   scrollbar-width: thin;
-  scrollbar-color: #ff7a00 #1a1a1a;
+  scrollbar-color: linear-gradient(90deg, #ff7b00, rgb(0, 0, 0));
 }
 
 /* CUSTOM SCROLLBAR (Chrome, Edge, Safari) */
 .collections-container::-webkit-scrollbar {
-  height: 8px;
+  height: 4px;
 }
 .collections-container::-webkit-scrollbar-track {
   background: #000000;
