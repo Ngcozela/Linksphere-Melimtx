@@ -70,6 +70,7 @@ body {
 
 /* COLLECTIONS SECTION */
 .collections {
+  position: relative;
   margin-top: 40px;
   overflow: hidden;
 }
@@ -79,31 +80,63 @@ body {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  scroll-behavior: smooth;
   gap: 15px;
   padding: 10px 0;
   scrollbar-width: thin;
-  scrollbar-color: #ff7a00 #1a1a1a; /* Firefox (thumb | track) */
-  scroll-behavior: smooth; /* smooth scrolling */
+  scrollbar-color: #ff7a00 #1a1a1a;
 }
 
-/* Chrome, Edge, and Safari */
+/* CUSTOM SCROLLBAR (Chrome, Edge, Safari) */
 .collections-container::-webkit-scrollbar {
-  height: 8px; /* height of scrollbar */
+  height: 8px;
 }
-
 .collections-container::-webkit-scrollbar-track {
-  background: #1a1a1a; /* dark track background */
+  background: #1a1a1a;
   border-radius: 10px;
 }
-
 .collections-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #ff7a00, #ffb347); /* orange gradient */
+  background: linear-gradient(90deg, #ff7a00, #ffb347);
   border-radius: 10px;
-  transition: background 0.3s ease;
+}
+.collections-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ffa200, #ffd27f);
 }
 
-.collections-container::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(90deg, #ffa200, #ffd27f); /* brighter on hover */
+/* SCROLL ARROWS */
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: #ff7a00;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.4s ease, background 0.3s ease;
+  user-select: none;
+  z-index: 5;
+}
+
+.scroll-arrow:hover {
+  background: rgba(255, 122, 0, 0.8);
+  color: #fff;
+}
+
+/* LEFT & RIGHT PLACEMENT */
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+/* Show arrows only when hovering the section */
+.collections:hover .scroll-arrow {
+  opacity: 1;
 }
 
 
