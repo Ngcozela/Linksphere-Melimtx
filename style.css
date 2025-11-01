@@ -76,6 +76,15 @@ body {
   justify-items: center;
 }
 
+.collections-container {
+  display: flex;
+  flex-wrap: nowrap;         /* don't wrap to next line */
+  overflow-x: auto;          /* horizontal scroll if too wide */
+  gap: 15px;                 /* space between tabs */
+  padding: 10px 0;
+  scrollbar-width: thin;     /* optional: nice slim scrollbar */
+}
+
 /*Collection Tab specs*/
 .collection-tab {
   background-color: #746c66; /* Darker orange */
@@ -88,6 +97,8 @@ body {
   transition: all 0.3s ease;
   position: relative;
   width: 100%;
+   flex: 0 0 auto;            /* prevents shrinking */
+  min-width: 120px;          /* ensures uniform width */
   max-width: 220px;
   overflow: hidden;
 }
