@@ -68,24 +68,24 @@ body {
   background: linear-gradient(90deg, #ff7b00, rgb(0, 0, 0));
 }
 
-/* Collection Section */
+/* COLLECTIONS SECTION */
 .collections {
   margin-top: 40px;
   overflow: hidden;
 }
 
-/* Use flex layout to force single row */
+/* HORIZONTAL SCROLL CONTAINER */
 .collections-container {
   display: flex;
-  flex-wrap: nowrap;          /* prevent wrapping */
-  overflow-x: auto;           /* scroll if needed */
-  gap: 15px;                  /* spacing between tabs */
+  flex-direction: row;   /* horizontal line */
+  flex-wrap: nowrap;     /* prevent wrapping */
+  overflow-x: auto;      /* allows horizontal scroll */
+  gap: 15px;
   padding: 10px 0;
   scrollbar-width: thin;
-  justify-content: flex-start;
 }
 
-/* Collection tab specs */
+/* COLLECTION TABS */
 .collection-tab {
   background-color: #746c66;
   color: rgb(0, 0, 0);
@@ -96,8 +96,8 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  flex: 0 0 auto;             /* keep each fixed width */
-  min-width: 180px;           /* consistent size */
+  flex: 0 0 auto;        /* keeps each tab a fixed block */
+  min-width: 180px;      /* width of each tab */
   max-width: 220px;
   overflow: hidden;
 }
@@ -107,7 +107,7 @@ body {
   transform: translateY(-5px);
 }
 
-/* Hover image inside tab */
+/* Hover image specs */
 .collection-tab .hover-img {
   position: absolute;
   top: 0;
