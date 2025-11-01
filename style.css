@@ -68,26 +68,26 @@ body {
   background: linear-gradient(90deg, #ff7b00, rgb(0, 0, 0));
 }
 
-/*Collection Section specs*/
-.collection-grid{ 
-  display: grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:10px;
-  justify-items: center;
+/* Collection Section */
+.collections {
+  margin-top: 40px;
+  overflow: hidden;
 }
 
+/* Use flex layout to force single row */
 .collections-container {
   display: flex;
-  flex-wrap: nowrap;         /* don't wrap to next line */
-  overflow-x: auto;          /* horizontal scroll if too wide */
-  gap: 15px;                 /* space between tabs */
+  flex-wrap: nowrap;          /* prevent wrapping */
+  overflow-x: auto;           /* scroll if needed */
+  gap: 15px;                  /* spacing between tabs */
   padding: 10px 0;
-  scrollbar-width: thin;     /* optional: nice slim scrollbar */
+  scrollbar-width: thin;
+  justify-content: flex-start;
 }
 
-/*Collection Tab specs*/
+/* Collection tab specs */
 .collection-tab {
-  background-color: #746c66; /* Darker orange */
+  background-color: #746c66;
   color: rgb(0, 0, 0);
   border-radius: 10px;
   padding: 70px 20px;
@@ -96,9 +96,8 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  width: 100%;
-   flex: 0 0 auto;            /* prevents shrinking */
-  min-width: 120px;          /* ensures uniform width */
+  flex: 0 0 auto;             /* keep each fixed width */
+  min-width: 180px;           /* consistent size */
   max-width: 220px;
   overflow: hidden;
 }
@@ -108,7 +107,7 @@ body {
   transform: translateY(-5px);
 }
 
-/*Collection-tab hover image specs */
+/* Hover image inside tab */
 .collection-tab .hover-img {
   position: absolute;
   top: 0;
@@ -132,6 +131,7 @@ body {
   color: #fff;
   font-style: italic;
 }
+
 
 /* Ad Banner */
 .ad-banner {
