@@ -92,7 +92,7 @@ body {
   height: 8px;
 }
 .collections-container::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #000000;
   border-radius: 10px;
 }
 .collections-container::-webkit-scrollbar-thumb {
