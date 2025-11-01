@@ -74,16 +74,38 @@ body {
   overflow: hidden;
 }
 
-/* HORIZONTAL SCROLL CONTAINER */
+/* ✅ Sleek Horizontal Scrollbar Design */
 .collections-container {
   display: flex;
-  flex-direction: row;   /* horizontal line */
-  flex-wrap: nowrap;     /* prevent wrapping */
-  overflow-x: auto;      /* allows horizontal scroll */
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 15px;
   padding: 10px 0;
   scrollbar-width: thin;
+  scrollbar-color: #ff7a00 #1a1a1a; /* Firefox (thumb | track) */
+  scroll-behavior: smooth; /* smooth scrolling */
 }
+
+/* Chrome, Edge, and Safari */
+.collections-container::-webkit-scrollbar {
+  height: 8px; /* height of scrollbar */
+}
+
+.collections-container::-webkit-scrollbar-track {
+  background: #1a1a1a; /* dark track background */
+  border-radius: 10px;
+}
+
+.collections-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ff7a00, #ffb347); /* orange gradient */
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.collections-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ffa200, #ffd27f); /* brighter on hover */
+}
+
 
 /* COLLECTION TABS */
 .collection-tab {
