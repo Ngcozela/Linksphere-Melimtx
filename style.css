@@ -96,9 +96,8 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2.5rem;
-  color: #ff7a00;
-  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.8rem;
+  color: #ffffff;
   padding: 10px 15px;
   border-radius: 50%;
   cursor: pointer;
@@ -109,8 +108,7 @@ body {
 }
 
 .scroll-arrow:hover {
-  background: rgba(255, 122, 0, 0.8);
-  color: #fff;
+  color: #e48406;
 }
 
 /* LEFT & RIGHT PLACEMENT */
