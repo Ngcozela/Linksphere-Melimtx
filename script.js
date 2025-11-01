@@ -17,16 +17,19 @@ let scrollInterval;
 function startScroll(direction) {
   stopScroll();
   scrollInterval = setInterval(() => {
-    container.scrollLeft += direction === 'right' ? 10 : -10;
-  }, 15);
+    container.scrollLeft += direction === 'right' ? 8 : -8;
+  }, 10); // smaller interval = smoother scroll
 }
 
 function stopScroll() {
   clearInterval(scrollInterval);
 }
 
-// Event listeners
+// Arrow hover control
 leftArrow.addEventListener('mouseenter', () => startScroll('left'));
 rightArrow.addEventListener('mouseenter', () => startScroll('right'));
 leftArrow.addEventListener('mouseleave', stopScroll);
 rightArrow.addEventListener('mouseleave', stopScroll);
+
+// Optional: stop scrolling if user clicks anywhere else
+document.addEventListener('mouseleave', stopScroll);
