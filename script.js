@@ -38,15 +38,17 @@ let currentLink = null;
 let adsViewed = 0;
 let videoWatched = false;
 
-// Open modal when a tab is clicked
+// Intercept clicks on collection tabs
 document.querySelectorAll('.collection-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
+  tab.addEventListener('click', (e) => {
+    e.preventDefault(); // stop instant navigation
+    e.stopPropagation();
     currentLink = tab.dataset.link;
     gateModal.classList.add('active');
   });
 });
 
-// Simulate watching an ad
+// Simulate ad views
 adButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     if (!btn.classList.contains('viewed')) {
@@ -57,7 +59,7 @@ adButtons.forEach(btn => {
   });
 });
 
-// Simulate 30-second video requirement
+// Track video progress (30 seconds)
 video.addEventListener('timeupdate', () => {
   if (video.currentTime >= 30 && !videoWatched) {
     videoWatched = true;
@@ -65,7 +67,7 @@ video.addEventListener('timeupdate', () => {
   }
 });
 
-// Check if requirements are met
+// Check if all conditions met
 function checkAccess() {
   if (adsViewed >= 3 || videoWatched) {
     proceedBtn.classList.add('active');
@@ -74,16 +76,29 @@ function checkAccess() {
   }
 }
 
-// Proceed to collection
+// Proceed only after unlock
 proceedBtn.addEventListener('click', () => {
   if (proceedBtn.classList.contains('active') && currentLink) {
     gateModal.classList.remove('active');
-    window.location.href = currentLink;
+    window.location.href = currentLink; // Redirect now
   }
 });
 
-// Close modal if clicked outside
+// Optional: clicking outside modal closes it
 gateModal.addEventListener('click', (e) => {
-  if (e.target === gateModal) gateModal.classList.remove('active');
+  if (e.target === gateModal) {
+    gateModal.classList.remove('active');
+    resetGate();
+  }
 });
 
+// Reset for next use
+function resetGate() {
+  adsViewed = 0;
+  videoWatched = false;
+  adButtons.forEach(btn => btn.classList.remove('viewed'));
+  video.currentTime = 0;
+  proceedBtn.classList.remove('active');
+  proceedBtn.disabled = true;
+  proceedBtn.style.cursor = 'not-allowed';
+}
