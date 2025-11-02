@@ -1,3 +1,36 @@
+// === AGE VERIFICATION MODAL (24-hour expiration) ===
+const ageModal = document.getElementById('ageModal');
+const ageYesBtn = document.getElementById('age-yes');
+const ageNoBtn = document.getElementById('age-no');
+
+// Function to check if 24 hours have passed since last verification
+function shouldShowAgeModal() {
+  const verifiedData = JSON.parse(localStorage.getItem('ageVerified'));
+  if (!verifiedData) return true; // Never verified
+  const now = Date.now();
+  const hoursSince = (now - verifiedData.timestamp) / (1000 * 60 * 60);
+  return hoursSince >= 24; // Show again after 24 hours
+}
+
+window.addEventListener('load', () => {
+  if (shouldShowAgeModal()) {
+    ageModal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // prevent scrolling
+  }
+});
+
+ageYesBtn.addEventListener('click', () => {
+  localStorage.setItem('ageVerified', JSON.stringify({ verified: true, timestamp: Date.now() }));
+  ageModal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+});
+
+ageNoBtn.addEventListener('click', () => {
+  alert('Sorry, you must be 18 or older to access this site.');
+  window.location.href = 'https://www.google.com';
+});
+
+
 function openCollection(num) {
   console.log("Clicked collection:", num);
   alert("Opening Collection " + num + "...");

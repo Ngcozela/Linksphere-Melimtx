@@ -108,7 +108,7 @@ body {
 }
 
 .scroll-arrow:hover {
-  color: #000000;
+  color: #e48406;
 }
 
 /* LEFT & RIGHT PLACEMENT */
@@ -133,8 +133,8 @@ body {
   justify-content: center;       /* vertically center text */
   align-items: center;
   text-decoration: none;         /* removes underline from link */
-  color: #ffffff;                /* text keeps its color */
-  background-color: #ff7b00;
+  color: #000000;                /* text keeps its color */
+  background-color: #746c66;
   border-radius: 10px;
   padding: 100px 5px;
   text-align: center;
@@ -179,7 +179,7 @@ body {
 .ad-banner {
   text-align: center;
   margin-top: 40px;
-  background: #666262;
+  background: #f2f2f2;
   padding: 30px;
   border-radius: 10px;
 }
@@ -189,7 +189,7 @@ body {
   padding: 40px;
   margin-top: 10px;
   font-size: 1.2rem;
-  color: #ff7b00;
+  color: #555;
 }
 
 .footer {
@@ -215,7 +215,7 @@ body {
 }
 
 .gate-modal-content {
-  background: #5f5b5bc9;
+  background: #645858;
   padding: 2rem;
   border-radius: 1rem;
   max-width: 500px;
@@ -227,7 +227,7 @@ body {
 
 .gate-modal h2 {
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #ff7300;
   font-size: 1.5rem;
 }
 
@@ -244,7 +244,7 @@ body {
 }
 
 .ad-btn {
-  background: #837c7c;
+  background: #2e2c2c;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
@@ -257,7 +257,7 @@ body {
 }
 
 .ad-btn.viewed {
-  background: #18ac1d;
+  background: #4CAF50;
   color: white;
 }
 
@@ -268,7 +268,7 @@ body {
 }
 
 #proceed-btn {
-  background: #ff7b00;
+  background: #000;
   color: #fff;
   padding: 0.75rem 1.5rem;
   border: none;
@@ -288,6 +288,82 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
+/* === Age Verification Modal === */
+.age-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+
+.age-modal.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.age-modal-content {
+  background: #111;
+  color: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.age-modal-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.age-modal-content p {
+  font-size: 1rem;
+  margin-bottom: 25px;
+  color: #ccc;
+}
+
+.age-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.age-buttons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#age-yes {
+  background: #00b894;
+  color: white;
+}
+
+#age-yes:hover {
+  background: #019874;
+}
+
+#age-no {
+  background: #d63031;
+  color: white;
+}
+
+#age-no:hover {
+  background: #b72526;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
   
 
