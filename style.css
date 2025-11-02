@@ -128,9 +128,12 @@ body {
 
 /* COLLECTION TABS */
 .collection-tab {
-  display: inline-block;       /* gives it box-like behavior */
-  text-decoration: none;       /* removes underline */
-  color: inherit;              /* keeps text color same */
+  display: flex;                 /* makes the inner <p> and image align properly */
+  flex-direction: column;        /* stack text and hover image */
+  justify-content: center;       /* vertically center text */
+  align-items: center;
+  text-decoration: none;         /* removes underline from link */
+  color: inherit;                /* text keeps its color */
   background-color: #746c66;
   border-radius: 10px;
   padding: 100px 10px;
@@ -144,9 +147,12 @@ body {
   max-width: 220px;
   overflow: hidden;
 }
+
 .collection-tab:hover {
+  background-color: #e06d00;
   transform: translateY(-5px);
 }
+
 
 /* Hover image specs */
 .collection-tab .hover-img {
