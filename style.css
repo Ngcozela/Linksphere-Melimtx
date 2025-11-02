@@ -108,7 +108,7 @@ body {
 }
 
 .scroll-arrow:hover {
-  color: #e48406;
+  color: #ff7b00;
 }
 
 /* LEFT & RIGHT PLACEMENT */
@@ -133,8 +133,8 @@ body {
   justify-content: center;       /* vertically center text */
   align-items: center;
   text-decoration: none;         /* removes underline from link */
-  color: #000000;                /* text keeps its color */
-  background-color: #746c66;
+  color: #ffffff;                /* text keeps its color */
+  background-color: #ff7b00;
   border-radius: 10px;
   padding: 100px 5px;
   text-align: center;
@@ -179,7 +179,7 @@ body {
 .ad-banner {
   text-align: center;
   margin-top: 40px;
-  background: #f2f2f2;
+  background: #666262;
   padding: 30px;
   border-radius: 10px;
 }
@@ -189,7 +189,7 @@ body {
   padding: 40px;
   margin-top: 10px;
   font-size: 1.2rem;
-  color: #555;
+  color: #ff7b00;
 }
 
 .footer {
@@ -215,7 +215,7 @@ body {
 }
 
 .gate-modal-content {
-  background: #645858;
+  background: #5f5b5bc9;
   padding: 2rem;
   border-radius: 1rem;
   max-width: 500px;
@@ -227,7 +227,7 @@ body {
 
 .gate-modal h2 {
   margin-bottom: 1rem;
-  color: #ff7300;
+  color: #ffffff;
   font-size: 1.5rem;
 }
 
@@ -244,7 +244,7 @@ body {
 }
 
 .ad-btn {
-  background: #2e2c2c;
+  background: #837c7c;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
@@ -257,7 +257,7 @@ body {
 }
 
 .ad-btn.viewed {
-  background: #4CAF50;
+  background: #18ac1d;
   color: white;
 }
 
@@ -268,7 +268,7 @@ body {
 }
 
 #proceed-btn {
-  background: #000;
+  background: #ff7b00;
   color: #fff;
   padding: 0.75rem 1.5rem;
   border: none;
