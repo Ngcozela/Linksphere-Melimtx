@@ -83,6 +83,7 @@
 
 
 
+
         
          
 
@@ -99,6 +100,28 @@
   <footer class="footer">
     <p>&copy; 2025 Linksphere</p>
   </footer>
+
+ <!-- 🧱 Ad Gate Modal -->
+  <div class="gate-modal" id="gateModal">
+    <div class="gate-modal-content">
+      <h2>Access Locked</h2>
+      <p>Watch 3 short ads or a 30-second video to unlock this collection.</p>
+
+      <div class="ad-buttons">
+        <button class="ad-btn" id="ad1">Ad 1</button>
+        <button class="ad-btn" id="ad2">Ad 2</button>
+        <button class="ad-btn" id="ad3">Ad 3</button>
+      </div>
+
+      <video id="ad-video" width="400" controls>
+        <source src="videos/sample-ad.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <button id="proceed-btn">Proceed to Collection</button>
+    </div>
+  </div>
+
 
   <script src="script.js"></script>
 </body>

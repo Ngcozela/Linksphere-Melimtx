@@ -133,12 +133,13 @@ body {
   justify-content: center;       /* vertically center text */
   align-items: center;
   text-decoration: none;         /* removes underline from link */
-  color: inherit;                /* text keeps its color */
+  color: #000000;                /* text keeps its color */
   background-color: #746c66;
   border-radius: 10px;
-  padding: 100px 10px;
+  padding: 100px 5px;
   text-align: center;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -149,7 +150,6 @@ body {
 }
 
 .collection-tab:hover {
-  background-color: #e06d00;
   transform: translateY(-5px);
 }
 
@@ -199,5 +199,95 @@ body {
   cursor: pointer;
 }
  
+/* === Gate Modal Styling === */
+.gate-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.gate-modal.active {
+  display: flex;
+}
+
+.gate-modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.4s ease;
+}
+
+.gate-modal h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.gate-modal p {
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.ad-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.ad-btn {
+  background: #eee;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.ad-btn:hover {
+  background: #ccc;
+}
+
+.ad-btn.viewed {
+  background: #4CAF50;
+  color: white;
+}
+
+#ad-video {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#proceed-btn {
+  background: #000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transition: opacity 0.3s, cursor 0.3s;
+}
+
+#proceed-btn.active {
+  opacity: 1;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+  
 
