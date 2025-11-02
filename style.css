@@ -108,7 +108,7 @@ body {
 }
 
 .scroll-arrow:hover {
-  color: #e48406;
+  color: #000000;
 }
 
 /* LEFT & RIGHT PLACEMENT */
@@ -133,8 +133,8 @@ body {
   justify-content: center;       /* vertically center text */
   align-items: center;
   text-decoration: none;         /* removes underline from link */
-  color: #000000;                /* text keeps its color */
-  background-color: #746c66;
+  color: #ffffff;                /* text keeps its color */
+  background-color: #ff7b00;
   border-radius: 10px;
   padding: 100px 5px;
   text-align: center;
@@ -179,17 +179,17 @@ body {
 .ad-banner {
   text-align: center;
   margin-top: 40px;
-  background: #f2f2f2;
+  background: #645f5f;
   padding: 30px;
   border-radius: 10px;
 }
 
 .ad-box {
-  border: 2px dashed #ccc;
+  border: 2px dashed #000000;
   padding: 40px;
   margin-top: 10px;
   font-size: 1.2rem;
-  color: #555;
+  color: #000000;
 }
 
 .footer {
@@ -215,36 +215,37 @@ body {
 }
 
 .gate-modal-content {
-  background: #645858;
+  background:#645f5f ;
   padding: 2rem;
   border-radius: 1rem;
   max-width: 500px;
   width: 90%;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgb(0, 0, 0);
   animation: fadeIn 0.4s ease;
 }
 
 .gate-modal h2 {
   margin-bottom: 1rem;
-  color: #ff7300;
+  color: #ffffff;
   font-size: 1.5rem;
 }
 
 .gate-modal p {
-  color: #fdfdfd;
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 
 .ad-buttons {
   display: flex;
+  font-weight: bold;
   justify-content: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
 .ad-btn {
-  background: #2e2c2c;
+  background: #f80000;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
@@ -257,7 +258,7 @@ body {
 }
 
 .ad-btn.viewed {
-  background: #4CAF50;
+  background: #00ff08;
   color: white;
 }
 
@@ -268,9 +269,10 @@ body {
 }
 
 #proceed-btn {
-  background: #000;
+  background: #ff7b00;
   color: #fff;
   padding: 0.75rem 1.5rem;
+  font-weight: bold;
   border: none;
   border-radius: 0.5rem;
   cursor: not-allowed;
