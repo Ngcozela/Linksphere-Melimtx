@@ -1,34 +1,41 @@
 // === AGE VERIFICATION MODAL (24-hour expiration) ===
-const ageModal = document.getElementById('ageModal');
-const ageYesBtn = document.getElementById('age-yes');
-const ageNoBtn = document.getElementById('age-no');
+window.addEventListener('DOMContentLoaded', () => {
+  const ageModal = document.getElementById('ageModal');
+  const ageYesBtn = document.getElementById('age-yes');
+  const ageNoBtn = document.getElementById('age-no');
 
-// Function to check if 24 hours have passed since last verification
-function shouldShowAgeModal() {
-  const verifiedData = JSON.parse(localStorage.getItem('ageVerified'));
-  if (!verifiedData) return true; // Never verified
-  const now = Date.now();
-  const hoursSince = (now - verifiedData.timestamp) / (1000 * 60 * 60);
-  return hoursSince >= 24; // Show again after 24 hours
-}
+  // Return true if we should show modal again
+  function shouldShowAgeModal() {
+    const verifiedData = JSON.parse(localStorage.getItem('ageVerified'));
+    if (!verifiedData) return true;
+    const hoursSince = (Date.now() - verifiedData.timestamp) / (1000 * 60 * 60);
+    return hoursSince >= 24;
+  }
 
-window.addEventListener('load', () => {
-  if (shouldShowAgeModal()) {
+  if (ageModal && shouldShowAgeModal()) {
     ageModal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // prevent scrolling
+    document.body.style.overflow = 'hidden';
+  }
+
+  if (ageYesBtn) {
+    ageYesBtn.addEventListener('click', () => {
+      localStorage.setItem('ageVerified', JSON.stringify({
+        verified: true,
+        timestamp: Date.now()
+      }));
+      ageModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  }
+
+  if (ageNoBtn) {
+    ageNoBtn.addEventListener('click', () => {
+      alert('Sorry, you must be 18 or older to access this site.');
+      window.location.href = 'https://www.google.com';
+    });
   }
 });
 
-ageYesBtn.addEventListener('click', () => {
-  localStorage.setItem('ageVerified', JSON.stringify({ verified: true, timestamp: Date.now() }));
-  ageModal.classList.remove('active');
-  document.body.style.overflow = 'auto';
-});
-
-ageNoBtn.addEventListener('click', () => {
-  alert('Sorry, you must be 18 or older to access this site.');
-  window.location.href = 'https://www.google.com';
-});
 
 
 function openCollection(num) {

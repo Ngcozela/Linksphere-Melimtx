@@ -257,10 +257,11 @@ body {
   background: #ccc;
 }
 
-.ad-btn.viewed {
+.ad-btn.watched {
   background: #00ff08;
   color: white;
 }
+
 
 #ad-video {
   width: 100%;
@@ -366,6 +367,18 @@ body {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+
+  /* Ensure modals appear when JS adds .active */
+.gate-modal.active,
+.age-modal.active {
+  display: flex !important;
+}
+
+.gate-modal,
+.age-modal {
+  background: rgba(0, 0, 0, 0.75);
+}
+
 
   
 
