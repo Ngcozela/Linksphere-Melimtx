@@ -128,22 +128,22 @@ body {
 
 /* COLLECTION TABS */
 .collection-tab {
+  display: inline-block;       /* gives it box-like behavior */
+  text-decoration: none;       /* removes underline */
+  color: inherit;              /* keeps text color same */
   background-color: #746c66;
-  color: rgb(0, 0, 0);
   border-radius: 10px;
   padding: 100px 10px;
   text-align: center;
   font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
-  flex: 0 0 auto;        /* keeps each tab a fixed block */
-  min-width: 180px;      /* width of each tab */
+  flex: 0 0 auto;
+  min-width: 180px;
   max-width: 220px;
   overflow: hidden;
 }
-
 .collection-tab:hover {
   transform: translateY(-5px);
 }
@@ -157,6 +157,7 @@ body {
   height: 100%;
   object-fit: cover;
   opacity: 0;
+  transform: translateY(-5px)
   transition: opacity 0.4s ease;
   border-radius: 10px;
   z-index: 0;
