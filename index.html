@@ -1,87 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Melimtx Collections</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Loading overlay -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="spinner"></div>
+      <div class="loader-text">Loading Melimtx…</div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <h1 class="page-title">
+        <span class="title-text">Melimtx</span>
+        <img src="images/melimtx-banner.webp" alt="Melimtx Preview" class="title-hover-img" />
+      </h1>
+    </div>
+    <div class="header-right">
+      <button id="themeToggle" class="icon-btn" title="Toggle light/dark" aria-label="Toggle theme">
+        <!-- sun/moon svg toggling handled in JS -->
+        <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
   <main>
-    <h1 class="page-title">
-      <span class="title-text">Melimtx</span>
-      <img src="images/melimtx-banner.webp" alt="Melimtx Preview" class="title-hover-img">
-    </h1>
     <div class="section-divider"></div>
 
     <section class="ad-banner">
-      <div class="ad-box">Your Ad Banner Here</div>
+      <div id="sponsorBox" class="ad-box">Sponsored</div>
     </section>
 
     <div class="section-divider"></div>
 
+    <!-- Collections -->
     <section class="collections">
-      <div class="scroll-arrow left-arrow">&#10094;</div>
+      <div class="scroll-arrow left-arrow" aria-hidden="true">&#10094;</div>
 
-      <div class="collections-container">
-        <div class="collection-tab" data-link="https://mega.nz/folder/yfZ2AaoQ#zTF7PfZWA76b4xEXkzsOFw">
+      <div class="collections-container" id="collectionsContainer">
+        <!-- Collection tabs (JS will not alter these anchors, but uses data-link) -->
+        <div class="collection-tab" data-id="1" data-link="https://mega.nz/folder/yfZ2AaoQ#zTF7PfZWA76b4xEXkzsOFw">
+          <button class="fav-btn" aria-label="favorite collection 1" data-id="1" title="Favorite">
+            <svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg>
+          </button>
           <img src="images/melimtx-C1-preview.webp" alt="Collection 1" class="hover-img" />
           <p>Collection 1</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/TfB1yJoK#Syn3y_p-VGQ43D99TPiJ1g">
+        <div class="collection-tab" data-id="2" data-link="https://mega.nz/folder/TfB1yJoK#Syn3y_p-VGQ43D99TPiJ1g">
+          <button class="fav-btn" data-id="2" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C2-Cover.webp" alt="Collection 2" class="hover-img" />
           <p>Collection 2</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/CWgAmSpS#Tw4s30Hg6Yiw_BrmSj9zJA">
+        <div class="collection-tab" data-id="3" data-link="https://mega.nz/folder/CWgAmSpS#Tw4s30Hg6Yiw_BrmSj9zJA">
+          <button class="fav-btn" data-id="3" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C3-Cover.webp" alt="Collection 3" class="hover-img" />
           <p>Collection 3</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/DXg3yIrZ#uqXVAUjtjdWuNeYJeBzOrA">
+        <div class="collection-tab" data-id="4" data-link="https://mega.nz/folder/DXg3yIrZ#uqXVAUjtjdWuNeYJeBzOrA">
+          <button class="fav-btn" data-id="4" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C4-cover.webp" alt="Collection 4" class="hover-img" />
           <p>Collection 4</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/PKJQEDhK#Dcp7IfThNt1LyZG5yqI-Eg">
+        <div class="collection-tab" data-id="5" data-link="https://mega.nz/folder/PKJQEDhK#Dcp7IfThNt1LyZG5yqI-Eg">
+          <button class="fav-btn" data-id="5" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C5-cover.webp" alt="Collection 5" class="hover-img" />
           <p>Collection 5</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/qLJhlZaY#GHokgrQWUwgxrITUvj0yHg">
+        <div class="collection-tab" data-id="6" data-link="https://mega.nz/folder/qLJhlZaY#GHokgrQWUwgxrITUvj0yHg">
+          <button class="fav-btn" data-id="6" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C6-cover.webp" alt="Collection 6" class="hover-img" />
           <p>Collection 6</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/6DpTTDYI#I2vX9ITM6g4jdg588M50rQ">
+        <div class="collection-tab" data-id="7" data-link="https://mega.nz/folder/6DpTTDYI#I2vX9ITM6g4jdg588M50rQ">
+          <button class="fav-btn" data-id="7" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C7-cover.webp" alt="Collection 7" class="hover-img" />
           <p>Collection 7</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/LbowTBTY#IiMDk54kU6ezraACqWS4NQ">
+        <div class="collection-tab" data-id="8" data-link="https://mega.nz/folder/LbowTBTY#IiMDk54kU6ezraACqWS4NQ">
+          <button class="fav-btn" data-id="8" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C8-cover.webp" alt="Collection 8" class="hover-img" />
           <p>Collection 8</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/iKoXASwR#oN92zfZK7I1ZespC3Hj0Sg">
+        <div class="collection-tab" data-id="9" data-link="https://mega.nz/folder/iKoXASwR#oN92zfZK7I1ZespC3Hj0Sg">
+          <button class="fav-btn" data-id="9" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C9-cover.webp" alt="Collection 9" class="hover-img" />
           <p>Collection 9</p>
         </div>
 
-        <div class="collection-tab" data-link="https://mega.nz/folder/rP5kADLJ#0JaCHCcUR7R6TH72EVKB_Q">
+        <div class="collection-tab" data-id="10" data-link="https://mega.nz/folder/rP5kADLJ#0JaCHCcUR7R6TH72EVKB_Q">
+          <button class="fav-btn" data-id="10" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
           <img src="images/MTX-C10-cover.webp" alt="Collection 10" class="hover-img" />
           <p>Collection 10</p>
         </div>
+
+        <!-- hidden bonus collection (will be shown by JS when unlocked) -->
+        <div id="bonusCollection" class="collection-tab hidden" data-id="bonus" data-link="#">
+          <button class="fav-btn" data-id="bonus" title="Favorite"><svg class="star" width="20" height="20" viewBox="0 0 24 24"><path d="M12 17.3L5.2 20l1-6.1L1.6 9.3l6.2-.9L12 3l2.2 5.4 6.2.9-4.6 4.6 1 6.1z" fill="currentColor"/></svg></button>
+          <img src="images/bonus-cover.webp" alt="Bonus Collection" class="hover-img" />
+          <p>Bonus Collection</p>
+        </div>
       </div>
 
-      <div class="scroll-arrow right-arrow">&#10095;</div>
+      <div class="scroll-arrow right-arrow" aria-hidden="true">&#10095;</div>
     </section>
 
     <div class="section-divider"></div>
 
-    <section class="ad-banner">
-      <div class="ad-box">Your Ad Banner Here</div>
+    <!-- Recently viewed -->
+    <section class="recently-viewed" id="recentSection" aria-label="Recently viewed">
+      <h3>Recently Viewed</h3>
+      <div id="recentList" class="recent-list"></div>
     </section>
   </main>
 
@@ -89,11 +134,11 @@
     <p>&copy; 2025 Linksphere</p>
   </footer>
 
-  <!-- 🧱 Ad Gate Modal -->
-  <div class="gate-modal" id="gateModal">
-    <div class="gate-modal-content">
+  <!-- Gate modal -->
+  <div class="gate-modal" id="gateModal" aria-hidden="true">
+    <div class="gate-modal-content" role="dialog" aria-modal="true">
       <h2>Access Locked</h2>
-      <p>Watch 3 ads or a 30-second video to unlock this collection.</p>
+      <p>Watch 3 demo ads or a 30-second demo video to unlock this collection.</p>
 
       <div class="ad-buttons">
         <button class="ad-btn" id="ad1">Ad 1</button>
@@ -101,23 +146,44 @@
         <button class="ad-btn" id="ad3">Ad 3</button>
       </div>
 
-      <video id="ad-video" width="400" controls>
-        <source src="videos/sample-ad.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <div class="video-area">
+        <video id="ad-video" width="100%" controls preload="metadata">
+          <!-- Replace with your local ad video path -->
+          <source src="videos/sample-ad.mp4" type="video/mp4" />
+          Your browser doesn't support embedded videos.
+        </video>
 
-      <button id="proceed-btn" disabled>Proceed to Collection</button>
+        <div id="skipWrapper" class="skip-wrapper" hidden>
+          <button id="skipBtn" class="skip-btn">Skip Ad</button>
+        </div>
+      </div>
+
+      <div class="gate-actions">
+        <button id="proceed-btn" disabled>Proceed to Collection</button>
+      </div>
     </div>
   </div>
 
-  <!-- Adult Content Warning Modal -->
-<div id="adultWarningModal" class="adult-warning-modal">
-  <div class="adult-warning-content">
-    <h2>⚠️ Adult Content Warning</h2>
-    <p>This website contains adult themes or mature content intended for viewers 18 and older. Viewer discretion is advised.</p>
-    <button id="adult-warning-continue">I Understand</button>
+  <!-- Adult warning modal -->
+  <div id="adultWarningModal" class="adult-warning-modal" aria-hidden="true">
+    <div class="adult-warning-content">
+      <h2>⚠️ Adult Content Warning</h2>
+      <p>This site contains mature content intended for viewers 18+. Click continue if you understand.</p>
+      <button id="adult-warning-continue">I Understand</button>
+    </div>
   </div>
-</div>
+
+  <!-- Age modal (24h) -->
+  <div id="ageModal" class="age-modal" aria-hidden="true">
+    <div class="age-modal-content">
+      <h2>Age Verification</h2>
+      <p>You must be 18 years or older to access this content.</p>
+      <div class="age-buttons">
+        <button id="age-yes">I am 18 or older</button>
+        <button id="age-no">I am under 18</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
