@@ -51,9 +51,7 @@ body {
   transition: color 0.3s ease;
 }
 
-.title-text:hover {
-  color: #ff7b00;
-}
+
 
 .title-text:hover + .title-hover-img {
   opacity: 1;
