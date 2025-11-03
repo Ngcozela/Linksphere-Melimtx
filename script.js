@@ -39,6 +39,21 @@ let currentLink = null;
 let adsViewed = 0;
 let videoWatched = false;
 
+// ✅ New Skip Button setup
+let skipBtn = document.createElement("button");
+skipBtn.id = "skip-ad-btn";
+skipBtn.textContent = "Skip Ad (30s)";
+skipBtn.style.display = "none";
+skipBtn.style.marginTop = "10px";
+skipBtn.style.background = "#ff7b00";
+skipBtn.style.color = "#fff";
+skipBtn.style.border = "none";
+skipBtn.style.padding = "0.6rem 1.2rem";
+skipBtn.style.borderRadius = "0.5rem";
+skipBtn.style.cursor = "not-allowed";
+skipBtn.style.opacity = "0.6";
+video.parentElement.appendChild(skipBtn);
+
 // Intercept clicks on collection tabs
 document.querySelectorAll('.collection-tab').forEach(tab => {
   tab.addEventListener('click', (e) => {

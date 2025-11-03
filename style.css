@@ -354,3 +354,11 @@ body {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+#skip-ad-btn {
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+#skip-ad-btn:hover:enabled {
+  background: #ffaa33;
+}
