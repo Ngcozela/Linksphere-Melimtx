@@ -103,3 +103,26 @@ function resetGate() {
   proceedBtn.disabled = true;
   proceedBtn.style.cursor = 'not-allowed';
 }
+
+// === ADULT CONTENT WARNING POPUP (shows once per 24 hours) ===
+const adultModal = document.getElementById('adultWarningModal');
+const adultContinueBtn = document.getElementById('adult-warning-continue');
+
+// Check if the popup should appear
+function shouldShowAdultWarning() {
+  const warningData = JSON.parse(localStorage.getItem('adultWarningShown'));
+  if (!warningData) return true; // never shown
+  const hoursSince = (Date.now() - warningData.timestamp) / (1000 * 60 * 60);
+  return hoursSince >= 24; // show again after 24 hours
+}
+
+if (shouldShowAdultWarning()) {
+  adultModal.classList.add('active');
+  document.body.style.overflow = 'hidden'; // prevent background scroll
+}
+
+adultContinueBtn.addEventListener('click', () => {
+  localStorage.setItem('adultWarningShown', JSON.stringify({ shown: true, timestamp: Date.now() }));
+  adultModal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+});
