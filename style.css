@@ -172,13 +172,16 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #222;
-  border: 1px dashed #222;
+  border: 1px dashed #444;
   color: #ffffff;
-  margin: 728px 90px;
+  margin: 40px auto;        /* ↓ FIXED spacing */
   padding: 15px;
   text-align: center;
   border-radius: 10px;
+  width: 100%;
+  max-width: 1000px;
 }
+
 
 .ad-box {
   width: 100%;
