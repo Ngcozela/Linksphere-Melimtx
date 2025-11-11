@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const adVideo = document.getElementById("ad-video");
   const collectionTabs = document.querySelectorAll(".collection-tab");
 
-  let adsWatched = 0;
+  let adsViewed = 0;
   let selectedLink = "";
 
   // Skip button setup
@@ -93,31 +93,33 @@ document.addEventListener("DOMContentLoaded", () => {
     tab.addEventListener("click", () => {
       selectedLink = tab.dataset.link;
       modal.classList.add("active");
-      adsWatched = 0;
-      adBtns.forEach(btn => btn.classList.remove("watched"));
+      adsViewed = 0;
+      adBtns.forEach(btn => btn.classList.remove("viewed"));
       proceedBtn.disabled = true;
       proceedBtn.classList.remove("active");
     });
   });
 
-  adButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    // Open ad link in new tab (if data-url exists)
-    const adUrl = btn.getAttribute('data-url');
-    if (adUrl) {
-      window.open(adUrl, '_blank');
-    }
+  // ✅ Fixed ad button logic
+  adBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const adUrl = btn.getAttribute("data-url");
+      if (adUrl) {
+        window.open(adUrl, "_blank");
+      }
 
-    // Mark as viewed
-    if (!btn.classList.contains('viewed')) {
-      btn.classList.add('viewed');
-      adsViewed++;
-    }
+      if (!btn.classList.contains("viewed")) {
+        btn.classList.add("viewed");
+        btn.textContent = "Viewed ✅";
+        adsViewed++;
+      }
 
-    checkAccess();
+      if (adsViewed >= 3) {
+        proceedBtn.disabled = false;
+        proceedBtn.classList.add("active");
+      }
+    });
   });
-});
-
 
   // Handle video skip logic
   adVideo.addEventListener("loadedmetadata", () => {
