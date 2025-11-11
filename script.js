@@ -100,19 +100,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Handle "Watch Ad" buttons
-  adBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (!btn.classList.contains("watched")) {
-        btn.classList.add("watched");
-        adsWatched++;
-        if (adsWatched >= 3) {
-          proceedBtn.disabled = false;
-          proceedBtn.classList.add("active");
-        }
-      }
-    });
+  adButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Open ad link in new tab (if data-url exists)
+    const adUrl = btn.getAttribute('data-url');
+    if (adUrl) {
+      window.open(adUrl, '_blank');
+    }
+
+    // Mark as viewed
+    if (!btn.classList.contains('viewed')) {
+      btn.classList.add('viewed');
+      adsViewed++;
+    }
+
+    checkAccess();
   });
+});
+
 
   // Handle video skip logic
   adVideo.addEventListener("loadedmetadata", () => {
