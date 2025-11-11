@@ -1,10 +1,3 @@
-
-function openCollection(num) {
-  console.log("Clicked collection:", num);
-  alert("Opening Collection " + num + "...");
-  // window.location.href = `collection${num}.html`;
-}
-/*Section scrolling script*/
 document.addEventListener("DOMContentLoaded", () => {
   /* -------------------------
      ADULT CONTENT WARNING POPUP
