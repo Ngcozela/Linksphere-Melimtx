@@ -168,31 +168,8 @@ body {
   opacity: 1;
 }
 
-/* === Ad Banner Styling === */
-.ad-banner {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  padding: 0;
-  margin: 20px 0;
-}
 
-.ad-box {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.ad-box iframe {
-  width: 100% !important;
-  height: 60px !important;
-  border: none;
-  display: block;
-}
 
 
 /* Footer */
