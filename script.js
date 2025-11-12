@@ -187,7 +187,7 @@ if (adBox) {
       'key': '1235cadbe8897064a09ba4fc77b33e18',
       'format': 'iframe',
       'height': 90,
-      'width': 723,
+      'width': 3000,
       'params': {}
     };
   `;
