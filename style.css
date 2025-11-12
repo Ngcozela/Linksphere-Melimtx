@@ -1,181 +1,75 @@
-/* Basic Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Layout */
-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
+/* ==============================
+   General Layout
+============================== */
 body {
-  font-family: "Poppins", Arial, sans-serif;
-  background-color: #000;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #0e0e0e;
   color: #fff;
-  line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Page Title */
-.page-title {
-  position: relative;
-  display: block;
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   text-align: center;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #fff;
-  margin-bottom: 10px;
-  font-weight: 600;
+}
+
+/* ==============================
+   Header & Title
+============================== */
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.title-text {
+  position: relative;
   z-index: 2;
 }
 
 .title-hover-img {
   position: absolute;
-  top: calc(100% + 4px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  max-width: 80%;
-  border-radius: 10px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  z-index: 1;
-}
-
-.title-text {
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-
-
-.title-text:hover + .title-hover-img {
-  opacity: 1;
-}
-
-/* Divider */
-.section-divider {
-  width: 80%;
-  max-width: 600px;
-  height: 4px;
-  margin: 10px auto 25px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, #ff7b00, rgb(0, 0, 0));
-}
-
-/* === Collections Section === */
-.collections {
-  position: relative;
-  margin-top: 40px;
-  overflow: hidden;
-}
-
-.collections-container {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  gap: 15px;
-  padding: 10px 0;
-  scrollbar-width: none;
-}
-
-.collections-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* Arrows */
-.scroll-arrow {
-  position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  font-size: 1rem;
-  color: #ffffff;
-  padding: 10px 15px;
-  border-radius: 50%;
-  cursor: pointer;
+  left: 50%;
+  width: 300px;
+  max-width: 100%;
+  transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 5;
-  user-select: none;
+  transition: all 0.4s ease-in-out;
+  border-radius: 10px;
 }
 
-.scroll-arrow:hover {
-  transform: translateY(-50%) scale(1.1);
-  color: #000000;
-}
-
-.left-arrow {
-  left: 10px;
-}
-
-.right-arrow {
-  right: 10px;
-}
-
-.collections:hover .scroll-arrow {
+.page-title:hover .title-hover-img {
+  transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }
 
-/* Collection Tabs */
-.collection-tab {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  background-color: #1a1a1a;
-  border-color: #1a1a1a;
-  border-radius: 10px;
-  padding: 100px 20px;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  flex: 0 0 auto;
-  min-width: 180px;
-  max-width: 220px;
-  overflow: hidden;
-  border: 1px solid ;
+/* ==============================
+   Section Divider
+============================== */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(to right, #ff7b00, #ffae42);
+  margin: 30px 0;
+  border-radius: 2px;
 }
 
-.collection-tab:hover {
-  transform: translateY(-5px);
-  background: #2a2a2a;
-}
-
-/* Hover Images */
-.collection-tab .hover-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  border-radius: 10px;
-  z-index: 0;
-}
-
-.collection-tab:hover .hover-img {
-  opacity: 1;
-}
-
-/* Center and scale ad banners */
+/* ==============================
+   Ad Banner Styling (Fixed & Centered)
+============================== */
 .ad-banner {
   display: flex;
-  justify-content: center;   /* center horizontally */
-  align-items: center;       /* center vertically */
+  justify-content: center;   /* Centers ad horizontally */
+  align-items: center;       /* Centers ad vertically */
   width: 100%;
-  min-height: 120px;         /* ensures some spacing */
+  min-height: 120px;
   margin: 20px 0;
+  text-align: center;
 }
 
 .ad-box {
@@ -183,33 +77,116 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 970px;          /* max banner width (desktop) */
+  max-width: 970px;          /* Common ad width */
+  overflow: hidden;
 }
 
 .ad-box iframe {
   width: 100% !important;
   height: auto !important;
   border: none;
+  display: block;
 }
 
+/* ==============================
+   Collections Section
+============================== */
+.collections {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
 
-/* Footer */
+.collections-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 10px;
+  scrollbar-width: none; /* Hide scrollbar (Firefox) */
+}
+
+.collections-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar (Chrome/Safari) */
+}
+
+.collection-tab {
+  flex: 0 0 auto;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 10px;
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.collection-tab:hover {
+  transform: scale(1.05);
+  background: #ff7b00;
+}
+
+.collection-tab img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.collection-tab p {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ==============================
+   Scroll Arrows
+============================== */
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #ff7b00;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 8px 12px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 5;
+}
+
+.left-arrow {
+  left: 5px;
+}
+
+.right-arrow {
+  right: 5px;
+}
+
+/* ==============================
+   Footer
+============================== */
 .footer {
   text-align: center;
-  margin: 40px 0 10px;
-  font-size: 0.9rem;
+  padding: 20px;
+  background-color: #111;
   color: #aaa;
+  font-size: 0.9rem;
 }
 
-/* === Gate Modal === */
+/* ==============================
+   Ad Gate Modal
+============================== */
 .gate-modal {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .gate-modal.active {
@@ -217,136 +194,109 @@ body {
 }
 
 .gate-modal-content {
-  background: #1f1f1f;
-  padding: 2rem;
-  border-radius: 1rem;
-  max-width: 500px;
-  width: 90%;
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-  animation: fadeIn 0.4s ease;
-}
-
-.gate-modal h2,
-.gate-modal p {
+  max-width: 400px;
+  width: 90%;
   color: #fff;
-  margin-bottom: 1rem;
 }
 
 .ad-buttons {
   display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  margin: 20px 0;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .ad-btn {
-  background: #f80000;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
-  transition: background 0.3s;
-}
-
-.ad-btn.viewed {
-  background: #09ff00;
-}
-
-#ad-video {
-  width: 100%;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-#proceed-btn {
   background: #ff7b00;
   color: #fff;
-  padding: 0.75rem 1.5rem;
-  font-weight: bold;
   border: none;
-  border-radius: 0.5rem;
-  cursor: not-allowed;
-  opacity: 0.6;
-  transition: opacity 0.3s, cursor 0.3s;
-}
-
-#proceed-btn.active {
-  opacity: 1;
-  cursor: pointer;
-}
-
-/* === Adult Content Warning Modal === */
-.adult-warning-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.adult-warning-modal.active {
-  display: flex;
-  animation: fadeIn 0.4s ease;
-}
-
-.adult-warning-content {
-  background: rgba(40, 40, 40, 0.9);
-  color: #fff;
-  text-align: center;
-  max-width: 400px;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
-  animation: slideUp 0.4s ease;
-}
-
-.adult-warning-content h2 {
-  color: #ff0000;
-  margin-bottom: 15px;
-}
-
-.adult-warning-content p {
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-.adult-warning-content button {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 10px 25px;
+  padding: 10px 18px;
   border-radius: 8px;
-  font-size: 15px;
+  font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-.adult-warning-content button:hover {
+.ad-btn:hover {
+  background: #ff9e32;
+}
+
+.ad-btn.viewed {
+  background: #28a745;
+}
+
+#proceed-btn {
+  background: #555;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: not-allowed;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#proceed-btn.active {
+  background: #28a745;
+  cursor: pointer;
+}
+
+/* ==============================
+   Adult Warning Modal
+============================== */
+.adult-warning-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.adult-warning-modal.active {
+  display: flex;
+}
+
+.adult-warning-content {
+  background: #1f1f1f;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  width: 90%;
+  max-width: 400px;
+}
+
+#adult-warning-continue {
+  margin-top: 20px;
   background: #ff7b00;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+#adult-warning-continue:hover {
+  background: #ff9e32;
 }
 
-@keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* === RESPONSIVE === */
+/* ==============================
+   Responsive Design
+============================== */
 @media (max-width: 768px) {
   .collection-tab {
-    min-width: 150px;
-    padding: 60px 5px;
+    width: 160px;
   }
 
   .scroll-arrow {
@@ -354,7 +304,7 @@ body {
   }
 
   .ad-box {
-    padding: 20px;
+    max-width: 100%;
   }
 }
 
