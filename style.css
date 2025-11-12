@@ -333,27 +333,33 @@ body {
   }
 }
 
+/* --- AD BANNER SECTION --- */
 .ad-banner {
-  width: 100%;
   display: flex;
-  justify-content: center;  /* centers horizontally */
-  align-items: center;      /* centers vertically if needed */
-  padding: 20px 0;
+  justify-content: center;   /* center horizontally */
+  align-items: center;       /* center vertically */
+  padding: 10px 0;           /* 10px gap top and bottom */
+  margin: 10px 0;            /* small spacing between dividers */
+  background: transparent;   /* or use your site's background color */
+  box-sizing: border-box;
 }
 
+/* Let the ad-box shrink/grow naturally */
 .ad-box {
-  width: 70%;               /* takes 70% of total page width */
-  max-width: 1200px;        /* caps width for large screens */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
 }
 
+/* Make iframe ads auto-size to their actual ad dimensions */
 .ad-box iframe {
-  width: 100%;              /* makes the iframe fill its container */
+  display: block;
+  margin: 0 auto;
+  width: auto;
   height: auto;
-  border: none;
+  max-width: 100%;
 }
+
 
 /* 📱 Make responsive for smaller screens */
 @media (max-width: 768px) {
