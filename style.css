@@ -173,9 +173,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #222;
-  border: 1px dashed #444;
-  color: #fff;
+  background-color: #000000;
+  border: 1px dashed #000000;
+  color: #000000;
   margin: 40px auto;
   padding: 10px;
   text-align: center;
