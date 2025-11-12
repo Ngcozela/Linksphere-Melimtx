@@ -168,6 +168,34 @@ body {
   opacity: 1;
 }
 
+.ad-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  border: 1px dashed #444;
+  color: #ffffff;
+  margin: 40px auto;        /* ↓ FIXED spacing */
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+
+.ad-box {
+  width: 100%;
+  max-width: 728px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+
 /* Footer */
 .footer {
   text-align: center;
@@ -333,37 +361,3 @@ body {
   }
 }
 
-/* --- AD BANNER SECTION --- */
-.ad-banner {
-  display: flex;
-  justify-content: center;   /* center horizontally */
-  align-items: center;       /* center vertically */
-  padding: 10px 0;           /* 10px gap top and bottom */
-  margin: 10px 0;            /* small spacing between dividers */
-  background: transparent;   /* or use your site's background color */
-  box-sizing: border-box;
-}
-
-/* Let the ad-box shrink/grow naturally */
-.ad-box {
-  display: inline-block;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-/* Make iframe ads auto-size to their actual ad dimensions */
-.ad-box iframe {
-  display: block;
-  margin: 0 auto;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-}
-
-
-/* 📱 Make responsive for smaller screens */
-@media (max-width: 768px) {
-  .ad-box {
-    width: 90%;             /* use more space on mobile */
-  }
-}
