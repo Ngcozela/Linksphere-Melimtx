@@ -175,3 +175,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+// === Ad Banner Injection ===
+const adBox = document.getElementById("adBox");
+
+if (adBox) {
+  window.atOptions = {
+    'key': '1235cadbe8897064a09ba4fc77b33e18',
+    'format': 'iframe',
+    'height': 250,
+    'width': 970,
+    'params': {}
+  };
+
+  // Dynamically inject the ad script into the adBox container
+  const adScript = document.createElement("script");
+  adScript.type = "text/javascript";
+  adScript.src = "//www.highperformanceformat.com/1235cadbe8897064a09ba4fc77b33e18/invoke.js";
+  adBox.appendChild(adScript);
+}
