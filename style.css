@@ -186,7 +186,7 @@ body {
 
 .ad-box {
   width: 100%;
-  max-width: 1px;
+  max-width: 1000px;
   height: 120px;
   display: flex;
   justify-content: center;
@@ -361,3 +361,25 @@ body {
   }
 }
 
+/* ====== AD SECTION STYLES ====== */
+
+.ad-section {
+  width: 100%;
+  padding: 10px 0; /* space between the ad and dividers */
+  background-color: transparent; /* or set a background if needed */
+}
+
+.ad-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ad-container iframe {
+  width: 70%;          /* Ad takes 70% of the page width */
+  height: auto;        /* Adjust automatically */
+  max-width: 1000px;   /* Prevent it from growing too large */
+  display: block;
+  border: none;
+}

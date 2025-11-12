@@ -201,3 +201,33 @@ if (adBox) {
 }
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const adContainer = document.getElementById("main-banner-ad");
+
+  if (adContainer) {
+    // Create ad scripts dynamically
+    const atOptions = {
+      key: "1235cadbe8897064a09ba4fc77b33e18",
+      format: "iframe",
+      height: 120,
+      width: 1000,
+      params: {}
+    };
+
+    // Create the first <script> tag
+    const adConfig = document.createElement("script");
+    adConfig.type = "text/javascript";
+    adConfig.text = `
+      atOptions = ${JSON.stringify(atOptions)};
+    `;
+
+    // Create the second <script> tag (the actual ad loader)
+    const adScript = document.createElement("script");
+    adScript.type = "text/javascript";
+    adScript.src = "//www.highperformanceformat.com/1235cadbe8897064a09ba4fc77b33e18/invoke.js";
+
+    // Append both to the container
+    adContainer.appendChild(adConfig);
+    adContainer.appendChild(adScript);
+  }
+});
