@@ -168,33 +168,41 @@ body {
   opacity: 1;
 }
 
+/* === Responsive Ad Boxes === */
 .ad-banner {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #222;
   border: 1px dashed #444;
-  color: #ffffff;
-  margin: 40px auto;        /* ↓ FIXED spacing */
-  padding: 15px;
+  color: #fff;
+  margin: 40px auto;
+  padding: 10px;
   text-align: center;
   border-radius: 10px;
   width: 100%;
   max-width: 1000px;
+  overflow: hidden;
 }
 
-
+/* The box adapts to content (banner, iframe, image, etc.) */
 .ad-box {
-  width: 100%;
-  max-width: 728px;
-  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
-  font-family: sans-serif;
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }
 
+.ad-box iframe,
+.ad-box img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border: none;
+  display: block;
+}
 
 /* Footer */
 .footer {

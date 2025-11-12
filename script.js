@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const adultModal = document.getElementById("adultWarningModal");
   const adultContinueBtn = document.getElementById("adult-warning-continue");
 
-  // Only show once per visit
   if (!sessionStorage.getItem("adultWarningShown")) {
     adultModal.classList.add("active");
   }
@@ -29,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.scrollBy({ left: 300, behavior: "smooth" });
   });
 
-  // Touch-friendly horizontal scroll on mobile
+  // Touch-friendly horizontal scroll
   let startX, scrollLeft, isDown = false;
 
   container.addEventListener("mousedown", (e) => {
@@ -37,10 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
     startX = e.pageX - container.offsetLeft;
     scrollLeft = container.scrollLeft;
   });
-
   container.addEventListener("mouseleave", () => (isDown = false));
   container.addEventListener("mouseup", () => (isDown = false));
-
   container.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
@@ -49,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.scrollLeft = scrollLeft - walk;
   });
 
-  // Mobile touch scroll
   container.addEventListener("touchstart", (e) => {
     startX = e.touches[0].pageX;
     scrollLeft = container.scrollLeft;
@@ -100,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ✅ Fixed ad button logic
+  // Ad button logic
   adBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const adUrl = btn.getAttribute("data-url");
@@ -121,14 +117,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Handle video skip logic
+  // Video skip logic
   adVideo.addEventListener("loadedmetadata", () => {
     const duration = adVideo.duration;
-
-    // Only add skip after 30s if the video is long enough
     if (duration > 30) {
       skipBtn.style.display = "none";
-
       adVideo.addEventListener("play", () => {
         setTimeout(() => {
           if (!adVideo.paused && adVideo.currentTime >= 30) {
@@ -152,4 +145,33 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.classList.remove("active");
     }
   });
+
+  /* -------------------------
+     URL PARAMETER TRIGGER
+     (Direct link opens Ad Gate)
+  ----------------------------*/
+  const urlParams = new URLSearchParams(window.location.search);
+  const collectionParam = urlParams.get("collection");
+
+  if (collectionParam) {
+    const targetTab = Array.from(collectionTabs).find(tab =>
+      tab.querySelector("p").textContent.toLowerCase().includes(`collection ${collectionParam}`)
+    );
+
+    if (targetTab) {
+      selectedLink = targetTab.dataset.link;
+
+      // Scroll into view for nice effect
+      targetTab.scrollIntoView({ behavior: "smooth", inline: "center" });
+
+      // Open Ad Gate automatically
+      setTimeout(() => {
+        modal.classList.add("active");
+        adsViewed = 0;
+        adBtns.forEach(btn => btn.classList.remove("viewed"));
+        proceedBtn.disabled = true;
+        proceedBtn.classList.remove("active");
+      }, 1000);
+    }
+  }
 });
