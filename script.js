@@ -176,3 +176,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Inject Adsterra banner dynamically
+const adBox = document.getElementById("adBox");
+
+if (adBox) {
+  const script1 = document.createElement("script");
+  script1.type = "text/javascript";
+  script1.innerHTML = `
+    atOptions = {
+      'key': '1235cadbe8897064a09ba4fc77b33e18',
+      'format': 'iframe',
+      'height': 90,
+      'width': 728,
+      'params': {}
+    };
+  `;
+
+  const script2 = document.createElement("script");
+  script2.type = "text/javascript";
+  script2.src = "//www.highperformanceformat.com/1235cadbe8897064a09ba4fc77b33e18/invoke.js";
+
+  adBox.appendChild(script1);
+  adBox.appendChild(script2);
+}
+
+

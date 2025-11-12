@@ -168,10 +168,6 @@ body {
   opacity: 1;
 }
 
-
-
-
-
 /* Footer */
 .footer {
   text-align: center;
@@ -337,3 +333,31 @@ body {
   }
 }
 
+.ad-banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  align-items: center;      /* centers vertically if needed */
+  padding: 20px 0;
+}
+
+.ad-box {
+  width: 70%;               /* takes 70% of total page width */
+  max-width: 1200px;        /* caps width for large screens */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ad-box iframe {
+  width: 100%;              /* makes the iframe fill its container */
+  height: auto;
+  border: none;
+}
+
+/* 📱 Make responsive for smaller screens */
+@media (max-width: 768px) {
+  .ad-box {
+    width: 90%;             /* use more space on mobile */
+  }
+}
