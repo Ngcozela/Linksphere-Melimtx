@@ -168,41 +168,30 @@ body {
   opacity: 1;
 }
 
-/* === Responsive Ad Boxes === */
+/* Center and scale ad banners */
 .ad-banner {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000000;
-  border: 1px dashed #000000;
-  color: #000000;
-  margin: 40px auto;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
+  justify-content: center;   /* center horizontally */
+  align-items: center;       /* center vertically */
   width: 100%;
-  max-width: 1000px;
-  overflow: hidden;
+  min-height: 120px;         /* ensures some spacing */
+  margin: 20px 0;
 }
 
-/* The box adapts to content (banner, iframe, image, etc.) */
 .ad-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
-  height: auto;
-  max-width: 100%;
+  width: 100%;
+  max-width: 970px;          /* max banner width (desktop) */
 }
 
-.ad-box iframe,
-.ad-box img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
+.ad-box iframe {
+  width: 100% !important;
+  height: auto !important;
   border: none;
-  display: block;
 }
+
 
 /* Footer */
 .footer {
