@@ -342,7 +342,7 @@ body {
 }
 
 .ad-box {
-  width: 70%;               /* takes 70% of total page width */
+  width: 100%;               /* takes 70% of total page width */
   max-width: 1200px;        /* caps width for large screens */
   display: flex;
   justify-content: center;
