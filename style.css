@@ -180,14 +180,14 @@ body {
   text-align: center;
   border-radius: 10px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 970px;
 }
 
 
 .ad-box {
   width: 100%;
-  max-width: 728px;
-  height: 90px;
+  max-width: 970px;
+  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -153,3 +153,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+/* -------------------------
+     URL PARAMETER TRIGGER
+     (Direct link opens Ad Gate)
+  ----------------------------*/
+  const urlParams = new URLSearchParams(window.location.search);
+  const collectionParam = urlParams.get("collection");
+
+  if (collectionParam) {
+    const targetTab = Array.from(collectionTabs).find(tab =>
+      tab.querySelector("p").textContent.toLowerCase().includes(`collection ${collectionParam}`)
+    );
+
+    if (targetTab) {
+      selectedLink = targetTab.dataset.link;
+
+      // Scroll into view for nice effect
+      targetTab.scrollIntoView({ behavior: "smooth", inline: "center" });
+
+      // Open Ad Gate automatically
+      setTimeout(() => {
+        modal.classList.add("active");
+        adsViewed = 0;
+        adBtns.forEach(btn => btn.classList.remove("viewed"));
+        proceedBtn.disabled = true;
+        proceedBtn.classList.remove("active");
+      }, 1000);
+    }
+  }
