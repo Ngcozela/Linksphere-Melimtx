@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Mark ad as viewed if not already
       if (!btn.classList.contains("viewed")) {
         btn.classList.add("viewed");
-        btn.textContent = "Viewed ✅";
+        btn.textContent = "Viewed";
         adsViewed++;
       }
 
