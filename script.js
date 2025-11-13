@@ -207,11 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (adContainer) {
     // Create ad scripts dynamically
     const atOptions = {
-      'key': '1235cadbe8897064a09ba4fc77b33e18',
-        'format': 'iframe',
-        'height': 250,   // request Billboard size
-        'width': 970,
-        'params': {}
+      
     };
 
     // Create the first <script> tag
