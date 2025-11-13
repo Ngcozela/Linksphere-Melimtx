@@ -171,29 +171,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* -------------------------
-     MAIN AD BANNER INJECTION
-  ----------------------------*/
-  const adContainer = document.getElementById("main-banner-ad");
-
-  if (adContainer) {
-    const atOptions = {
-      key: "1235cadbe8897064a09ba4fc77b33e18",
-      format: "iframe",
-      height: 250, // ✅ set your desired height
-      width: 970,  // ✅ set your desired width
-      params: {}
-    };
-
-    const adConfig = document.createElement("script");
-    adConfig.type = "text/javascript";
-    adConfig.text = `atOptions = ${JSON.stringify(atOptions)};`;
-
-    const adScript = document.createElement("script");
-    adScript.type = "text/javascript";
-    adScript.src = "//www.highperformanceformat.com/1235cadbe8897064a09ba4fc77b33e18/invoke.js";
-
-    adContainer.appendChild(adConfig);
-    adContainer.appendChild(adScript);
-  }
+  
 });
