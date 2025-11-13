@@ -373,10 +373,8 @@ body {
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center;     /* Centers vertically if there's height */
-  padding: 10px 0;         /* Space above and below the ad */
   width: 100%;
 }
-
 
 .ad-container iframe {
   width: 70%;          /* Ad takes 70% of the page width */
