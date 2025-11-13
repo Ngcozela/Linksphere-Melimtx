@@ -182,3 +182,112 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     }
   }
+
+  document.addEventListener("DOMContentLoaded", () => {
+  // ---------------------------
+  // Ad-Gate Elements
+  // ---------------------------
+  const modal = document.getElementById("gateModal");
+  const proceedBtn = document.getElementById("proceed-btn");
+  const adBtns = document.querySelectorAll(".ad-btn");
+  const adVideo = document.getElementById("ad-video");
+  const collectionTabs = document.querySelectorAll(".collection-tab");
+
+  let adsViewed = 0;
+  let selectedLink = "";
+
+  // ---------------------------
+  // Handle Collection Tab Click
+  // ---------------------------
+  collectionTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      selectedLink = tab.dataset.link;
+      modal.classList.add("active");
+      adsViewed = 0;
+      adBtns.forEach(btn => {
+        btn.classList.remove("viewed");
+        btn.textContent = btn.dataset.originalText || btn.textContent;
+      });
+      proceedBtn.disabled = true;
+      proceedBtn.classList.remove("active");
+    });
+  });
+
+  // ---------------------------
+  // Ad Button Logic
+  // ---------------------------
+  adBtns.forEach(btn => {
+    // Store original text for resetting
+    btn.dataset.originalText = btn.textContent;
+
+    btn.addEventListener("click", () => {
+      const adUrl = btn.getAttribute("data-url");
+      
+      // Open ad in new tab
+      if (adUrl) {
+        window.open(adUrl, "_blank");
+      }
+
+      // Mark ad as viewed if not already
+      if (!btn.classList.contains("viewed")) {
+        btn.classList.add("viewed");
+        btn.textContent = "Viewed ✅";
+        adsViewed++;
+      }
+
+      // Enable proceed button after 3 ads
+      if (adsViewed >= 3) {
+        proceedBtn.disabled = false;
+        proceedBtn.classList.add("active");
+      }
+    });
+  });
+
+  // ---------------------------
+  // Proceed Button Logic
+  // ---------------------------
+  proceedBtn.addEventListener("click", () => {
+    if (selectedLink && !proceedBtn.disabled) {
+      window.open(selectedLink, "_blank");
+      modal.classList.remove("active");
+    }
+  });
+
+  // ---------------------------
+  // Video Skip Logic (if used)
+  // ---------------------------
+  const skipBtn = document.createElement("button");
+  skipBtn.textContent = "Skip Ad";
+  skipBtn.style.cssText = `
+    display: none;
+    margin-top: 10px;
+    background: #ff7b00;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  `;
+  adVideo.insertAdjacentElement("afterend", skipBtn);
+
+  adVideo.addEventListener("loadedmetadata", () => {
+    const duration = adVideo.duration;
+    if (duration > 30) {
+      adVideo.addEventListener("play", () => {
+        setTimeout(() => {
+          if (!adVideo.paused && adVideo.currentTime >= 30) {
+            skipBtn.style.display = "inline-block";
+          }
+        }, 30000);
+      });
+    }
+  });
+
+  skipBtn.addEventListener("click", () => {
+    adVideo.pause();
+    skipBtn.style.display = "none";
+    proceedBtn.disabled = false;
+    proceedBtn.classList.add("active");
+  });
+});
