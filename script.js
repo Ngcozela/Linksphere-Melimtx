@@ -148,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------
      URL PARAMETER TRIGGER
-     (Direct link opens Ad Gate)
   ----------------------------*/
   const urlParams = new URLSearchParams(window.location.search);
   const collectionParam = urlParams.get("collection");
@@ -160,11 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (targetTab) {
       selectedLink = targetTab.dataset.link;
-
-      // Scroll into view for nice effect
       targetTab.scrollIntoView({ behavior: "smooth", inline: "center" });
 
-      // Open Ad Gate automatically
       setTimeout(() => {
         modal.classList.add("active");
         adsViewed = 0;
@@ -174,59 +170,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     }
   }
-});
 
-// Inject Adsterra banner dynamically
-const adBox = document.getElementById("adBox");
-
-if (adBox) {
-  const script1 = document.createElement("script");
-  script1.type = "text/javascript";
-  script1.innerHTML = `
-    atOptions = {
-      'key': '1235cadbe8897064a09ba4fc77b33e18',
-      'format': 'iframe',
-      'height': 120,
-      'width': 1000,
-      'params': {}
-    };
-  `;
-
-  const script2 = document.createElement("script");
-  script2.type = "text/javascript";
-  script2.src = "//www.highperformanceformat.com/1235cadbe8897064a09ba4fc77b33e18/invoke.js";
-
-  adBox.appendChild(script1);
-  adBox.appendChild(script2);
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
+  /* -------------------------
+     MAIN AD BANNER INJECTION
+  ----------------------------*/
   const adContainer = document.getElementById("main-banner-ad");
 
   if (adContainer) {
-    // Create ad scripts dynamically
     const atOptions = {
       key: "1235cadbe8897064a09ba4fc77b33e18",
       format: "iframe",
-      height: 120,
-      width: 1000,
+      height: 250, // ✅ set your desired height
+      width: 970,  // ✅ set your desired width
       params: {}
     };
 
-    // Create the first <script> tag
     const adConfig = document.createElement("script");
     adConfig.type = "text/javascript";
-    adConfig.text = `
-      atOptions = ${JSON.stringify(atOptions)};
-    `;
+    adConfig.text = `atOptions = ${JSON.stringify(atOptions)};`;
 
-    // Create the second <script> tag (the actual ad loader)
     const adScript = document.createElement("script");
     adScript.type = "text/javascript";
     adScript.src = "//www.highperformanceformat.com/1235cadbe8897064a09ba4fc77b33e18/invoke.js";
 
-    // Append both to the container
     adContainer.appendChild(adConfig);
     adContainer.appendChild(adScript);
   }

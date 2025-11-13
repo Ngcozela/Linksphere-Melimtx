@@ -364,23 +364,25 @@ body {
 /* ====== AD SECTION STYLES ====== */
 
 .ad-section {
-  width: 100%;
-  padding: 10px 0; /* space between the ad and dividers */
-  background-color: transparent; /* or set a background if needed */
-}
-
-.ad-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  padding: 10px 0; /* 10px space above and below */
+  background-color: transparent;
+}
+
+.ad-container {
+  width: 970px;       /* Match your ad dimensions */
+  height: 250px;      /* Match your ad dimensions */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ad-container iframe {
-  width: 70%;          /* Ad takes 70% of the page width */
-  height:auto;        /* Adjust automatically */
-  max-width: 1000px;   /* Prevent it from growing too large */
-  display: block;
+  width: 100%;
+  height: 100%;
   border: none;
+  display: block;
+  border-radius: 8px;
 }
-
