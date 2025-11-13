@@ -363,23 +363,26 @@ body {
 
 /* ====== AD SECTION STYLES ====== */
 
-.ad-section {
-  width: 100%;
-  padding: 10px 0; /* space between the ad and dividers */
-  background-color: transparent; /* or set a background if needed */
+.ad-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;          /* 10 px gap above & below */
+  background: transparent;  /* or any color you like */
 }
 
 .ad-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 970px;             /* match ad width */
+  height: 250px;            /* match ad height */
+  max-width: 100%;          /* stay responsive */
 }
 
 .ad-container iframe {
-  width: 70%;          /* Ad takes 70% of the page width */
-  height: auto;        /* Adjust automatically */
-  max-width: 1000px;   /* Prevent it from growing too large */
-  display: block;
+  width: 100%;
+  height: 100%;
   border: none;
 }
+
