@@ -363,23 +363,50 @@ body {
 
 /* ====== AD SECTION STYLES ====== */
 
+/* ---------- AD STYLING ---------- */
 .ad-section {
   width: 100%;
-  padding: 10px 5px 0px; /* space between the ad and dividers */
-  background-color: transparent; /* or set a background if needed */
+  padding: 10px 0;
+  background-color: transparent;
 }
 
 .ad-container {
   display: flex;
-  justify-content: center; /* Centers horizontally */
- 
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
-.ad-container iframe {
-  width: 70%;          /* Ad takes 70% of the page width */
-  height:auto;        /* Adjust automatically */
-  max-width: 1000px;   /* Prevent it from growing too large */
+.ad-container ins {
   display: block;
+  width: 970px;
+  height: 250px;
+  max-width: 100%;
   border: none;
+}
+
+/* ---------- RESPONSIVENESS ---------- */
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .ad-container ins {
+    width: 728px;
+    height: 90px;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+  .ad-container ins {
+    width: 468px;
+    height: 60px;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .ad-container ins {
+    width: 320px;
+    height: 50px;
+  }
 }
