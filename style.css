@@ -365,7 +365,7 @@ body {
 
 .ad-section {
   width: 100%;
-  padding: 10px 10px 0; /* space between the ad and dividers */
+  padding: 10px 5px 0; /* space between the ad and dividers */
   background-color: transparent; /* or set a background if needed */
 }
 
