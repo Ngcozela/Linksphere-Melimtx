@@ -361,3 +361,31 @@ body {
   }
 }
 
+.ad-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.juicyads-spot {
+    max-width: 100%;
+    width: 908px;   /* desktop */
+    height: 258px;
+}
+
+/* Tablet (auto-swaps to smaller banner) */
+@media (max-width: 1024px) {
+    .juicyads-spot {
+        width: 728px;
+        height: 90px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .juicyads-spot {
+        width: 320px;
+        height: 100px;
+    }
+}
