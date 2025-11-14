@@ -33,14 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const leftArrow = document.querySelector(".left-arrow");
   const rightArrow = document.querySelector(".right-arrow");
 
-  leftArrow.addEventListener("click", () =>
-    container.scrollBy({ left: -300, behavior: "smooth" })
-  );
+  leftArrow.addEventListener("click", () => {
+    container.scrollBy({ left: -300, behavior: "smooth" });
+  });
 
-  rightArrow.addEventListener("click", () =>
-    container.scrollBy({ left: 300, behavior: "smooth" })
-  );
+  rightArrow.addEventListener("click", () => {
+    container.scrollBy({ left: 300, behavior: "smooth" });
+  });
 
+  // Drag-to-scroll
   let startX, scrollLeft, isDown = false;
 
   container.addEventListener("mousedown", (e) => {
@@ -54,10 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   container.addEventListener("mousemove", (e) => {
     if (!isDown) return;
+    e.preventDefault();
     const x = e.pageX - container.offsetLeft;
-    container.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    const walk = (x - startX) * 1.5;
+    container.scrollLeft = scrollLeft - walk;
   });
 
+  // Mobile drag
   container.addEventListener("touchstart", (e) => {
     startX = e.touches[0].pageX;
     scrollLeft = container.scrollLeft;
@@ -65,139 +69,104 @@ document.addEventListener("DOMContentLoaded", () => {
 
   container.addEventListener("touchmove", (e) => {
     const x = e.touches[0].pageX;
-    container.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    const walk = (x - startX) * 1.5;
+    container.scrollLeft = scrollLeft - walk;
   });
 
   /* ------------------------------------------
-      AD-GATE GENERAL LOGIC
+      AD-GATE LOGIC
   -------------------------------------------*/
   const modal = document.getElementById("gateModal");
   const proceedBtn = document.getElementById("proceed-btn");
   const adBtns = document.querySelectorAll(".ad-btn");
   const collectionTabs = document.querySelectorAll(".collection-tab");
 
-  let adsViewed = 0;
   let selectedLink = "";
+  let timerInterval;
+  let timeLeft = 30;
 
-  collectionTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
+  /* ---------------------------
+      OPEN MODAL FROM TAB CLICK
+  ----------------------------*/
+  collectionTabs.forEach((tab) => {
+    const link = tab.querySelector(".collection-link");
+
+    link.addEventListener("click", (e) => {
+      e.preventDefault();      // prevent navigation
+      e.stopPropagation();     // prevent bubbling
+
       selectedLink = tab.dataset.link;
 
-      modal.classList.add("active");
-
-      adsViewed = 0;
-      adBtns.forEach(btn => {
-        btn.classList.remove("viewed");
-        btn.textContent = btn.dataset.originalText || btn.textContent;
-      });
-
-      proceedBtn.disabled = true;
-      proceedBtn.classList.remove("active");
+      openAdGate();
     });
   });
 
-  adBtns.forEach(btn => {
-    btn.dataset.originalText = btn.textContent;
+  function openAdGate() {
+    modal.classList.add("active");
 
-    btn.addEventListener("click", () => {
-      const adUrl = btn.dataset.url;
-      if (adUrl) window.open(adUrl, "_blank");
+    // Reset UI
+    timeLeft = 30;
+    proceedBtn.disabled = true;
+    proceedBtn.classList.remove("active");
+    proceedBtn.textContent = "Please wait 30s...";
 
-      if (!btn.classList.contains("viewed")) {
-        btn.classList.add("viewed");
-        btn.textContent = "Viewed";
-        adsViewed++;
-      }
+    // Start countdown
+    startTimer();
 
-      if (adsViewed >= 3) {
+    // Auto-load random YouTube ad
+    loadRandomYoutubeAd();
+  }
+
+  /* ------------------------------------------
+      TIMER + PROCEED UNLOCK
+  -------------------------------------------*/
+  function startTimer() {
+    clearInterval(timerInterval);
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      proceedBtn.textContent = `Please wait ${timeLeft}s...`;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
         proceedBtn.disabled = false;
         proceedBtn.classList.add("active");
+        proceedBtn.textContent = "Proceed";
       }
-    });
-  });
+    }, 1000);
+  }
 
   proceedBtn.addEventListener("click", () => {
-    if (selectedLink && !proceedBtn.disabled) {
+    if (!proceedBtn.disabled && selectedLink) {
       window.open(selectedLink, "_blank");
       modal.classList.remove("active");
     }
   });
 
   /* ------------------------------------------
-      RANDOM YOUTUBE AD + 30s COUNTDOWN
+      RANDOM YOUTUBE VIDEO LOADER
   -------------------------------------------*/
-
-  // Your YouTube video list
   const youtubeVideos = [
     "qRYmz6k3bR8",
     "eimI_VjnPA8",
   ];
 
-  let player;
-  let countdownTimer;
-  const countdownDisplay = document.getElementById("countdownTimer");
-
-  // Load YouTube API
-  const tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.body.appendChild(tag);
-
-  // This function runs when the YouTube API is ready
-  window.onYouTubeIframeAPIReady = function () {
-    player = new YT.Player("adgateYoutube", {
-      events: {
-        "onStateChange": handleVideoState
-      }
-    });
-  };
-
-  // Random video loader
   function loadRandomYoutubeAd() {
-    const id = youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)];
-    player.loadVideoById(id);
-  }
+    const randomVideo =
+      youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)];
 
-  // Handle Play button
-  document.getElementById("playAdVideo").addEventListener("click", () => {
-    loadRandomYoutubeAd();
-  });
-
-  // Handle countdown unlock
-  function handleVideoState(event) {
-    if (event.data === YT.PlayerState.PLAYING) {
-      startCountdown();
-    }
-  }
-
-  function startCountdown() {
-    let remaining = 30;
-
-    countdownDisplay.textContent = `Unlocking in ${remaining}s`;
-    countdownDisplay.style.display = "block";
-
-    clearInterval(countdownTimer);
-
-    countdownTimer = setInterval(() => {
-      remaining--;
-      countdownDisplay.textContent = `Unlocking in ${remaining}s`;
-
-      if (remaining <= 0) {
-        clearInterval(countdownTimer);
-        countdownDisplay.textContent = "Unlocked!";
-        proceedBtn.disabled = false;
-        proceedBtn.classList.add("active");
-      }
-    }, 1000);
+    const iframe = document.getElementById("adgateYoutube");
+    iframe.src = `https://www.youtube.com/embed/${randomVideo}?autoplay=1&controls=1&rel=0`;
   }
 
   /* ------------------------------------------
-      URL PARAMETER TRIGGER
+      AUTO OPEN MODAL IF ?collection= PASSED
   -------------------------------------------*/
   const urlParams = new URLSearchParams(window.location.search);
   const collectionParam = urlParams.get("collection");
 
   if (collectionParam) {
-    const targetTab = [...collectionTabs].find(tab =>
+    const targetTab = [...collectionTabs].find((tab) =>
       tab.querySelector("p").textContent
         .toLowerCase()
         .includes(`collection ${collectionParam}`)
@@ -209,14 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
       targetTab.scrollIntoView({ behavior: "smooth", inline: "center" });
 
       setTimeout(() => {
-        modal.classList.add("active");
-
-        adsViewed = 0;
-        adBtns.forEach(btn => btn.classList.remove("viewed"));
-
-        proceedBtn.disabled = true;
-        proceedBtn.classList.remove("active");
-      }, 1000);
+        openAdGate();
+      }, 400);
     }
   }
 });
