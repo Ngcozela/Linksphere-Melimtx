@@ -1,18 +1,22 @@
-
+/* ------------------------------------------
+    COLLECTION BUTTON HANDLER
+-------------------------------------------*/
 function openCollection(num) {
   console.log("Clicked collection:", num);
   alert("Opening Collection " + num + "...");
-  // window.location.href = `collection${num}.html`;
 }
-/*Section scrolling script*/
+
+/* ------------------------------------------
+    ALL JS RUNS AFTER DOM IS READY
+-------------------------------------------*/
 document.addEventListener("DOMContentLoaded", () => {
-  /* -------------------------
-     ADULT CONTENT WARNING POPUP
-  ----------------------------*/
+
+  /* ------------------------------------------
+      ADULT WARNING
+  -------------------------------------------*/
   const adultModal = document.getElementById("adultWarningModal");
   const adultContinueBtn = document.getElementById("adult-warning-continue");
 
-  // Only show once per visit
   if (!sessionStorage.getItem("adultWarningShown")) {
     adultModal.classList.add("active");
   }
@@ -22,21 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.setItem("adultWarningShown", "true");
   });
 
-  /* -------------------------
-     SCROLLING COLLECTIONS
-  ----------------------------*/
+  /* ------------------------------------------
+      SCROLLING COLLECTIONS
+  -------------------------------------------*/
   const container = document.querySelector(".collections-container");
   const leftArrow = document.querySelector(".left-arrow");
   const rightArrow = document.querySelector(".right-arrow");
 
-  leftArrow.addEventListener("click", () => {
-    container.scrollBy({ left: -300, behavior: "smooth" });
-  });
-  rightArrow.addEventListener("click", () => {
-    container.scrollBy({ left: 300, behavior: "smooth" });
-  });
+  leftArrow.addEventListener("click", () =>
+    container.scrollBy({ left: -300, behavior: "smooth" })
+  );
 
-  // Touch-friendly horizontal scroll on mobile
+  rightArrow.addEventListener("click", () =>
+    container.scrollBy({ left: 300, behavior: "smooth" })
+  );
+
   let startX, scrollLeft, isDown = false;
 
   container.addEventListener("mousedown", (e) => {
@@ -45,186 +49,66 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollLeft = container.scrollLeft;
   });
 
-  container.addEventListener("mouseleave", () => (isDown = false));
-  container.addEventListener("mouseup", () => (isDown = false));
+  container.addEventListener("mouseleave", () => isDown = false);
+  container.addEventListener("mouseup", () => isDown = false);
 
   container.addEventListener("mousemove", (e) => {
     if (!isDown) return;
-    e.preventDefault();
     const x = e.pageX - container.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    container.scrollLeft = scrollLeft - walk;
+    container.scrollLeft = scrollLeft - (x - startX) * 1.5;
   });
 
-  // Mobile touch scroll
   container.addEventListener("touchstart", (e) => {
     startX = e.touches[0].pageX;
     scrollLeft = container.scrollLeft;
   });
+
   container.addEventListener("touchmove", (e) => {
     const x = e.touches[0].pageX;
-    const walk = (x - startX) * 1.5;
-    container.scrollLeft = scrollLeft - walk;
+    container.scrollLeft = scrollLeft - (x - startX) * 1.5;
   });
 
-  /* -------------------------
-     AD-GATE LOGIC
-  ----------------------------*/
+  /* ------------------------------------------
+      AD-GATE GENERAL LOGIC
+  -------------------------------------------*/
   const modal = document.getElementById("gateModal");
   const proceedBtn = document.getElementById("proceed-btn");
   const adBtns = document.querySelectorAll(".ad-btn");
-  const adVideo = document.getElementById("ad-video");
-  const collectionTabs = document.querySelectorAll(".collection-tab");
-
-  let adsWatched = 0;
-  let selectedLink = "";
-
-  // Skip button setup
-  const skipBtn = document.createElement("button");
-  skipBtn.textContent = "Skip Ad";
-  skipBtn.style.cssText = `
-    display: none;
-    margin-top: 10px;
-    background: #ff7b00;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-  `;
-  adVideo.insertAdjacentElement("afterend", skipBtn);
-
-  // Handle collection tab click
-  collectionTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      selectedLink = tab.dataset.link;
-      modal.classList.add("active");
-      adsWatched = 0;
-      adBtns.forEach(btn => btn.classList.remove("watched"));
-      proceedBtn.disabled = true;
-      proceedBtn.classList.remove("active");
-    });
-  });
-
-  // Handle "Watch Ad" buttons
-  adBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (!btn.classList.contains("watched")) {
-        btn.classList.add("watched");
-        adsWatched++;
-        if (adsWatched >= 3) {
-          proceedBtn.disabled = false;
-          proceedBtn.classList.add("active");
-        }
-      }
-    });
-  });
-
-  // Handle video skip logic
-  adVideo.addEventListener("loadedmetadata", () => {
-    const duration = adVideo.duration;
-
-    
-  });
-
-  skipBtn.addEventListener("click", () => {
-    adVideo.pause();
-    skipBtn.style.display = "none";
-    proceedBtn.disabled = false;
-    proceedBtn.classList.add("active");
-  });
-
-  proceedBtn.addEventListener("click", () => {
-    if (selectedLink && !proceedBtn.disabled) {
-      window.open(selectedLink, "_blank");
-      modal.classList.remove("active");
-    }
-  });
-});
-
-/* -------------------------
-     URL PARAMETER TRIGGER
-     (Direct link opens Ad Gate)
-  ----------------------------*/
-  const urlParams = new URLSearchParams(window.location.search);
-  const collectionParam = urlParams.get("collection");
-
-  if (collectionParam) {
-    const targetTab = Array.from(collectionTabs).find(tab =>
-      tab.querySelector("p").textContent.toLowerCase().includes(`collection ${collectionParam}`)
-    );
-
-    if (targetTab) {
-      selectedLink = targetTab.dataset.link;
-
-      // Scroll into view for nice effect
-      targetTab.scrollIntoView({ behavior: "smooth", inline: "center" });
-
-      // Open Ad Gate automatically
-      setTimeout(() => {
-        modal.classList.add("active");
-        adsViewed = 0;
-        adBtns.forEach(btn => btn.classList.remove("viewed"));
-        proceedBtn.disabled = true;
-        proceedBtn.classList.remove("active");
-      }, 1000);
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-  // ---------------------------
-  // Ad-Gate Elements
-  // ---------------------------
-  const modal = document.getElementById("gateModal");
-  const proceedBtn = document.getElementById("proceed-btn");
-  const adBtns = document.querySelectorAll(".ad-btn");
-  const adVideo = document.getElementById("ad-video");
   const collectionTabs = document.querySelectorAll(".collection-tab");
 
   let adsViewed = 0;
   let selectedLink = "";
 
-  // ---------------------------
-  // Handle Collection Tab Click
-  // ---------------------------
   collectionTabs.forEach(tab => {
     tab.addEventListener("click", () => {
       selectedLink = tab.dataset.link;
+
       modal.classList.add("active");
+
       adsViewed = 0;
       adBtns.forEach(btn => {
         btn.classList.remove("viewed");
         btn.textContent = btn.dataset.originalText || btn.textContent;
       });
+
       proceedBtn.disabled = true;
       proceedBtn.classList.remove("active");
     });
   });
 
-  // ---------------------------
-  // Ad Button Logic
-  // ---------------------------
   adBtns.forEach(btn => {
-    // Store original text for resetting
     btn.dataset.originalText = btn.textContent;
 
     btn.addEventListener("click", () => {
-      const adUrl = btn.getAttribute("data-url");
-      
-      // Open ad in new tab
-      if (adUrl) {
-        window.open(adUrl, "_blank");
-      }
+      const adUrl = btn.dataset.url;
+      if (adUrl) window.open(adUrl, "_blank");
 
-      // Mark ad as viewed if not already
       if (!btn.classList.contains("viewed")) {
         btn.classList.add("viewed");
         btn.textContent = "Viewed";
         adsViewed++;
       }
 
-      // Enable proceed button after 3 ads
       if (adsViewed >= 3) {
         proceedBtn.disabled = false;
         proceedBtn.classList.add("active");
@@ -232,9 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ---------------------------
-  // Proceed Button Logic
-  // ---------------------------
   proceedBtn.addEventListener("click", () => {
     if (selectedLink && !proceedBtn.disabled) {
       window.open(selectedLink, "_blank");
@@ -242,81 +123,100 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ---------------------------
-  // Video Skip Logic (if used)
-  // ---------------------------
-  const skipBtn = document.createElement("button");
-  skipBtn.textContent = "Skip Ad";
-  skipBtn.style.cssText = `
-    display: none;
-    margin-top: 10px;
-    background: #ff7b00;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-  `;
-  adVideo.insertAdjacentElement("afterend", skipBtn);
+  /* ------------------------------------------
+      RANDOM YOUTUBE AD + 30s COUNTDOWN
+  -------------------------------------------*/
 
-  adVideo.addEventListener("loadedmetadata", () => {
-    const duration = adVideo.duration;
-    if (duration > 30) {
-      adVideo.addEventListener("play", () => {
-        setTimeout(() => {
-          if (!adVideo.paused && adVideo.currentTime >= 30) {
-            skipBtn.style.display = "inline-block";
-          }
-        }, 30000);
-      });
-    }
-  });
+  // Your YouTube video list
+  const youtubeVideos = [
+    "qRYmz6k3bR8",
+    "eimI_VjnPA8",
+  ];
 
-  skipBtn.addEventListener("click", () => {
-    adVideo.pause();
-    skipBtn.style.display = "none";
-    proceedBtn.disabled = false;
-    proceedBtn.classList.add("active");
-  });
-});
+  let player;
+  let countdownTimer;
+  const countdownDisplay = document.getElementById("countdownTimer");
 
-/* ------------------------------
-    RANDOM YOUTUBE AD LOADER
-------------------------------- */
+  // Load YouTube API
+  const tag = document.createElement("script");
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
 
-// Add your YouTube video IDs here
-const youtubeVideos = [
-  "https://youtu.be/qRYmz6k3bR8?si=PuLGmYgoI_pDbzwk",
-  "https://youtu.be/eimI_VjnPA8?si=-TeQFAkGdU4g4BHJ",
-  
-];
+  // This function runs when the YouTube API is ready
+  window.onYouTubeIframeAPIReady = function () {
+    player = new YT.Player("adgateYoutube", {
+      events: {
+        "onStateChange": handleVideoState
+      }
+    });
+  };
 
-// Load a random YouTube video
-function loadRandomYoutubeAd() {
-  const randomVideo = youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)];
-  const iframe = document.getElementById("adgateYoutube");
-
-  iframe.src = `https://www.youtube.com/embed/${randomVideo}?autoplay=1&controls=1&rel=0`;
-}
-
-// When user clicks PLAY AD
-document.getElementById("playAdVideo").addEventListener("click", () => {
-  loadRandomYoutubeAd();
-
-  // Only add skip after 30s if the video is long enough
-    if (duration > 30) {
-      skipBtn.style.display = "none";
-
-      adVideo.addEventListener("play", () => {
-        setTimeout(() => {
-          if (!adVideo.paused && adVideo.currentTime >= 30) {
-            skipBtn.style.display = "inline-block";
-          }
-        }, 30000);
-      });
-    }
-
-  
+  // Random video loader
+  function loadRandomYoutubeAd() {
+    const id = youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)];
+    player.loadVideoById(id);
   }
-);
+
+  // Handle Play button
+  document.getElementById("playAdVideo").addEventListener("click", () => {
+    loadRandomYoutubeAd();
+  });
+
+  // Handle countdown unlock
+  function handleVideoState(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+      startCountdown();
+    }
+  }
+
+  function startCountdown() {
+    let remaining = 30;
+
+    countdownDisplay.textContent = `Unlocking in ${remaining}s`;
+    countdownDisplay.style.display = "block";
+
+    clearInterval(countdownTimer);
+
+    countdownTimer = setInterval(() => {
+      remaining--;
+      countdownDisplay.textContent = `Unlocking in ${remaining}s`;
+
+      if (remaining <= 0) {
+        clearInterval(countdownTimer);
+        countdownDisplay.textContent = "Unlocked!";
+        proceedBtn.disabled = false;
+        proceedBtn.classList.add("active");
+      }
+    }, 1000);
+  }
+
+  /* ------------------------------------------
+      URL PARAMETER TRIGGER
+  -------------------------------------------*/
+  const urlParams = new URLSearchParams(window.location.search);
+  const collectionParam = urlParams.get("collection");
+
+  if (collectionParam) {
+    const targetTab = [...collectionTabs].find(tab =>
+      tab.querySelector("p").textContent
+        .toLowerCase()
+        .includes(`collection ${collectionParam}`)
+    );
+
+    if (targetTab) {
+      selectedLink = targetTab.dataset.link;
+
+      targetTab.scrollIntoView({ behavior: "smooth", inline: "center" });
+
+      setTimeout(() => {
+        modal.classList.add("active");
+
+        adsViewed = 0;
+        adBtns.forEach(btn => btn.classList.remove("viewed"));
+
+        proceedBtn.disabled = true;
+        proceedBtn.classList.remove("active");
+      }, 1000);
+    }
+  }
+});
