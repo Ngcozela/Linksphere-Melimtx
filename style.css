@@ -389,3 +389,22 @@ body {
         height: 100px;
     }
 }
+
+.ad-video-wrapper {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.play-ad-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #ff7b00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}

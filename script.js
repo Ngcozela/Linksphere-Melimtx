@@ -125,18 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
   adVideo.addEventListener("loadedmetadata", () => {
     const duration = adVideo.duration;
 
-    // Only add skip after 30s if the video is long enough
-    if (duration > 30) {
-      skipBtn.style.display = "none";
-
-      adVideo.addEventListener("play", () => {
-        setTimeout(() => {
-          if (!adVideo.paused && adVideo.currentTime >= 30) {
-            skipBtn.style.display = "inline-block";
-          }
-        }, 30000);
-      });
-    }
+    
   });
 
   skipBtn.addEventListener("click", () => {
@@ -291,3 +280,43 @@ document.addEventListener("DOMContentLoaded", () => {
     proceedBtn.classList.add("active");
   });
 });
+
+/* ------------------------------
+    RANDOM YOUTUBE AD LOADER
+------------------------------- */
+
+// Add your YouTube video IDs here
+const youtubeVideos = [
+  "https://youtu.be/qRYmz6k3bR8?si=PuLGmYgoI_pDbzwk",
+  "https://youtu.be/eimI_VjnPA8?si=-TeQFAkGdU4g4BHJ",
+  
+];
+
+// Load a random YouTube video
+function loadRandomYoutubeAd() {
+  const randomVideo = youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)];
+  const iframe = document.getElementById("adgateYoutube");
+
+  iframe.src = `https://www.youtube.com/embed/${randomVideo}?autoplay=1&controls=1&rel=0`;
+}
+
+// When user clicks PLAY AD
+document.getElementById("playAdVideo").addEventListener("click", () => {
+  loadRandomYoutubeAd();
+
+  // Only add skip after 30s if the video is long enough
+    if (duration > 30) {
+      skipBtn.style.display = "none";
+
+      adVideo.addEventListener("play", () => {
+        setTimeout(() => {
+          if (!adVideo.paused && adVideo.currentTime >= 30) {
+            skipBtn.style.display = "inline-block";
+          }
+        }, 30000);
+      });
+    }
+
+  
+  }
+);

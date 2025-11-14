@@ -126,14 +126,18 @@
         <button class="ad-btn" data-url="https://otieu.com/4/10175903">Ad 3</button>
       </div>
 
-      <video id="ad-video" width="400" controls>
-        <source src="videos/sample-ad.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <div class="ad-video-wrapper">
+  <iframe
+    id="adgateYoutube"
+    width="100%"
+    height="300"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
 
-      <button id="proceed-btn" disabled>Proceed to Collection</button>
-    </div>
-  </div>
+<button id="playAdVideo" class="play-ad-btn">Play Ad</button>
 
   <!-- Adult Content Warning Modal -->
 <div id="adultWarningModal" class="adult-warning-modal">
