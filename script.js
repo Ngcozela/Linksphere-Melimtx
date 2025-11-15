@@ -294,3 +294,43 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
+// -----------------------------
+// YT STATE LISTENER
+// -----------------------------
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) {
+    startCountdown();
+  } else if (event.data === YT.PlayerState.PAUSED) {
+    stopCountdown();
+  } else if (event.data === YT.PlayerState.ENDED) {
+    finishCountdown();
+  }
+}
+
+// -----------------------------
+// Countdown Logic
+// -----------------------------
+function startCountdown() {
+  if (isCounting) return; // already running
+  isCounting = true;
+
+  countdownInterval = setInterval(() => {
+    countdown--;
+    countdownEl.textContent = countdown;
+
+    if (countdown <= 0) {
+      finishCountdown();
+    }
+  }, 1000);
+}
+
+function stopCountdown() {
+  isCounting = false;
+  clearInterval(countdownInterval);
+}
+
+function finishCountdown() {
+  stopCountdown();
+  proceedBtn.disabled = false;
+  countdownEl.textContent = "0";
+}
