@@ -1,47 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Tabs With Countdown</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Melimtx Collections</title>
 </head>
 <body>
+  <main>
+    <h1 class="page-title">
+      <span class="title-text">Melimtx</span>
+      <img src="images/melimtx-banner.webp" alt="Melimtx Preview" class="title-hover-img">
+    </h1>
+    <div class="section-divider"></div>
 
-<div class="tab-container">
-  <button class="tab-btn" data-tab="1">Collection 1</button>
-  <button class="tab-btn" data-tab="2">Collection 2</button>
-  <button class="tab-btn" data-tab="3">Collection 3</button>
-</div>
+    <!-- 🔸 Ad Zone 1: Header Banner -->
+    <section class="ad-banner" id="ad-zone-1">
+      <div class="ad-wrapper">
+        <!-- JuicyAds v3.0 (kept as you had it) -->
+        <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
+        <ins id="1105044" data-width="908" data-height="258" class="juicyads-spot"></ins>
+        <script type="text/javascript" data-cfasync="false" async>
+          (adsbyjuicy = window.adsbyjuicy || []).push({ 'adzone': 1105044 });
+        </script>
+      </div>
+    </section>
 
-<!-- TAB CONTENT AREAS -->
-<div id="tab-1" class="tab-content hidden">
-  <h2>Collection 1</h2>
-  <video id="video-1" width="500" controls>
-    <source src="video1.mp4" type="video/mp4">
-  </video>
-  <p id="timer-1" class="timer">Timer: <span>--</span></p>
-  <button id="proceed-1" class="proceed-btn disabled" disabled>Proceed</button>
-</div>
+    <div class="section-divider"></div>
 
-<div id="tab-2" class="tab-content hidden">
-  <h2>Collection 2</h2>
-  <video id="video-2" width="500" controls>
-    <source src="video2.mp4" type="video/mp4">
-  </video>
-  <p id="timer-2" class="timer">Timer: <span>--</span></p>
-  <button id="proceed-2" class="proceed-btn disabled" disabled>Proceed</button>
-</div>
+    <section class="collections">
+      <div class="scroll-arrow left-arrow" role="button" tabindex="0" aria-label="Scroll left">&#10094;</div>
 
-<div id="tab-3" class="tab-content hidden">
-  <h2>Collection 3</h2>
-  <video id="video-3" width="500" controls>
-    <source src="video3.mp4" type="video/mp4">
-  </video>
-  <p id="timer-3" class="timer">Timer: <span>--</span></p>
-  <button id="proceed-3" class="proceed-btn disabled" disabled>Proceed</button>
-</div>
+      <div class="collections-container" aria-live="polite">
+        <!-- Each .collection-tab has a data-link attribute -->
+        <div class="collection-tab" data-link="https://mega.nz/folder/yfZ2AaoQ#zTF7PfZWA76b4xEXkzsOFw" role="button" tabindex="0" aria-label="Open Collection 1">
+          <img src="images/melimtx-C1-preview.webp" alt="Collection 1" class="hover-img" />
+          <p>Collection 1</p>
+        </div>
 
-<script src="script.js"></script>
+        <div class="collection-tab" data-link="https://mega.nz/folder/TfB1yJoK#Syn3y_p-VGQ43D99TPiJ1g" role="button" tabindex="0" aria-label="Open Collection 2">
+          <img src="images/MTX-C2-Cover.webp" alt="Collection 2" class="hover-img" />
+          <p>Collection 2</p>
+        </div>
+
+        <div class="collection-tab" data-link="https://mega.nz/folder/CWgAmSpS#Tw4s30Hg6Yiw_BrmSj9zJA" role="button" tabindex="0" aria-label="Open Collection 3">
+          <img src="images/MTX-C3-Cover.webp" alt="Collection 3" class="hover-img" />
+          <p>Collection 3</p>
+        </div>
+
+        <div class="collection-tab" data-link="https://mega.nz/folder/DXg3yIrZ#uqXVAUjtjdWuNeYJeBzOrA" role="button" tabindex="0" aria-label="Open Collection 4">
+          <img src="images/MTX-C4-cover.webp" alt="Collection 4" class="hover-img" />
+          <p>Collection 4</p>
+        </div>
+
+        <div class="collection-tab" data-link="https://mega.nz/folder/PKJQEDhK#Dcp7IfThNt1LyZG5yqI-Eg" role="button" tabindex="0" aria-label="Open Collection 5">
+          <img src="images/MTX-C5-cover.webp" alt="Collection 5" class="hover-img" />
+          <p>Collection 5</p>
+        </div>
+
+        <div class="collection-tab" data-link="https://mega.nz/folder/qLJhlZaY#GHokgrQWUwgxrITUvj0yHg" role="button" tabindex="0" aria-label="Open Collection 6">
+          <img src="images/MTX-C6-cover.webp" alt="Collection 6" class="hover-img" />
+          <p>Collection 6</p>
+        </div>
+
+        <div class="collection-tab" data-link="https://mega.nz/folder/6DpTTDYI#I2vX9ITM6g4jdg588M50rQ" role="button" tabindex="0" aria-label="Open Collection 7">
+          <img src="images/MTX-C7-cover.webp" alt="Collection 7" class="hover-img" />
+          <p>Collection 7</p>
+        </div>
+
+        <div class="collection-tab" data-link="https://mega.nz/folder/LbowTBTY#IiMDk54kU6ezraACqWS4NQ" role="button" tabindex="0" aria-label="Open Collection 8">
+          <img src="images/MTX-C8-cover.webp" alt="Collection 8" class="hover-img" />
+          <p>Collection 8</p>
+        </div>
+
+        <div class="collection-tab" data-link="https://mega.nz/folder/iKoXASwR#oN92zfZK7I1ZespC3Hj0Sg" role="button" tabindex="0" aria-label="Open Collection 9">
+          <img src="images/MTX-C9-cover.webp" alt="Collection 9" class="hover-img" />
+          <p>Collection 9</p>
+        </div>
+
+        <div class="collection-tab" data-link="https://mega.nz/folder/rP5kADLJ#0JaCHCcUR7R6TH72EVKB_Q" role="button" tabindex="0" aria-label="Open Collection 10">
+          <img src="images/MTX-C10-cover.webp" alt="Collection 10" class="hover-img" />
+          <p>Collection 10</p>
+        </div>
+      </div>
+
+      <div class="scroll-arrow right-arrow" role="button" tabindex="0" aria-label="Scroll right">&#10095;</div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 🔸 Ad Zone 2: Mid-page Rectangle -->
+    <section class="ad-banner" id="ad-zone-2">
+      <div class="ad-wrapper">
+        <!-- JuicyAds v3.0 (kept as you had it) -->
+        <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
+        <ins id="1104981" data-width="908" data-height="258" class="juicyads-spot"></ins>
+        <script type="text/javascript" data-cfasync="false" async>
+          (adsbyjuicy = window.adsbyjuicy || []).push({ 'adzone': 1104981 });
+        </script>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Linksphere</p>
+  </footer>
+
+  <!-- 🧱 Ad Gate Modal -->
+  <div class="gate-modal" id="gateModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="gate-modal-content" role="document">
+      <button id="closeGate" class="modal-close" aria-label="Close">✕</button>
+      <h2>Access Locked</h2>
+      <p id="gate-description">Watch 3 short ads or play a 30-second video to unlock this collection.</p>
+
+      <div class="ad-buttons" id="adButtonGroup">
+        <button class="ad-btn" data-url="https://otieu.com/4/10175908">Ad 1</button>
+        <button class="ad-btn" data-url="https://otieu.com/4/10175906">Ad 2</button>
+        <button class="ad-btn" data-url="https://otieu.com/4/10175903">Ad 3</button>
+      </div>
+
+      <div class="ad-video-wrapper">
+        <iframe
+          id="adgateYoutube"
+          width="100%"
+          height="300"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Ad video player">
+        </iframe>
+      </div>
+
+      <div class="ad-controls">
+        <button id="playAdVideo" class="play-ad-btn">Play 30s Ad</button>
+        <button id="proceed-btn">Please wait 30s...</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Adult Content Warning Modal -->
+  <div id="adultWarningModal" class="adult-warning-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="adult-warning-content" role="document">
+      <h2>⚠️ Adult Content Warning</h2>
+      <p>This website contains adult themes or mature content intended for viewers 18 and older. Viewer discretion is advised.</p>
+      <button id="adult-warning-continue">I Understand</button>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
