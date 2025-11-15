@@ -1,11 +1,10 @@
 /* ------------------------------------------
-    COLLECTION BUTTON HANDLER (unused)
+    COLLECTION BUTTON HANDLER
 -------------------------------------------*/
 function openCollection(num) {
   console.log("Clicked collection:", num);
   alert("Opening Collection " + num + "...");
 }
-
 
 /* ------------------------------------------
     ALL JS RUNS AFTER DOM IS READY
@@ -27,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionStorage.setItem("adultWarningShown", "true");
   });
 
-
   /* ------------------------------------------
       SCROLLING COLLECTIONS
   -------------------------------------------*/
@@ -43,8 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.scrollBy({ left: 300, behavior: "smooth" });
   });
 
-
-  // Drag-to-scroll Desktop
+  // Drag-to-scroll
   let startX, scrollLeft, isDown = false;
 
   container.addEventListener("mousedown", (e) => {
@@ -64,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.scrollLeft = scrollLeft - walk;
   });
 
-  // Drag-to-scroll Mobile
+  // Mobile drag
   container.addEventListener("touchstart", (e) => {
     startX = e.touches[0].pageX;
     scrollLeft = container.scrollLeft;
@@ -76,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.scrollLeft = scrollLeft - walk;
   });
 
-
   /* ------------------------------------------
       AD-GATE LOGIC
   -------------------------------------------*/
@@ -86,52 +82,60 @@ document.addEventListener("DOMContentLoaded", () => {
   const collectionTabs = document.querySelectorAll(".collection-tab");
 
   let selectedLink = "";
-  let countdown = 30;
-  let countdownInterval = null;
+  let timerInterval;
+  let timeLeft = 30;
 
-  /* ------------------------------
-      SHOW COUNTDOWN
-  ------------------------------*/
-  const countdownDisplay = document.getElementById("countdown");
-  function startCountdown() {
-    countdown = 30;
-    countdownDisplay.textContent = countdown + "s";
+  /* ---------------------------
+      OPEN MODAL FROM TAB CLICK
+  ----------------------------*/
+  collectionTabs.forEach((tab) => {
+    const link = tab.querySelector(".collection-link");
 
-    countdownInterval = setInterval(() => {
-      countdown--;
-      countdownDisplay.textContent = countdown + "s";
+    link.addEventListener("click", (e) => {
+      e.preventDefault();      // prevent navigation
+      e.stopPropagation();     // prevent bubbling
 
-      if (countdown <= 0) {
-        clearInterval(countdownInterval);
-        countdownDisplay.textContent = "Done";
+      selectedLink = tab.dataset.link;
+
+      openAdGate();
+    });
+  });
+
+  function openAdGate() {
+    modal.classList.add("active");
+
+    // Reset UI
+    timeLeft = 30;
+    proceedBtn.disabled = true;
+    proceedBtn.classList.remove("active");
+    proceedBtn.textContent = "Please wait 30s...";
+
+    // Start countdown
+    startTimer();
+
+    // Auto-load random YouTube ad
+    loadRandomYoutubeAd();
+  }
+
+  /* ------------------------------------------
+      TIMER + PROCEED UNLOCK
+  -------------------------------------------*/
+  function startTimer() {
+    clearInterval(timerInterval);
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      proceedBtn.textContent = `Please wait ${timeLeft}s...`;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
         proceedBtn.disabled = false;
         proceedBtn.classList.add("active");
+        proceedBtn.textContent = "Proceed";
       }
     }, 1000);
   }
 
-
-  /* ------------------------------
-      COLLECTION CLICK → OPEN GATE
-  ------------------------------*/
-  collectionTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      selectedLink = tab.dataset.link;   // final destination
-
-      modal.classList.add("active");
-
-      proceedBtn.disabled = true;
-      proceedBtn.classList.remove("active");
-
-      if (countdownInterval) clearInterval(countdownInterval);
-      startCountdown();
-    });
-  });
-
-
-  /* ------------------------------------------
-      PROCEED BUTTON
-  -------------------------------------------*/
   proceedBtn.addEventListener("click", () => {
     if (!proceedBtn.disabled && selectedLink) {
       window.open(selectedLink, "_blank");
@@ -139,36 +143,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-
   /* ------------------------------------------
-      RANDOM YOUTUBE AD
+      RANDOM YOUTUBE VIDEO LOADER
   -------------------------------------------*/
   const youtubeVideos = [
     "qRYmz6k3bR8",
     "eimI_VjnPA8",
   ];
 
-  const iframe = document.getElementById("adgateYoutube");
-  const playBtn = document.getElementById("playAdVideo");
-
   function loadRandomYoutubeAd() {
-    const randomVideo = youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)];
+    const randomVideo =
+      youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)];
+
+    const iframe = document.getElementById("adgateYoutube");
     iframe.src = `https://www.youtube.com/embed/${randomVideo}?autoplay=1&controls=1&rel=0`;
   }
 
-  playBtn.addEventListener("click", () => {
-    loadRandomYoutubeAd();
-  });
-
-
   /* ------------------------------------------
-      URL PARAMETER TRIGGER
+      AUTO OPEN MODAL IF ?collection= PASSED
   -------------------------------------------*/
   const urlParams = new URLSearchParams(window.location.search);
   const collectionParam = urlParams.get("collection");
 
   if (collectionParam) {
-    const targetTab = [...collectionTabs].find(tab =>
+    const targetTab = [...collectionTabs].find((tab) =>
       tab.querySelector("p").textContent
         .toLowerCase()
         .includes(`collection ${collectionParam}`)
@@ -180,15 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
       targetTab.scrollIntoView({ behavior: "smooth", inline: "center" });
 
       setTimeout(() => {
-        modal.classList.add("active");
-
-        proceedBtn.disabled = true;
-        proceedBtn.classList.remove("active");
-
-        if (countdownInterval) clearInterval(countdownInterval);
-        startCountdown();
-      }, 800);
+        openAdGate();
+      }, 400);
     }
   }
-
 });
