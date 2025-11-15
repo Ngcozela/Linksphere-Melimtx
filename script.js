@@ -273,3 +273,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+let ytPlayer;
+let countdownStarted = false;
+
+function onYouTubeIframeAPIReady() {
+  const iframe = document.getElementById("adVideo");
+
+  if (!iframe) return;
+
+  ytPlayer = new YT.Player("adVideo", {
+    events: {
+      onStateChange: function(event) {
+        if (event.data === YT.PlayerState.PLAYING && !countdownStarted) {
+          countdownStarted = true;
+          startCountdown();
+        }
+      }
+    }
+  });
+}
+
