@@ -183,3 +183,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+/* ------------------------------
+    RANDOM YOUTUBE AD LOADER
+------------------------------- */
+
+// Add your YouTube video IDs here
+const youtubeVideos = [
+  "https://youtu.be/8xUX3D_GxBQ?si=p8qn_fpWRsBFovU5",
+  "https://youtu.be/qRYmz6k3bR8?si=Q_5NK-1by96a4h5M",
+  "https://youtu.be/eimI_VjnPA8?si=Ces5kZid2xPax12p",
+  
+];
+
+// Load a random YouTube video
+function loadRandomYoutubeAd() {
+  const randomVideo = youtubeVideos[Math.floor(Math.random() * youtubeVideos.length)];
+  const iframe = document.getElementById("adgateYoutube");
+
+  iframe.src = `https://www.youtube.com/embed/${randomVideo}?autoplay=1&controls=1&rel=0`;
+}
+
+// When user clicks PLAY AD
+document.getElementById("playAdVideo").addEventListener("click", () => {
+  loadRandomYoutubeAd();
+
+  // Optional: unlock proceed button after video starts
+  if (typeof proceedBtn !== "undefined") {
+    proceedBtn.disabled = false;
+    proceedBtn.classList.add("active");
+  }
+});
