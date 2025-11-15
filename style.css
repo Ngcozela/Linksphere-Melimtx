@@ -6,18 +6,18 @@
 }
 
 /* Layout */
-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
 body {
   font-family: "Poppins", Arial, sans-serif;
   background-color: #000;
   color: #fff;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
 /* Page Title */
@@ -50,8 +50,6 @@ body {
   cursor: pointer;
   transition: color 0.3s ease;
 }
-
-
 
 .title-text:hover + .title-hover-img {
   opacity: 1;
@@ -110,17 +108,10 @@ body {
   color: #000000;
 }
 
-.left-arrow {
-  left: 10px;
-}
+.left-arrow { left: 10px; }
+.right-arrow { right: 10px; }
 
-.right-arrow {
-  right: 10px;
-}
-
-.collections:hover .scroll-arrow {
-  opacity: 1;
-}
+.collections:hover .scroll-arrow { opacity: 1; }
 
 /* Collection Tabs */
 .collection-tab {
@@ -130,7 +121,6 @@ body {
   align-items: center;
   color: #ff7b00;
   background-color: #524e4e;
-  border-color: #524e4e;
   border-radius: 10px;
   padding: 100px 20px;
   text-align: center;
@@ -143,7 +133,7 @@ body {
   min-width: 180px;
   max-width: 220px;
   overflow: hidden;
-  border: 1px solid ;
+  border: 1px solid transparent;
 }
 
 .collection-tab:hover {
@@ -168,6 +158,7 @@ body {
   opacity: 1;
 }
 
+/* Ad banners */
 .ad-banner {
   display: flex;
   justify-content: center;
@@ -175,7 +166,7 @@ body {
   background-color: #000000;
   border: 1px dashed #000000;
   color: #000000;
-  margin: 40px auto;        /* ↓ FIXED spacing */
+  margin: 40px auto;
   padding: 15px;
   text-align: center;
   border-radius: 10px;
@@ -183,18 +174,18 @@ body {
   max-width: 970px;
 }
 
-
-.ad-box {
+.ad-wrapper {
   width: 100%;
-  max-width: 970px;
-  height: 250px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 14px;
-  font-family: sans-serif;
+  padding: 10px 0;
 }
 
+.juicyads-spot {
+  max-width: 100%;
+  width: 908px;
+  height: 258px;
+}
 
 /* Footer */
 .footer {
@@ -223,19 +214,26 @@ body {
   background: #1f1f1f;
   padding: 2rem;
   border-radius: 1rem;
-  max-width: 500px;
-  width: 90%;
+  max-width: 560px;
+  width: 92%;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
   animation: fadeIn 0.4s ease;
+  position: relative;
 }
 
-.gate-modal h2,
-.gate-modal p {
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
   color: #fff;
-  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
+/* ad-buttons */
 .ad-buttons {
   display: flex;
   justify-content: center;
@@ -258,10 +256,34 @@ body {
   background: #09ff00;
 }
 
-#ad-video {
+/* video wrapper and controls */
+.ad-video-wrapper {
   width: 100%;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
+  max-width: 640px;
+  margin: 0.75rem auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+
+.play-ad-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #ff7b00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#ad-video { width: 100%; border-radius: 0.5rem; margin-bottom: 1rem; }
+
+#ad-button { margin-right: 10px; }
+
+/* proceed button */
+#ad-controls {
+  margin-top: 12px;
 }
 
 #proceed-btn {
@@ -281,7 +303,7 @@ body {
   cursor: pointer;
 }
 
-/* === Adult Content Warning Modal === */
+/* Adult warning modal */
 .adult-warning-modal {
   display: none;
   position: fixed;
@@ -298,13 +320,13 @@ body {
 }
 
 .adult-warning-content {
-  background: rgba(40, 40, 40, 0.9);
+  background: rgba(40, 40, 40, 0.95);
   color: #fff;
   text-align: center;
-  max-width: 400px;
+  max-width: 440px;
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
   animation: slideUp 0.4s ease;
 }
 
@@ -361,69 +383,11 @@ body {
   }
 }
 
-.ad-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-}
-
-.juicyads-spot {
-    max-width: 100%;
-    width: 908px;   /* desktop */
-    height: 258px;
-}
-
-/* Tablet (auto-swaps to smaller banner) */
+/* Juicyads responsive overrides */
 @media (max-width: 1024px) {
-    .juicyads-spot {
-        width: 728px;
-        height: 90px;
-    }
+  .juicyads-spot { width: 728px; height: 90px; }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
-    .juicyads-spot {
-        width: 320px;
-        height: 100px;
-    }
-}
-
-.ad-video-wrapper {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.play-ad-btn {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #ff7b00;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.ad-video-wrapper {
-  width: 100%;
-  max-width: 640px;
-  margin: 0 auto;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.play-ad-btn {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background: #ff7b00;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+  .juicyads-spot { width: 320px; height: 100px; }
 }
