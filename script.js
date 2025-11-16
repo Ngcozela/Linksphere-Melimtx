@@ -33,10 +33,15 @@ $(document).ready(function () {
 
     // Ad buttons
     $(".ad-btn").on("click", function () {
-        if (chosenMethod === "video") return; // video already chosen → lock method
 
+        // ❌ If user already chose "video", ads are locked
+        if (chosenMethod === "video") return;
+
+        // If first ad click → set method to "ads"
         chosenMethod = "ads";
-        lockVideoOption();
+
+        // Lock video method after choosing ads
+        lockVideoOption(); // ✅ INSERTED FOR OPTION A
 
         let index = $(this).data("index");
         adViews[index] = true;
@@ -79,12 +84,14 @@ function resetGateState() {
         .text("Locked");
 
     // Reset ads
-    $(".ad-btn").removeClass("done");
+    $(".ad-btn").removeClass("done disabled");
 
     // Reset video
     videoCountdown = 30;
     $("#countdownText").text("30");
     $("#videoSection").hide();
+
+    $("#videoPlayBtn").removeClass("disabled");  // ✅ INSERTED (unlock play button)
 
     if (countdownInterval) clearInterval(countdownInterval);
 }
@@ -93,18 +100,19 @@ function resetGateState() {
 //  LOCK VIDEO OPTION (when ads chosen)
 // =============================
 function lockVideoOption() {
-    $("#videoPlayBtn").addClass("disabled");
+    $("#videoPlayBtn").addClass("disabled"); // disables clicking video option
 }
 
 // LOCK ADS OPTION (when video chosen)
 function lockAdsOption() {
-    $(".ad-btn").addClass("disabled");
+    $(".ad-btn").addClass("disabled"); // disables clicking ads
 }
 
 // =============================
 //    METHOD A – 3 ADS
 // =============================
 function checkAdCompletion() {
+
     // visually mark completed ads
     adViews.forEach((v, i) => {
         if (v) $(`.ad-btn[data-index="${i}"]`).addClass("done");
@@ -131,13 +139,19 @@ function unlockProceed() {
 
 // Trigger video mode
 function startVideoMode() {
-    if (chosenMethod === "ads") return; // ads already chosen → lock
 
+    // ❌ If user already chose ads, video is locked
+    if (chosenMethod === "ads") return;
+
+    // Set method to video
     chosenMethod = "video";
-    lockAdsOption();
+
+    // Lock ads once video method chosen
+    lockAdsOption();  // ✅ INSERTED FOR OPTION A
 
     $("#videoSection").show();
 
+    // Initialize YouTube player
     if (!ytPlayer) {
         ytPlayer = new YT.Player("adVideo", {
             events: {
@@ -149,6 +163,7 @@ function startVideoMode() {
 
 // Countdown starts ONLY when video actually starts playing
 function onPlayerStateChange(event) {
+
     if (chosenMethod !== "video") return;
 
     if (event.data === YT.PlayerState.PLAYING) {
@@ -162,9 +177,11 @@ function onPlayerStateChange(event) {
 
 // Start the 30s countdown
 function startVideoCountdown() {
+
     if (countdownInterval) return;
 
     countdownInterval = setInterval(() => {
+
         videoCountdown--;
         $("#countdownText").text(videoCountdown);
 
@@ -172,6 +189,7 @@ function startVideoCountdown() {
             stopVideoCountdown();
             unlockProceed();
         }
+
     }, 1000);
 }
 
