@@ -157,8 +157,12 @@ function lockAdsOption() {
 ------------------------------ */
 function loadRandomVideo() {
     const ids = ["qRYmz6k3bR8", "eimI_VjnPA8", "8xUX3D_GxBQ"];
+    
 
     let id = ids[Math.floor(Math.random() * ids.length)];
+
+document.querySelector(".ad-video-wrapper").style.display = "block";
+
 
     const src = `https://www.youtube.com/embed/${id}?enablejsapi=1&controls=1&autoplay=1&rel=0`;
 
