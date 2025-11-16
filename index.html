@@ -111,20 +111,33 @@
     <div class="gate-modal-content" role="document">
       <button id="closeGate" class="modal-close" aria-label="Close">✕</button>
       <h2>Access Locked</h2>
-      <p id="gate-description">Watch 3 short ads or play a 30-second video to unlock this collection.</p>
+      <p id="gate-description">Choose an option to unlock this collection:</p>
 
+      <!-- TWO OPTIONS -->
       <div class="ad-buttons" id="adButtonGroup">
-        <button class="ad-btn" data-url="https://otieu.com/4/10175908">Ad 1</button>
-        <button class="ad-btn" data-url="https://otieu.com/4/10175906">Ad 2</button>
-        <button class="ad-btn" data-url="https://otieu.com/4/10175903">Ad 3</button>
+        <div class="method">
+          <p class="method-title">Option A — View 3 ads (open each in a new tab)</p>
+          <div class="ads-row">
+            <button class="ad-btn" data-url="https://otieu.com/4/10175908">Ad 1</button>
+            <button class="ad-btn" data-url="https://otieu.com/4/10175906">Ad 2</button>
+            <button class="ad-btn" data-url="https://otieu.com/4/10175903">Ad 3</button>
+          </div>
+        </div>
+
+        <div class="method">
+          <p class="method-title">Option B — Watch a 30s video</p>
+          <button id="playAdVideo" class="play-ad-btn" aria-pressed="false">Play Video</button>
+        </div>
       </div>
 
-      <div class="ad-video-wrapper">
+      <div class="ad-video-wrapper" aria-hidden="true">
+        <!-- initially src is empty; will be set when user chooses video -->
         <iframe
           id="adgateYoutube"
           width="100%"
           height="300"
           frameborder="0"
+          src=""
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
           title="Ad video player">
@@ -132,8 +145,7 @@
       </div>
 
       <div class="ad-controls">
-        <button id="playAdVideo" class="play-ad-btn"></button>
-        <button id="proceed-btn"> Wait 30s...</button>
+        <button id="proceed-btn" disabled aria-disabled="true">Choose an option</button>
       </div>
     </div>
   </div>
@@ -147,8 +159,11 @@
     </div>
   </div>
 
+  <!-- YouTube iframe API loader -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
   <script src="script.js" defer></script>
 </body>
 </html>
 
-<script src="https://www.youtube.com/iframe_api"></script>
+
