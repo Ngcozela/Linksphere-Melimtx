@@ -210,7 +210,7 @@ main {
 
 /* Ads row */
 .ads-row { display:flex; gap: 8px; flex-wrap:wrap; }
-.ad-btn { background: #f80000; border: none; color: white; padding: 8px 10px; border-radius: 8px; cursor: pointer; font-weight:700; }
+.ad-btn { background: #ff7b00; border: none; color: white; padding: 8px 10px; border-radius: 8px; cursor: pointer; font-weight:700; }
 .ad-btn.viewed { background: #09ff00; color: #000; }
 
 /* Play button */
