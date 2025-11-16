@@ -6,7 +6,7 @@
     GLOBAL STATE
 --------------------- */
 let selectedLink = "";
-let chosenMethod = null;            // "ads" or "video"
+let chosenMethod = null;  // "ads" or "video"
 let adViews = [false, false, false];
 let ytPlayer = null;
 let countdown = 30;
@@ -23,13 +23,14 @@ const youtubeFrame = document.getElementById("adgateYoutube");
 const gateDescription = document.getElementById("gate-description");
 const adButtons = document.querySelectorAll(".ad-btn");
 
-/* --------------------
-    OPEN AD GATE
---------------------- */
+
+/* ==========================================================
+      OPEN AD GATE
+========================================================== */
+
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // Handle clicking collection cards
     const tabs = document.querySelectorAll(".collection-tab");
+
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             selectedLink = tab.dataset.link || "";
@@ -37,11 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Support auto-open from URL
+    // Auto-open if collection passed in URL
     const params = new URLSearchParams(window.location.search);
     const col = params.get("collection");
     if (col) {
-        const target = Array.from(tabs).find(t => 
+        const target = Array.from(tabs).find(t =>
             t.textContent.toLowerCase().includes(`collection ${col}`)
         );
         if (target) {
@@ -67,15 +68,16 @@ function closeAdGate() {
     gateModal.classList.remove("active");
     gateModal.setAttribute("aria-hidden", "true");
 
-    if (countdownInterval) clearInterval(countdownInterval);
-    youtubeFrame.src = "";  // stop video
+    stopCountdown();
+
+    youtubeFrame.src = ""; // stop video completely
 }
 
 document.getElementById("closeGate").addEventListener("click", closeAdGate);
 
 
 /* ==========================================================
-      RESET STATE
+      RESET GATE
 ========================================================== */
 
 function resetGate() {
@@ -88,12 +90,15 @@ function resetGate() {
     proceedBtn.classList.remove("active");
     proceedBtn.textContent = "Wait 30s...";
 
-    if (countdownInterval) clearInterval(countdownInterval);
+    stopCountdown();
 
-    youtubeFrame.src = ""; // reset iframe
+    // Reset video
+    youtubeFrame.src = "";
     playAdVideoBtn.disabled = false;
-    playAdVideoBtn.textContent = "";
-    gateDescription.textContent = "Watch 3 short ads or play a 30-second video to unlock this collection.";
+    playAdVideoBtn.style.opacity = "1";
+
+    gateDescription.textContent =
+        "Watch 3 short ads or play a 30-second video to unlock this collection.";
 
     adButtons.forEach(btn => {
         btn.classList.remove("viewed", "disabled");
@@ -108,7 +113,7 @@ function resetGate() {
 adButtons.forEach((btn, index) => {
     btn.addEventListener("click", () => {
 
-        if (chosenMethod === "video") return; // locked out after choosing video
+        if (chosenMethod === "video") return;
 
         chosenMethod = "ads";
         lockVideoOption();
@@ -116,7 +121,6 @@ adButtons.forEach((btn, index) => {
         adViews[index] = true;
         btn.classList.add("viewed");
 
-        // Always open the ad in new tab
         const url = btn.dataset.url;
         if (url) window.open(url, "_blank");
 
@@ -137,7 +141,7 @@ function lockVideoOption() {
 ========================================================== */
 
 playAdVideoBtn.addEventListener("click", () => {
-    if (chosenMethod === "ads") return; // ads already chosen, ignore
+    if (chosenMethod === "ads") return;
 
     chosenMethod = "video";
     lockAdsOption();
@@ -146,70 +150,70 @@ playAdVideoBtn.addEventListener("click", () => {
 });
 
 function lockAdsOption() {
-    adButtons.forEach(b => {
-        b.classList.add("disabled");
-    });
+    adButtons.forEach(b => b.classList.add("disabled"));
 }
 
 
-/* ------------------------------
-    Load random video in iframe
------------------------------- */
+/* ==========================================================
+      LOAD RANDOM VIDEO
+========================================================== */
+
 function loadRandomVideo() {
     const ids = ["qRYmz6k3bR8", "eimI_VjnPA8", "8xUX3D_GxBQ"];
-    
 
     let id = ids[Math.floor(Math.random() * ids.length)];
 
-document.querySelector(".ad-video-wrapper").style.display = "block";
+    document.querySelector(".ad-video-wrapper").style.display = "block";
 
-
-    const src = `https://www.youtube.com/embed/${id}?enablejsapi=1&controls=1&autoplay=1&rel=0`;
+    const src = `https://www.youtube.com/embed/${id}?enablejsapi=1&autoplay=1&controls=1&rel=0`;
 
     youtubeFrame.src = src;
 
-    // Wait for iframe API ready
+    // Build player AFTER iframe loads
     setTimeout(() => {
-        if (!ytPlayer) {
-            ytPlayer = new YT.Player("adgateYoutube", {
-                events: {
-                    "onStateChange": onPlayerStateChange
-                }
-            });
-        }
+        ytPlayer = new YT.Player("adgateYoutube", {
+            events: {
+                "onStateChange": onPlayerStateChange
+            }
+        });
     }, 600);
 }
 
 
 /* ==========================================================
-      VIDEO STATE LISTENER
+      VIDEO STATE LISTENER — FIXED LOGIC
 ========================================================== */
 
 function onPlayerStateChange(event) {
     if (chosenMethod !== "video") return;
 
-    if (event.data === YT.PlayerState.PLAYING) {
-        if (!countdownStarted) {
-            countdownStarted = true;
-            startCountdown();
-        }
-    }
+    switch (event.data) {
 
-    if (event.data === YT.PlayerState.PAUSED) {
-        stopCountdown();
-    }
+        case YT.PlayerState.PLAYING:
+            if (!countdownStarted) {
+                countdownStarted = true;
+                startCountdown(); // ← countdown starts ONLY when the video visually begins
+            }
+            break;
 
-    if (event.data === YT.PlayerState.ENDED) {
-        finishCountdown();
+        case YT.PlayerState.PAUSED:
+            stopCountdown(); // pause countdown if user pauses
+            break;
+
+        case YT.PlayerState.ENDED:
+            finishCountdown(); // instantly unlock if video finishes early
+            break;
     }
 }
 
 
 /* ==========================================================
-      COUNTDOWN LOGIC
+      COUNTDOWN LOGIC — FIXED & STABLE
 ========================================================== */
 
 function startCountdown() {
+    stopCountdown(); // avoid double intervals
+
     countdownInterval = setInterval(() => {
         countdown--;
         proceedBtn.textContent = `Wait ${countdown}s...`;
