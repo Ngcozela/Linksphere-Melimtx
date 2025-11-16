@@ -1,206 +1,252 @@
-// =============================
-//  GLOBAL VARIABLES
-// =============================
+/* ==========================================================
+      AD-GATE SYSTEM — VERSION A (MATCHES YOUR HTML EXACTLY)
+========================================================== */
+
+/* --------------------
+    GLOBAL STATE
+--------------------- */
 let selectedLink = "";
-let chosenMethod = null;        // "ads" or "video"
+let chosenMethod = null;            // "ads" or "video"
 let adViews = [false, false, false];
 let ytPlayer = null;
-let videoCountdown = 30;
+let countdown = 30;
 let countdownInterval = null;
+let countdownStarted = false;
 
-// =============================
-//  OPEN COLLECTION + AD GATE
-// =============================
-$(document).ready(function () {
+/* --------------------
+    DOM ELEMENTS
+--------------------- */
+const gateModal = document.getElementById("gateModal");
+const proceedBtn = document.getElementById("proceed-btn");
+const playAdVideoBtn = document.getElementById("playAdVideo");
+const youtubeFrame = document.getElementById("adgateYoutube");
+const gateDescription = document.getElementById("gate-description");
+const adButtons = document.querySelectorAll(".ad-btn");
 
-    // Handle click on collection tabs
-    $(".collection-tab").on("click", function () {
-        selectedLink = $(this).data("link");
-
-        openAdGate();
+/* --------------------
+    OPEN AD GATE
+--------------------- */
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // Handle clicking collection cards
+    const tabs = document.querySelectorAll(".collection-tab");
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            selectedLink = tab.dataset.link || "";
+            openAdGate();
+        });
     });
 
-    // Support direct links via ?collection=#
+    // Support auto-open from URL
     const params = new URLSearchParams(window.location.search);
-    const collectionID = params.get("collection");
-    if (collectionID) {
-        const tab = $(`.collection-tab[data-collection="${collectionID}"]`);
-        if (tab.length) {
-            selectedLink = tab.data("link");
+    const col = params.get("collection");
+    if (col) {
+        const target = Array.from(tabs).find(t => 
+            t.textContent.toLowerCase().includes(`collection ${col}`)
+        );
+        if (target) {
+            selectedLink = target.dataset.link;
             openAdGate();
         }
     }
-
-    // Ad buttons
-    $(".ad-btn").on("click", function () {
-
-        // ❌ If user already chose "video", ads are locked
-        if (chosenMethod === "video") return;
-
-        // If first ad click → set method to "ads"
-        chosenMethod = "ads";
-
-        // Lock video method after choosing ads
-        lockVideoOption(); // ✅ INSERTED FOR OPTION A
-
-        let index = $(this).data("index");
-        adViews[index] = true;
-
-        // open ad link in new tab
-        let url = $(this).data("url");
-        window.open(url, "_blank");
-
-        checkAdCompletion();
-    });
-
-    // Proceed button (initially locked)
-    $("#proceedBtn").on("click", function () {
-        if (!$(this).hasClass("unlocked")) return;
-        if (selectedLink) window.location.href = selectedLink;
-    });
 });
 
-// =============================
-//  MODAL OPEN/CLOSE
-// =============================
+
+/* ==========================================================
+      MODAL CONTROL
+========================================================== */
+
 function openAdGate() {
-    $("#adGateModal").fadeIn(200);
-    resetGateState();
+    resetGate();
+
+    gateModal.classList.add("active");
+    gateModal.setAttribute("aria-hidden", "false");
 }
 
 function closeAdGate() {
-    $("#adGateModal").fadeOut(200);
-}
-
-// =============================
-//  RESET STATE
-// =============================
-function resetGateState() {
-    chosenMethod = null;
-    adViews = [false, false, false];
-
-    $("#proceedBtn")
-        .removeClass("unlocked")
-        .text("Locked");
-
-    // Reset ads
-    $(".ad-btn").removeClass("done disabled");
-
-    // Reset video
-    videoCountdown = 30;
-    $("#countdownText").text("30");
-    $("#videoSection").hide();
-
-    $("#videoPlayBtn").removeClass("disabled");  // ✅ INSERTED (unlock play button)
+    gateModal.classList.remove("active");
+    gateModal.setAttribute("aria-hidden", "true");
 
     if (countdownInterval) clearInterval(countdownInterval);
+    youtubeFrame.src = "";  // stop video
 }
 
-// =============================
-//  LOCK VIDEO OPTION (when ads chosen)
-// =============================
-function lockVideoOption() {
-    $("#videoPlayBtn").addClass("disabled"); // disables clicking video option
-}
+document.getElementById("closeGate").addEventListener("click", closeAdGate);
 
-// LOCK ADS OPTION (when video chosen)
-function lockAdsOption() {
-    $(".ad-btn").addClass("disabled"); // disables clicking ads
-}
 
-// =============================
-//    METHOD A – 3 ADS
-// =============================
-function checkAdCompletion() {
+/* ==========================================================
+      RESET STATE
+========================================================== */
 
-    // visually mark completed ads
-    adViews.forEach((v, i) => {
-        if (v) $(`.ad-btn[data-index="${i}"]`).addClass("done");
+function resetGate() {
+    chosenMethod = null;
+    adViews = [false, false, false];
+    countdown = 30;
+    countdownStarted = false;
+
+    proceedBtn.disabled = true;
+    proceedBtn.classList.remove("active");
+    proceedBtn.textContent = "Wait 30s...";
+
+    if (countdownInterval) clearInterval(countdownInterval);
+
+    youtubeFrame.src = ""; // reset iframe
+    playAdVideoBtn.disabled = false;
+    playAdVideoBtn.textContent = "";
+    gateDescription.textContent = "Watch 3 short ads or play a 30-second video to unlock this collection.";
+
+    adButtons.forEach(btn => {
+        btn.classList.remove("viewed", "disabled");
     });
-
-    // unlock if all 3 viewed
-    if (adViews.every(v => v)) {
-        unlockProceed();
-    }
 }
 
-// =============================
-//  UNLOCK PROCEED BUTTON
-// =============================
-function unlockProceed() {
-    $("#proceedBtn")
-        .addClass("unlocked")
-        .text("Proceed");
+
+/* ==========================================================
+      METHOD A — VIEW 3 ADS
+========================================================== */
+
+adButtons.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+
+        if (chosenMethod === "video") return; // locked out after choosing video
+
+        chosenMethod = "ads";
+        lockVideoOption();
+
+        adViews[index] = true;
+        btn.classList.add("viewed");
+
+        // Always open the ad in new tab
+        const url = btn.dataset.url;
+        if (url) window.open(url, "_blank");
+
+        if (adViews.every(v => v)) {
+            unlockProceed("All 3 ads viewed — you can proceed.");
+        }
+    });
+});
+
+function lockVideoOption() {
+    playAdVideoBtn.disabled = true;
+    playAdVideoBtn.style.opacity = "0.5";
 }
 
-// =============================
-//    METHOD B – VIDEO
-// =============================
 
-// Trigger video mode
-function startVideoMode() {
+/* ==========================================================
+      METHOD B — WATCH VIDEO 30 SECONDS
+========================================================== */
 
-    // ❌ If user already chose ads, video is locked
-    if (chosenMethod === "ads") return;
+playAdVideoBtn.addEventListener("click", () => {
+    if (chosenMethod === "ads") return; // ads already chosen, ignore
 
-    // Set method to video
     chosenMethod = "video";
+    lockAdsOption();
 
-    // Lock ads once video method chosen
-    lockAdsOption();  // ✅ INSERTED FOR OPTION A
+    loadRandomVideo();
+});
 
-    $("#videoSection").show();
-
-    // Initialize YouTube player
-    if (!ytPlayer) {
-        ytPlayer = new YT.Player("adVideo", {
-            events: {
-                "onStateChange": onPlayerStateChange
-            }
-        });
-    }
+function lockAdsOption() {
+    adButtons.forEach(b => {
+        b.classList.add("disabled");
+    });
 }
 
-// Countdown starts ONLY when video actually starts playing
-function onPlayerStateChange(event) {
 
+/* ------------------------------
+    Load random video in iframe
+------------------------------ */
+function loadRandomVideo() {
+    const ids = ["qRYmz6k3bR8", "eimI_VjnPA8", "8xUX3D_GxBQ"];
+
+    let id = ids[Math.floor(Math.random() * ids.length)];
+
+    const src = `https://www.youtube.com/embed/${id}?enablejsapi=1&controls=1&autoplay=1&rel=0`;
+
+    youtubeFrame.src = src;
+
+    // Wait for iframe API ready
+    setTimeout(() => {
+        if (!ytPlayer) {
+            ytPlayer = new YT.Player("adgateYoutube", {
+                events: {
+                    "onStateChange": onPlayerStateChange
+                }
+            });
+        }
+    }, 600);
+}
+
+
+/* ==========================================================
+      VIDEO STATE LISTENER
+========================================================== */
+
+function onPlayerStateChange(event) {
     if (chosenMethod !== "video") return;
 
     if (event.data === YT.PlayerState.PLAYING) {
-        startVideoCountdown();
+        if (!countdownStarted) {
+            countdownStarted = true;
+            startCountdown();
+        }
     }
 
-    if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.BUFFERING) {
-        stopVideoCountdown();
+    if (event.data === YT.PlayerState.PAUSED) {
+        stopCountdown();
+    }
+
+    if (event.data === YT.PlayerState.ENDED) {
+        finishCountdown();
     }
 }
 
-// Start the 30s countdown
-function startVideoCountdown() {
 
-    if (countdownInterval) return;
+/* ==========================================================
+      COUNTDOWN LOGIC
+========================================================== */
 
+function startCountdown() {
     countdownInterval = setInterval(() => {
+        countdown--;
+        proceedBtn.textContent = `Wait ${countdown}s...`;
 
-        videoCountdown--;
-        $("#countdownText").text(videoCountdown);
-
-        if (videoCountdown <= 0) {
-            stopVideoCountdown();
-            unlockProceed();
+        if (countdown <= 0) {
+            finishCountdown();
         }
-
     }, 1000);
 }
 
-function stopVideoCountdown() {
+function stopCountdown() {
     if (countdownInterval) {
         clearInterval(countdownInterval);
         countdownInterval = null;
     }
 }
 
-// =============================
-//  EXPOSE VIDEO BUTTON FUNCTION
-// =============================
-window.startVideoMode = startVideoMode;
+function finishCountdown() {
+    stopCountdown();
+    unlockProceed("30-second video watched — you can proceed.");
+}
+
+
+/* ==========================================================
+      UNLOCK PROCEED BUTTON
+========================================================== */
+
+function unlockProceed(message) {
+    proceedBtn.disabled = false;
+    proceedBtn.classList.add("active");
+    proceedBtn.textContent = "Proceed";
+    gateDescription.textContent = message;
+}
+
+
+/* ==========================================================
+      PROCEED
+========================================================== */
+
+proceedBtn.addEventListener("click", () => {
+    if (!proceedBtn.disabled && selectedLink) {
+        window.location.href = selectedLink;
+    }
+});
