@@ -258,3 +258,37 @@ proceedBtn.addEventListener("click", () => {
         window.location.href = selectedLink;
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".collections-container");
+    const leftArrow = document.querySelector(".left-arrow");
+    const rightArrow = document.querySelector(".right-arrow");
+
+    if (!container || !leftArrow || !rightArrow) return;
+
+    const scrollAmount = 300; // how far arrows scroll each click
+
+    leftArrow.addEventListener("click", () => {
+        container.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth"
+        });
+    });
+
+    rightArrow.addEventListener("click", () => {
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth"
+        });
+    });
+
+    /** Optional: arrows appear only when scroll is possible */
+    const updateArrows = () => {
+        leftArrow.style.opacity = container.scrollLeft > 10 ? "1" : "0";
+        rightArrow.style.opacity =
+            container.scrollLeft + container.clientWidth < container.scrollWidth - 10 ? "1" : "0";
+    };
+
+    container.addEventListener("scroll", updateArrows);
+    updateArrows(); // initial check
+});
