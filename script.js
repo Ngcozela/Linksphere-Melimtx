@@ -260,35 +260,38 @@ proceedBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector(".collections-container");
-    const leftArrow = document.querySelector(".left-arrow");
-    const rightArrow = document.querySelector(".right-arrow");
+    // Select ALL collection rows
+    const rows = document.querySelectorAll(".collections");
 
-    if (!container || !leftArrow || !rightArrow) return;
+    rows.forEach((row) => {
+        const container = row.querySelector(".collections-container");
+        const leftArrow = row.querySelector(".left-arrow");
+        const rightArrow = row.querySelector(".right-arrow");
 
-    const scrollAmount = 300; // how far arrows scroll each click
+        if (!container || !leftArrow || !rightArrow) return;
 
-    leftArrow.addEventListener("click", () => {
-        container.scrollBy({
-            left: -scrollAmount,
-            behavior: "smooth"
+        const scrollAmount = 300;
+
+        leftArrow.addEventListener("click", () => {
+            container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
         });
-    });
 
-    rightArrow.addEventListener("click", () => {
-        container.scrollBy({
-            left: scrollAmount,
-            behavior: "smooth"
+        rightArrow.addEventListener("click", () => {
+            container.scrollBy({ left: scrollAmount, behavior: "smooth" });
         });
+
+        // Show/hide arrows depending on scroll position
+        const updateArrows = () => {
+            leftArrow.style.opacity = container.scrollLeft > 10 ? "1" : "0";
+
+            rightArrow.style.opacity =
+                container.scrollLeft + container.clientWidth < container.scrollWidth - 10
+                    ? "1"
+                    : "0";
+        };
+
+        container.addEventListener("scroll", updateArrows);
+        updateArrows();
     });
-
-    /** Optional: arrows appear only when scroll is possible */
-    const updateArrows = () => {
-        leftArrow.style.opacity = container.scrollLeft > 10 ? "1" : "0";
-        rightArrow.style.opacity =
-            container.scrollLeft + container.clientWidth < container.scrollWidth - 10 ? "1" : "0";
-    };
-
-    container.addEventListener("scroll", updateArrows);
-    updateArrows(); // initial check
 });
+
